@@ -1,0 +1,9 @@
+services:
+  portfolio:
+    build: .
+    container_name: soumyadeep-portfolio
+    restart: unless-stopped
+    ports:
+      - "8090:3000"
+    environment:
+      - NODE_ENV=production
