@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Github, Linkedin, Mail, Menu, X, ArrowRight, Radio, Cpu, Layers3, MapPin } from "lucide-react";
 
 const featured = [
@@ -36,7 +36,7 @@ const archive = [
   { name: "Snake Game", category: "PYTHON / GAME DEVELOPMENT", description: "A classic arcade game built with Pygame.", image: "/images/snake-game.png", href: "https://github.com/ALmoSTGoD249/Snake-Game" }
 ];
 
-const reveal = { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0, transition: { duration: .7, ease: "easeOut" } } };
+const reveal: Variants = { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0, transition: { duration: .7, ease: "easeOut" } } };
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -114,7 +114,7 @@ export default function Home() {
       <section className="about-section" id="about">
         <div className="section-label"><span>03 / A BIT ABOUT ME</span><span>THE PERSON BEHIND THE BUILDS</span></div>
         <div className="about-grid">
-          <div className="portrait-wrap"><Image src="/images/profile.png" alt="Portrait of Soumyadeep Maity" fill sizes="(max-width: 800px) 100vw, 38vw"/><span className="portrait-caption">KOLKATA, INDIA · 2026</span></div>
+          <div className="portrait-wrap"><Image src="/images/profile.jpg" alt="Portrait of Soumyadeep Maity" fill sizes="(max-width: 800px) 100vw, 38vw"/><span className="portrait-caption">KOLKATA, INDIA · 2026</span></div>
           <div className="about-copy">
             <span className="eyebrow">HELLO, I’M SOUMYADEEP.</span>
             <h2>Curious about<br/><em>what’s possible.</em></h2>
@@ -125,8 +125,36 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="experience-section" id="experience">
+        <div className="section-label"><span>04 / PROFESSIONAL EXPERIENCE</span><span>CAREER & CREDENTIALS</span></div>
+        <div className="experience-grid">
+          <div className="experience-main">
+            <span className="eyebrow">CURRENT ROLE · KOLKATA, INDIA</span>
+            <h2>Tata Consultancy<br/><em>Services.</em></h2>
+            <div className="experience-role">
+              <div><h3>Azure DevOps &amp; Cloud Platform Engineer</h3><p>Agentic AI Solution Developer · Associate System Engineer (TCS designation)</p><p>December 2025 — Present</p></div>
+              <span className="experience-status">CURRENT</span>
+            </div>
+          </div>
+          <div className="experience-aside">
+            <div className="career-block">
+              <span className="eyebrow">TOP SKILLS</span>
+              <div className="career-tags"><span>Azure DevOps</span><span>Cloud Platform Engineering</span><span>Agentic AI Solution Development</span></div>
+            </div>
+            <div className="career-block">
+              <span className="eyebrow">CERTIFICATIONS</span>
+              <ul>
+                <li>Claude Certified Architect — Foundation</li>
+                <li>Claude Certified Developer — Foundation</li>
+                <li>Google Project Management Professional Certificate (v2)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="capabilities">
-        <div className="section-label"><span>04 / THE TOOLKIT</span><span>AREAS I WORK IN</span></div>
+        <div className="section-label"><span>05 / THE TOOLKIT</span><span>AREAS I WORK IN</span></div>
         <div className="capability-grid">
           <div className="capability"><Cpu/><span>01</span><h3>Software<br/>Engineering</h3><p>Building web applications, APIs and practical tools with an eye for usability and maintainability.</p><small>PYTHON · JAVASCRIPT · REACT · SQL</small></div>
           <div className="capability"><Layers3/><span>02</span><h3>Cloud &<br/>Infrastructure</h3><p>Working with cloud platforms, operating systems, containers, networking and service reliability.</p><small>AZURE · LINUX · WINDOWS · DOCKER</small></div>
