@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Github, Linkedin, Mail, Menu, X, ArrowRight, Radio, Cpu, Layers3, MapPin } from "lucide-react";
 
@@ -41,10 +41,71 @@ const reveal: Variants = { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1,
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [archiveOpen, setArchiveOpen] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
+  const cursorDot = useRef<HTMLDivElement>(null);
+  const cursorRing = useRef<HTMLDivElement>(null);
   const closeMenu = () => setMenuOpen(false);
+
+  useEffect(() => {
+    const finePointer = window.matchMedia("(pointer: fine)").matches;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let frame = 0;
+    const scroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? window.scrollY / max : 0;
+      document.documentElement.style.setProperty("--scroll-progress", `${progress * 100}%`);
+    };
+    window.addEventListener("scroll", scroll, { passive: true });
+    scroll();
+    if (!finePointer || reducedMotion) return () => window.removeEventListener("scroll", scroll);
+
+    
+    let x = window.innerWidth / 2;
+    let y = window.innerHeight / 2;
+    let ringX = x;
+    let ringY = y;
+    const move = (event: PointerEvent) => {
+      x = event.clientX;
+      y = event.clientY;
+      if (cursorDot.current) cursorDot.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    };
+    const animate = () => {
+      ringX += (x - ringX) * 0.16;
+      ringY += (y - ringY) * 0.16;
+      if (cursorRing.current) cursorRing.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+      frame = window.requestAnimationFrame(animate);
+    };
+    const hover = (event: PointerEvent) => {
+      const target = event.target as HTMLElement | null;
+      const interactive = target?.closest("a, button, [role='button']");
+      cursorRing.current?.classList.toggle("cursor-hover", Boolean(interactive));
+    };
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerover", hover);
+    frame = window.requestAnimationFrame(animate);
+    return () => {
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerover", hover);
+      window.removeEventListener("scroll", scroll);
+      window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("soumadeepmaity2@gmail.com");
+      setEmailCopied(true);
+      window.setTimeout(() => setEmailCopied(false), 1800);
+    } catch {
+      window.location.href = "mailto:soumadeepmaity2@gmail.com";
+    }
+  };
 
   return (
     <main>
+      <div className="scroll-progress" aria-hidden="true" />
+      <div className="cursor-dot" ref={cursorDot} aria-hidden="true" />
+      <div className="cursor-ring" ref={cursorRing} aria-hidden="true" />
       <div className="topline"><span>SM<span className="topline-dot">.</span></span><span>KOLKATA, INDIA <i /> AVAILABLE FOR THE RIGHT OPPORTUNITY</span><button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">{menuOpen ? <X size={19}/> : <Menu size={19}/>}</button></div>
       <nav className={menuOpen ? "nav open" : "nav"}>
         <a className="wordmark" href="#top" onClick={closeMenu}>Soumyadeep Maity<span>®</span></a>
@@ -172,7 +233,7 @@ export default function Home() {
       <footer id="contact">
         <div className="footer-top"><span className="eyebrow">06 / HAVE SOMETHING IN MIND?</span><span className="footer-location"><MapPin size={13}/> KOLKATA, INDIA</span></div>
         <h2>Let’s make<br/><em>it happen.</em></h2>
-        <a className="email-link" href="mailto:soumadeepmaity2@gmail.com">soumadeepmaity2@gmail.com <ArrowUpRight size={18}/></a>
+        <div className="contact-actions"><a className="email-link" href="mailto:soumadeepmaity2@gmail.com">soumadeepmaity2@gmail.com <ArrowUpRight size={18}/></a><button className="copy-email" onClick={copyEmail}>{emailCopied ? "EMAIL COPIED ✓" : "COPY EMAIL +"}</button></div>
         <div className="footer-bottom"><a className="wordmark" href="#top">Soumyadeep Maity<span>®</span></a><div className="socials"><a href="https://github.com/ALmoSTGoD249" target="_blank" rel="noreferrer"><Github size={16}/> GITHUB</a><a href="https://www.linkedin.com/in/soumyadeep-maity-3913101b4/" target="_blank" rel="noreferrer"><Linkedin size={16}/> LINKEDIN</a><a href="mailto:soumadeepmaity2@gmail.com"><Mail size={16}/> EMAIL</a></div><span>© 2026 SOUMYADEEP MAITY</span></div>
       </footer>
     </main>
