@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Github, Linkedin, Mail, Menu, X, ArrowRight, Radio, Cpu, Layers3, MapPin, Terminal as TerminalIcon, X as CloseIcon } from "lucide-react";
@@ -49,8 +48,6 @@ export default function Home() {
   const [terminalHistory, setTerminalHistory] = useState<string[]>(["SoumyadeepOS [Version 1.0]", "Type 'help' to explore this portfolio."]);
   const [terminalOpen, setTerminalOpen] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
-  const projectsRail = useRef<HTMLDivElement>(null);
-  const dragState = useRef({ active: false, startX: 0, scrollLeft: 0 });
   const rotatingRoles = ["AZURE DEVOPS & CLOUD PLATFORM", "AGENTIC AI SOLUTION DEVELOPMENT", "SOFTWARE & SYSTEMS ENGINEERING"];
   const cursorDot = useRef<HTMLDivElement>(null);
   const cursorRing = useRef<HTMLDivElement>(null);
@@ -81,19 +78,7 @@ export default function Home() {
     setTerminalHistory((history) => command === "clear" ? ["Terminal cleared. Type 'help' to continue."] : [...history, `visitor@portfolio:~$ ${command}`, response]);
     setTerminalInput("");
   };
-  const onProjectPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    const rail = projectsRail.current;
-    if (!rail || event.pointerType !== "mouse" || event.button !== 0) return;
-    dragState.current = { active: true, startX: event.clientX, scrollLeft: rail.scrollLeft };
-    rail.classList.add("is-dragging");
-    rail.setPointerCapture(event.pointerId);
-  };
-  const onProjectPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
-    const rail = projectsRail.current;
-    if (!rail || !dragState.current.active) return;
-    rail.scrollLeft = dragState.current.scrollLeft - (event.clientX - dragState.current.startX);
-  };
-  const onProjectPointerUp = () => { dragState.current.active = false; projectsRail.current?.classList.remove("is-dragging"); };
+
 
 
   useEffect(() => {
@@ -268,7 +253,7 @@ export default function Home() {
           <div><span className="eyebrow">02 / SELECTED WORK</span><h2>Things in<br/><em>the making.</em></h2></div>
           <p>A selection of products and experiments shaped by curiosity, practical problems and a desire to build better systems.</p>
         </div>
-        <div className="projects-rail-wrap"><div className="projects" ref={projectsRail} onPointerDown={onProjectPointerDown} onPointerMove={onProjectPointerMove} onPointerUp={onProjectPointerUp} onPointerCancel={onProjectPointerUp}>
+        <div className="projects editorial-project-grid">
           {featured.map((project, i) => (
             <motion.article className={`project ${project.className}`} key={project.id} variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: .16 }}>
               <div className="project-meta"><span>{project.id} / 03</span><span>{project.type}</span><span>{project.year}</span></div>
@@ -282,7 +267,7 @@ export default function Home() {
               </div>
             </motion.article>
           ))}
-        </div><div className="rail-hint"><span>DRAG TO EXPLORE</span><span>01 — 03</span></div></div>
+        </div>
       </section>
 
       <section className="dark-interlude">
