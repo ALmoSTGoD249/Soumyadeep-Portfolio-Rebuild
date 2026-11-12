@@ -5,38 +5,35 @@ import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Github, Linkedin, Mail, Menu, X, ArrowRight, Radio, Cpu, Layers3, MapPin } from "lucide-react";
 
-
-
-
 const featured = [
   {
     id: "01", name: "LifeOps", type: "PERSONAL SERVICE MANAGEMENT", year: "2026",
     description: "A private, shared operations hub inspired by enterprise service management. Bringing incidents, requests, tasks, assets and everyday household workflows into one considered system.",
     tags: ["Next.js", "FastAPI", "PostgreSQL", "Docker"],
-    image: "images/lifeops.png", className: "lifeops",
+    image: "/images/lifeops.png", className: "lifeops",
     href: "#contact", action: "CASE STUDY IN PROGRESS"
   },
   {
     id: "02", name: "LifeTracker", type: "PERSONAL FINANCE & SHARED LIVING", year: "2026",
     description: "A personal and shared-life tracker for expenses, bills, budgets and the small financial decisions that make a household work. Designed around clarity, accountability and useful everyday workflows.",
     tags: ["JavaScript", "PostgreSQL", "Docker", "Product design"],
-    image: "images/lifetracker.png", className: "lifetracker",
+    image: "/images/lifetracker.png", className: "lifetracker",
     href: "#contact", action: "CASE STUDY IN PROGRESS"
   },
   {
     id: "03", name: "RacingNewsNetwork", type: "MOTORSPORT MEDIA / SIM RACING", year: "IN DEVELOPMENT",
     description: "A motorsport destination in the making: race coverage, results and the wider racing conversation, alongside a home for my sim-racing team and its drivers.",
     tags: ["Motorsport", "Sim racing", "Media platform", "Community"],
-    image: "images/rnn-car.png", className: "rnn",
+    image: "/images/rnn-car.png", className: "rnn",
     href: "#contact", action: "IN DEVELOPMENT"
   }
 ];
 
 const archive = [
-  { name: "SongSift", category: "MUSIC RECOMMENDATION", description: "A music discovery and recommendation project exploring content-based ranking and machine-learning approaches.", image: "images/songsift.png", href: "https://github.com/ALmoSTGoD249" },
-  { name: "Hagrid", category: "AI / VOICE ASSISTANT", description: "An exploration of conversational AI and voice-assistant workflows.", image: "images/hagrid.png", href: "https://github.com/ALmoSTGoD249" },
-  { name: "Stock Price Prediction", category: "MACHINE LEARNING", description: "A learning project exploring time-series prediction with Python and TensorFlow.", image: "images/stock-prediction.png", href: "https://github.com/ALmoSTGoD249/Stock_Price_Prediction" },
-  { name: "Snake Game", category: "PYTHON / GAME DEVELOPMENT", description: "A classic arcade game built with Pygame.", image: "images/snake-game.png", href: "https://github.com/ALmoSTGoD249/Snake-Game" }
+  { name: "SongSift", category: "MUSIC RECOMMENDATION", description: "A music discovery and recommendation project exploring content-based ranking and machine-learning approaches.", image: "/images/songsift.png", href: "https://github.com/ALmoSTGoD249" },
+  { name: "Hagrid", category: "AI / VOICE ASSISTANT", description: "An exploration of conversational AI and voice-assistant workflows.", image: "/images/hagrid.png", href: "https://github.com/ALmoSTGoD249" },
+  { name: "Stock Price Prediction", category: "MACHINE LEARNING", description: "A learning project exploring time-series prediction with Python and TensorFlow.", image: "/images/stock-prediction.png", href: "https://github.com/ALmoSTGoD249/Stock_Price_Prediction" },
+  { name: "Snake Game", category: "PYTHON / GAME DEVELOPMENT", description: "A classic arcade game built with Pygame.", image: "/images/snake-game.png", href: "https://github.com/ALmoSTGoD249/Snake-Game" }
 ];
 
 const reveal: Variants = { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0, transition: { duration: .7, ease: "easeOut" } } };
@@ -45,6 +42,8 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [archiveOpen, setArchiveOpen] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
+  const [roleIndex, setRoleIndex] = useState(0);
+  const rotatingRoles = ["AZURE DEVOPS & CLOUD PLATFORM", "AGENTIC AI SOLUTION DEVELOPMENT", "SOFTWARE & SYSTEMS ENGINEERING"];
   const cursorDot = useRef<HTMLDivElement>(null);
   const cursorRing = useRef<HTMLDivElement>(null);
   const closeMenu = () => setMenuOpen(false);
@@ -94,6 +93,60 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) return;
+    const interval = window.setInterval(() => setRoleIndex((current) => (current + 1) % rotatingRoles.length), 2800);
+
+    const revealTargets = document.querySelectorAll<HTMLElement>(
+      ".manifesto-text, .section-heading, .project-info, .dark-inner > p, .about-grid, .experience-grid, .capability, .archive-head, .footer-top, footer h2"
+    );
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+    revealTargets.forEach((element, index) => {
+      element.classList.add("scroll-reveal");
+      element.style.setProperty("--reveal-delay", `${Math.min(index % 3, 2) * 90}ms`);
+      observer.observe(element);
+    });
+
+    const magneticTargets = document.querySelectorAll<HTMLElement>(
+      ".nav-cta, .round-link, .project-action, .archive-toggle, .copy-email, .menu-toggle"
+    );
+    const moveMagnet = (event: PointerEvent) => {
+      const element = event.currentTarget as HTMLElement;
+      const rect = element.getBoundingClientRect();
+      const dx = event.clientX - (rect.left + rect.width / 2);
+      const dy = event.clientY - (rect.top + rect.height / 2);
+      element.style.setProperty("--magnet-x", `${dx * 0.12}px`);
+      element.style.setProperty("--magnet-y", `${dy * 0.12}px`);
+    };
+    const resetMagnet = (event: PointerEvent) => {
+      const element = event.currentTarget as HTMLElement;
+      element.style.setProperty("--magnet-x", "0px");
+      element.style.setProperty("--magnet-y", "0px");
+    };
+    magneticTargets.forEach((element) => {
+      element.classList.add("magnetic");
+      element.addEventListener("pointermove", moveMagnet);
+      element.addEventListener("pointerleave", resetMagnet);
+    });
+
+    return () => {
+      window.clearInterval(interval);
+      observer.disconnect();
+      magneticTargets.forEach((element) => {
+        element.removeEventListener("pointermove", moveMagnet);
+        element.removeEventListener("pointerleave", resetMagnet);
+      });
+    };
+  }, []);
+
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText("soumadeepmaity2@gmail.com");
@@ -128,7 +181,7 @@ export default function Home() {
             Building things<br/><em>that work.</em>
           </motion.h1>
           <motion.div className="hero-index" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .6 }}>
-            <span>INDEPENDENT THINKER.</span><span>ENGINEER BY TRADE.</span><span>BUILDER BY NATURE.</span>
+            <span className="role-rotator" key={roleIndex}>{rotatingRoles[roleIndex]}</span><span>ENGINEER BY TRADE.</span><span>BUILDER BY NATURE.</span>
           </motion.div>
         </div>
         <div className="hero-bottom">
@@ -178,13 +231,13 @@ export default function Home() {
       <section className="about-section" id="about">
         <div className="section-label"><span>03 / A BIT ABOUT ME</span><span>THE PERSON BEHIND THE BUILDS</span></div>
         <div className="about-grid">
-          <div className="portrait-wrap"><Image src={"images/profile.jpg"} alt="Portrait of Soumyadeep Maity" fill sizes="(max-width: 800px) 100vw, 38vw"/><span className="portrait-caption">KOLKATA, INDIA · 2026</span></div>
+          <div className="portrait-wrap"><Image src="/images/profile.jpg" alt="Portrait of Soumyadeep Maity" fill sizes="(max-width: 800px) 100vw, 38vw"/><span className="portrait-caption">KOLKATA, INDIA · 2026</span></div>
           <div className="about-copy">
             <span className="eyebrow">HELLO, I’M SOUMYADEEP.</span>
             <h2>Curious about<br/><em>what’s possible.</em></h2>
             <p>I’m a technology professional based in Kolkata, India, with a background in Computer Science and Business Systems. My interests span software development, cloud infrastructure, automation and the systems that keep applications running.</p>
             <p>Outside the day-to-day, I build personal products, experiment with self-hosted infrastructure and spend time around motorsport and sim racing. I enjoy understanding how things fit together — and making them work better.</p>
-            <a className="text-link" href={"Soumyadeep-Maity-CV.pdf"} target="_blank">VIEW CURRICULUM VITAE <ArrowUpRight size={15}/></a>
+            <a className="text-link" href="/Soumyadeep-Maity-CV.pdf" target="_blank">VIEW CURRICULUM VITAE <ArrowUpRight size={15}/></a>
           </div>
         </div>
       </section>
