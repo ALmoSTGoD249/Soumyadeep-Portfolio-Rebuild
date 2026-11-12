@@ -11,7 +11,7 @@ const featured = [
     description: "A private, shared operations hub inspired by enterprise service management. Bringing incidents, requests, tasks, assets and everyday household workflows into one considered system.",
     tags: ["Next.js", "FastAPI", "PostgreSQL", "Docker"],
     image: "/images/lifeops.png", className: "lifeops",
-    href: "#contact", action: "CASE STUDY IN PROGRESS"
+    href: "/projects/lifeops", action: "EXPLORE CASE STUDY"
   },
   {
     id: "02", name: "LifeTracker", type: "PERSONAL FINANCE & SHARED LIVING", year: "2026",
