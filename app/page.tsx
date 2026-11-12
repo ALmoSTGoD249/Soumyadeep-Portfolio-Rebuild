@@ -18,7 +18,7 @@ const featured = [
     description: "A personal and shared-life tracker for expenses, bills, budgets and the small financial decisions that make a household work. Designed around clarity, accountability and useful everyday workflows.",
     tags: ["JavaScript", "PostgreSQL", "Docker", "Product design"],
     image: "/images/lifetracker.png", className: "lifetracker",
-    href: "#contact", action: "CASE STUDY IN PROGRESS"
+    href: "/projects/lifetracker", action: "EXPLORE CASE STUDY"
   },
   {
     id: "03", name: "RacingNewsNetwork", type: "MOTORSPORT MEDIA / SIM RACING", year: "IN DEVELOPMENT",
