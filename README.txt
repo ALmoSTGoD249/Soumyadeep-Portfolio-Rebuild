@@ -1,28 +1,31 @@
-PHASE 5 — LIVE INFRASTRUCTURE STATUS
+PHASE 5 — STATUS CHECK UPDATE (MINECRAFT)
 
-Files in this update:
-- app/page.tsx
-- app/globals.css
-- app/components/system-status.tsx
-- app/api/status/route.ts
-- docker-compose.yml
+This is a focused API-only update. It keeps the existing status dashboard UI
+and replaces the API health checks.
 
-Install:
-1. Back up the existing files.
-2. Copy the app/ files into the matching paths in your portfolio project.
-3. Merge the extra_hosts block from docker-compose.yml into the existing portfolio service if your compose file has other custom settings. Do not discard your existing environment variables or volumes.
-4. Rebuild from the portfolio project directory:
-   docker compose up -d --build
+REPLACE:
+  app/api/status/route.ts
 
-The status API checks these host services from inside the portfolio container:
-- Nextcloud: http://host.docker.internal:8080/status.php
-- LifeOps: http://host.docker.internal:8088/
-- LifeTracker: http://host.docker.internal:8082/
-- Grafana: http://host.docker.internal:3000/api/health
-- Prometheus: http://host.docker.internal:9091/-/healthy
+The API now monitors:
+  - Nextcloud: HTTP http://192.168.0.102:8080/status.php
+  - LifeOps: HTTP http://192.168.0.102:8088/
+  - LifeTracker: HTTP http://192.168.0.102:8082/
+  - Minecraft: TCP 192.168.0.102:25565
 
-The compose update adds host.docker.internal:host-gateway so the container can reach services published on the Ubuntu host. Only service name, online/offline state and response time are returned to visitors. Response bodies, internal URLs, IP addresses and error details are never returned.
+Grafana and Prometheus have been removed from the status checks. No containers
+or monitoring services are stopped or deleted by this update; it only removes
+them from the portfolio's status display.
 
-Minecraft is not included in this first version because it uses a TCP game protocol rather than an HTTP health endpoint.
+Optional Docker Compose environment overrides:
+  STATUS_HOST=http://192.168.0.102
+  STATUS_TCP_HOST=192.168.0.102
 
-If your service ports differ, update the fixed paths in app/api/status/route.ts before building.
+After replacing the file, rebuild from the portfolio project directory:
+  docker compose up -d --build
+
+Verify:
+  curl http://127.0.0.1:8090/api/status
+
+Expected JSON services: nextcloud, lifeops, lifetracker, minecraft.
+Minecraft is checked by TCP connection only. This confirms the port accepts
+connections; it does not perform a Minecraft protocol/login handshake.
