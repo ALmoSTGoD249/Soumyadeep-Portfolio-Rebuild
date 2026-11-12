@@ -180,3 +180,45 @@ footer{background:var(--dark);color:#F7F5EF;padding:65px 11vw 25px}.footer-top{d
     scale: none;
   }
 }
+
+/* Phase 5 — live infrastructure status */
+.system-status-section{padding:100px 11vw;background:#202820;color:#F7F5EF}
+.system-status-section .section-label{border-color:#4c5949;color:#aab49e}
+.system-status-heading{display:grid;grid-template-columns:1fr .55fr;gap:7vw;align-items:end;margin:55px 0 42px}
+.system-status-heading h2{font-size:clamp(48px,7vw,88px);font-weight:500;letter-spacing:-.075em;line-height:.92;margin:18px 0 0}
+.system-status-heading h2 em{font-family:var(--serif);font-weight:500;color:#9caf88}
+.system-status-heading>p{font-size:12px;line-height:1.9;color:#aab49e;max-width:390px;margin:0 0 5px}
+.system-status-card{border:1px solid #53604d;background:#263126}
+.system-status-top{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid #53604d}
+.system-status-overview{display:flex;align-items:center;gap:13px}
+.system-status-icon{width:36px;height:36px;display:grid;place-items:center;background:#354333;color:#b9c9a9}
+.system-status-overview>div{display:flex;flex-direction:column;gap:5px}
+.system-status-kicker,.system-status-overview strong,.system-status-refresh,.system-service-state,.system-service-latency,.system-status-foot{font-family:var(--mono);letter-spacing:.1em}
+.system-status-kicker{font-size:8px;color:#9caf88}
+.system-status-overview strong{font-size:10px;font-weight:500;color:#e7eddf}
+.system-status-refresh{display:flex;align-items:center;gap:8px;border:1px solid #64705e;background:transparent;color:#d8e1cf;padding:10px 12px;font-size:8px;cursor:pointer}
+.system-status-refresh:disabled{opacity:.6;cursor:wait}
+.system-status-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+.system-service{padding:20px 17px 22px;border-right:1px solid #465342;min-height:145px}
+.system-service:last-child{border-right:0}
+.system-service-head{display:flex;align-items:center;gap:7px}
+.system-indicator{width:7px;height:7px;border-radius:50%;display:inline-block;background:#899080}
+.system-indicator.online{background:#9caf88;box-shadow:0 0 10px #9caf8880}
+.system-indicator.offline{background:#d87968;box-shadow:0 0 10px #d8796880}
+.system-service-state{font-size:7px;color:#aab49e}
+.system-service-latency{margin-left:auto;font-size:7px;color:#87917e}
+.system-service h3{font-size:17px;font-weight:500;letter-spacing:-.04em;margin:20px 0 7px;color:#f7f5ef}
+.system-service p{font-size:9px;line-height:1.6;color:#aab49e;margin:0}
+.system-status-foot{display:flex;justify-content:space-between;gap:15px;padding:14px 20px;border-top:1px solid #53604d;color:#899582;font-size:7px}
+.system-status-foot span{display:flex;align-items:center;gap:7px}
+.system-status-error{grid-column:1/-1;padding:25px;color:#e0a093;font-size:11px}
+.system-service-loading{display:flex;flex-direction:column;gap:12px}
+.system-service-loading i{height:7px;background:#3a4637;display:block;max-width:65%;animation:status-pulse 1.2s ease-in-out infinite alternate}
+.system-service-loading i:nth-child(2){max-width:85%;height:15px}.system-service-loading i:nth-child(3){max-width:50%}
+.is-spinning{animation:status-spin 1s linear infinite}
+@keyframes status-spin{to{transform:rotate(360deg)}}
+@keyframes status-pulse{to{opacity:.35}}
+@media(max-width:1050px){.system-status-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.system-service:nth-child(3){border-right:0}.system-service:nth-child(n+4){border-top:1px solid #465342}}
+@media(max-width:800px){.system-status-section{padding:75px 7vw}.system-status-heading{grid-template-columns:1fr;gap:22px;margin:40px 0 30px}.system-status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.system-service:nth-child(3){border-right:1px solid #465342}.system-service:nth-child(even){border-right:0}.system-service:nth-child(n+3){border-top:1px solid #465342}.system-status-foot{flex-direction:column}.system-service{min-height:130px}}
+@media(max-width:460px){.system-status-grid{grid-template-columns:1fr}.system-service,.system-service:nth-child(3){border-right:0;border-top:1px solid #465342}.system-service:first-child{border-top:0}.system-status-top{padding:16px}.system-status-foot{padding:13px 16px}}
+@media(prefers-reduced-motion:reduce){.is-spinning,.system-service-loading i{animation:none}}

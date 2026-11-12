@@ -3,6 +3,8 @@ services:
     build: .
     container_name: soumyadeep-portfolio
     restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "8090:3000"
     environment:

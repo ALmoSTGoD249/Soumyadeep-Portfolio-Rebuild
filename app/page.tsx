@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Github, Linkedin, Mail, Menu, X, ArrowRight, Radio, Cpu, Layers3, MapPin, Terminal as TerminalIcon, X as CloseIcon } from "lucide-react";
+import SystemStatus from "./components/system-status";
 
 const featured = [
   {
@@ -276,6 +277,15 @@ export default function Home() {
           <p>Good engineering is invisible when it works. <em>Great engineering</em> makes the complicated feel simple.</p>
           <div className="dark-bottom"><span>RELIABILITY / CRAFT / CONTINUOUS LEARNING</span><span>03 — THE PRACTICE</span></div>
         </div>
+      </section>
+
+      <section className="system-status-section" id="system-status">
+        <div className="section-label"><span>03 / LIVE INFRASTRUCTURE</span><span>HOME LAB · SERVICE HEALTH</span></div>
+        <div className="system-status-heading">
+          <div><span className="eyebrow">RUNNING BEHIND THE SCENES</span><h2>Not just built.<br/><em>Actually running.</em></h2></div>
+          <p>A live read-only view of selected services running on my home infrastructure. Availability is checked by the portfolio server and refreshed automatically.</p>
+        </div>
+        <SystemStatus />
       </section>
 
       <section className="about-section" id="about">
