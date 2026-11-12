@@ -146,3 +146,37 @@ footer{background:var(--dark);color:#F7F5EF;padding:65px 11vw 25px}.footer-top{d
 .homelab-promo>a{display:flex;align-items:center;gap:10px;font:9px var(--mono);letter-spacing:.1em;border-bottom:1px solid var(--line);padding:0 0 10px;white-space:nowrap;transition:color .2s,border-color .2s}
 .homelab-promo>a:hover{color:var(--signal);border-color:var(--signal)}
 @media(max-width:800px){.homelab-promo{align-items:flex-start;flex-direction:column}.homelab-promo>a{margin-top:8px}}
+
+
+/* Slightly stronger emphasis for interactive labels and controls */
+:where(a, button, [role="button"], input[type="submit"], input[type="button"]) {
+  transition-property: color, background-color, border-color, box-shadow, transform, scale;
+  transition-duration: 220ms;
+  transition-timing-function: cubic-bezier(.2,.75,.25,1);
+}
+
+:where(a, button, [role="button"], input[type="submit"], input[type="button"]):hover {
+  scale: 1.045;
+}
+
+:where(a, button, [role="button"], input[type="submit"], input[type="button"]):focus-visible {
+  scale: 1.035;
+  outline: 2px solid var(--accent, #9caf88);
+  outline-offset: 4px;
+}
+
+@media (hover: none) {
+  :where(a, button, [role="button"], input[type="submit"], input[type="button"]):hover {
+    scale: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(a, button, [role="button"], input[type="submit"], input[type="button"]) {
+    transition: none;
+  }
+  :where(a, button, [role="button"], input[type="submit"], input[type="button"]):hover,
+  :where(a, button, [role="button"], input[type="submit"], input[type="button"]):focus-visible {
+    scale: none;
+  }
+}
