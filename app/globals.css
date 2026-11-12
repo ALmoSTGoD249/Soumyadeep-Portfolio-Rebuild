@@ -78,3 +78,71 @@ footer{background:var(--dark);color:#F7F5EF;padding:65px 11vw 25px}.footer-top{d
 .case-study, .case-study * { cursor: auto; }
 .case-study a, .case-study button, .case-study [role="button"] { cursor: pointer; }
 @media (pointer:fine) { body:has(.case-study) { cursor: auto !important; } body:has(.case-study) a, body:has(.case-study) button { cursor: pointer !important; } }
+
+
+/* Home-lab case study */
+.homelab-title{font-size:clamp(88px,16vw,205px)!important}
+.homelab-title span{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent);letter-spacing:-.09em}
+.homelab-hero-panel{height:clamp(300px,48vw,590px);overflow:hidden;background:#202820;color:#F7F5EF;position:relative}
+.homelab-hero-grid{height:100%;padding:20px 24px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr auto;gap:12px;font:8px var(--mono);letter-spacing:.12em;color:#aab49e}
+.homelab-hero-grid>span:nth-child(even){text-align:right}
+.homelab-server-visual{position:relative;display:grid;place-items:center;overflow:hidden;grid-column:1/-1}
+.server-orbit{position:absolute;width:min(55vw,500px);height:min(55vw,500px);border:1px solid #66765d;border-radius:50%;opacity:.55}
+.orbit-a{transform:scaleY(.42) rotate(-20deg)}
+.orbit-b{transform:scaleY(.7) rotate(38deg);border-style:dashed;opacity:.3}
+.server-core{position:relative;z-index:2;width:150px;height:170px;border:1px solid #89987a;background:linear-gradient(145deg,#394538,#202820);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:17px;color:#c3d0b4;box-shadow:0 25px 70px #0a100b88}
+.server-core small{font:8px/1.6 var(--mono);letter-spacing:.16em;text-align:center}
+.server-rack{position:absolute;left:12%;top:20%;display:flex;flex-direction:column;gap:9px;opacity:.45}
+.server-rack i{display:block;width:90px;height:18px;border:1px solid #8a9a7e;position:relative}
+.server-rack i:after{content:"";position:absolute;right:8px;top:7px;width:4px;height:4px;border-radius:50%;background:#9caf88;box-shadow:-12px 0 #9caf88}
+.server-status{position:absolute;bottom:10%;display:flex;align-items:center;gap:9px;font:8px var(--mono);letter-spacing:.1em;color:#d5dfca}
+.server-status b{width:6px;height:6px;border-radius:50%;background:#9caf88;box-shadow:0 0 12px #9caf88}
+.server-status span{color:#7f8a78;margin-left:14px}
+.homelab-dark{background:#202820}
+.homelab-dark .case-eyebrow{color:#b2c29f}
+.homelab-dark h2 em{color:#9caf88}
+.homelab-hardware{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #4c5949;margin-top:40px}
+.homelab-hardware div{padding:18px 12px 18px 0;border-bottom:1px solid #4c5949;display:flex;flex-direction:column;gap:9px}
+.homelab-hardware div:nth-child(even){padding-left:20px;border-left:1px solid #4c5949}
+.homelab-hardware span{font:8px var(--mono);letter-spacing:.12em;color:#9caf88}
+.homelab-hardware strong{font-size:14px;font-weight:500;color:#f7f5ef}
+.homelab-explorer-section{padding:95px 11vw;display:grid;grid-template-columns:.32fr 1fr;gap:7vw;background:#F7F5EF;color:#292B26}
+.homelab-explorer-content h2{font-size:clamp(42px,6vw,76px);font-weight:500;letter-spacing:-.075em;line-height:.98;margin:22px 0 20px}
+.homelab-explorer-content h2 em{font-family:var(--serif);font-weight:500;color:var(--accent);letter-spacing:-.07em}
+.homelab-explorer-intro{font-size:13px;line-height:1.9;color:#666d62;max-width:680px}
+.homelab-architecture{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:42px;align-items:stretch}
+.homelab-map{position:relative;overflow:hidden;background:#202820;padding:24px;min-height:560px;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.homelab-map-lines{position:absolute;inset:12%;opacity:.2;background:repeating-linear-gradient(0deg,transparent 0 39px,#9caf88 40px),repeating-linear-gradient(90deg,transparent 0 39px,#9caf88 40px);mask-image:linear-gradient(135deg,transparent,#000 30%,#000 75%,transparent)}
+.map-layer{position:relative;z-index:1;border:1px solid #56634f;padding:12px;display:flex;flex-wrap:wrap;gap:9px;background:#293329e8}
+.map-layer-label{width:100%;font:8px var(--mono);letter-spacing:.14em;color:#aab99b;margin-bottom:3px}
+.map-node{display:inline-flex;align-items:center;gap:8px;border:1px solid #5e6b56;background:#303b30;color:#e5eadf;padding:11px 12px;font:10px var(--mono);cursor:pointer;transition:background .2s,border-color .2s,color .2s,transform .2s}
+.map-node:hover{transform:translateY(-2px);border-color:#9caf88}
+.map-node.active{background:#9caf88;color:#202820;border-color:#9caf88}
+.map-direction{display:flex;justify-content:flex-end;align-items:center;gap:8px;font:8px var(--mono);letter-spacing:.12em;color:#aab99b;position:relative;z-index:1}
+.homelab-node-detail{background:#E8EBE1;padding:28px;display:flex;flex-direction:column;align-items:flex-start;min-height:560px}
+.homelab-node-detail h3{font-size:clamp(26px,3vw,38px);font-weight:500;letter-spacing:-.06em;line-height:1.05;margin:30px 0 14px}
+.homelab-node-detail p{font-size:12px;line-height:1.9;color:#646b60;margin:0}
+.homelab-node-detail ul{list-style:none;padding:18px 0 0;margin:22px 0 0;border-top:1px solid #cbd2c2;width:100%}
+.homelab-node-detail li{font:9px/1.6 var(--mono);color:#4f594b;padding:8px 0;border-bottom:1px solid #d3d9cd}
+.node-select-hint{margin-top:auto;padding-top:25px;font:8px var(--mono);letter-spacing:.12em;color:#7b806f}
+@media(max-width:800px){
+ .homelab-title{font-size:clamp(82px,22vw,150px)!important}
+ .homelab-hero-panel{height:390px}
+ .server-rack{left:3%;opacity:.28}
+ .server-core{width:125px;height:145px}
+ .homelab-hardware{grid-template-columns:1fr}
+ .homelab-hardware div:nth-child(even){padding-left:0;border-left:0}
+ .homelab-explorer-section{padding:70px 7vw;grid-template-columns:1fr;gap:35px}
+ .homelab-architecture{grid-template-columns:1fr}
+ .homelab-map{min-height:0;padding:15px}
+ .homelab-node-detail{min-height:340px;padding:23px}
+}
+@media(prefers-reduced-motion:reduce){.map-node{transition:none}}
+
+.homelab-promo{margin:55px 0 0;padding:28px 0 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end;gap:25px}
+.homelab-promo>div>span{font:8px var(--mono);letter-spacing:.12em;color:var(--muted)}
+.homelab-promo h3{font-size:clamp(25px,3.5vw,42px);font-weight:500;letter-spacing:-.06em;line-height:1.05;margin:17px 0 0}
+.homelab-promo h3 em{font-family:var(--serif);color:var(--accent);font-weight:500}
+.homelab-promo>a{display:flex;align-items:center;gap:10px;font:9px var(--mono);letter-spacing:.1em;border-bottom:1px solid var(--line);padding:0 0 10px;white-space:nowrap;transition:color .2s,border-color .2s}
+.homelab-promo>a:hover{color:var(--signal);border-color:var(--signal)}
+@media(max-width:800px){.homelab-promo{align-items:flex-start;flex-direction:column}.homelab-promo>a{margin-top:8px}}

@@ -353,6 +353,10 @@ export default function Home() {
           <div className="capability"><Layers3/><span>02</span><h3>Cloud &<br/>Infrastructure</h3><p>Working with cloud platforms, operating systems, containers, networking and service reliability.</p><small>AZURE · LINUX · WINDOWS · DOCKER</small></div>
           <div className="capability"><Radio/><span>03</span><h3>Systems &<br/>Automation</h3><p>Connecting services, reducing repetitive work and building systems that are easier to operate.</p><small>MONITORING · CI/CD · AUTOMATION</small></div>
         </div>
+        <div className="homelab-promo">
+          <div><span>INFRASTRUCTURE / FIELD NOTES</span><h3>Curious about what runs<br/><em>behind the applications?</em></h3></div>
+          <a href="/projects/homelab">EXPLORE THE HOME LAB <ArrowUpRight size={15}/></a>
+        </div>
       </section>
 
       <section className="archive-section" id="archive">
