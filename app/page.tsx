@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
-import { ArrowDownRight, ArrowUpRight, Github, Linkedin, Mail, Menu, X, ArrowRight, Radio, Cpu, Layers3, MapPin } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Github, Linkedin, Mail, Menu, X, ArrowRight, Radio, Cpu, Layers3, MapPin, Terminal as TerminalIcon, X as CloseIcon } from "lucide-react";
 
 const featured = [
   {
@@ -43,10 +44,57 @@ export default function Home() {
   const [archiveOpen, setArchiveOpen] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
   const [roleIndex, setRoleIndex] = useState(0);
+  const [activeTech, setActiveTech] = useState("Azure");
+  const [terminalInput, setTerminalInput] = useState("");
+  const [terminalHistory, setTerminalHistory] = useState<string[]>(["SoumyadeepOS [Version 1.0]", "Type 'help' to explore this portfolio."]);
+  const [terminalOpen, setTerminalOpen] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+  const projectsRail = useRef<HTMLDivElement>(null);
+  const dragState = useRef({ active: false, startX: 0, scrollLeft: 0 });
   const rotatingRoles = ["AZURE DEVOPS & CLOUD PLATFORM", "AGENTIC AI SOLUTION DEVELOPMENT", "SOFTWARE & SYSTEMS ENGINEERING"];
   const cursorDot = useRef<HTMLDivElement>(null);
   const cursorRing = useRef<HTMLDivElement>(null);
   const closeMenu = () => setMenuOpen(false);
+  const technologies = [
+    { name: "Azure", group: "CLOUD PLATFORM", detail: "Cloud platform operations, Azure fundamentals and infrastructure services. Current professional focus." },
+    { name: "DevOps", group: "DELIVERY & AUTOMATION", detail: "CI/CD concepts, deployment workflows, operational automation and repeatable delivery practices." },
+    { name: "Docker", group: "CONTAINERS", detail: "Containerising personal applications and operating multi-service environments with Docker Compose." },
+    { name: "Linux", group: "SYSTEMS", detail: "Ubuntu Server administration, service management, networking and self-hosted workloads." },
+    { name: "Python", group: "DEVELOPMENT", detail: "Scripting, application development and machine-learning experimentation." },
+    { name: "Agentic AI", group: "AI SOLUTIONS", detail: "Exploring agentic workflows and AI-assisted solution development." },
+    { name: "React", group: "FRONTEND", detail: "Building interactive interfaces and product experiences with React and TypeScript." },
+    { name: "PostgreSQL", group: "DATA", detail: "Relational data modelling and persistence for personal application projects." }
+  ];
+  const runTerminalCommand = (raw: string) => {
+    const command = raw.trim().toLowerCase();
+    if (!command) return;
+    const responses: Record<string, string> = {
+      help: "Available: about · projects · stack · experience · contact · clear",
+      about: "Soumyadeep Maity — software, cloud and systems enthusiast based in Kolkata, India.",
+      projects: "Featured: LifeOps · LifeTracker · RacingNewsNetwork. Scroll to Selected Work for details.",
+      stack: "Azure · Docker · Linux · Python · React · TypeScript · PostgreSQL · Agentic AI",
+      experience: "Tata Consultancy Services — Associate System Engineer. Functional focus: Azure DevOps, Cloud Platform Engineering and Agentic AI Solution Development.",
+      contact: "Email: soumadeepmaity2@gmail.com · LinkedIn: linkedin.com/in/soumyadeep-maity-3913101b4",
+      clear: "__CLEAR__"
+    };
+    const response = responses[command] ?? `Command not found: ${command}. Type 'help' to see available commands.`;
+    setTerminalHistory((history) => command === "clear" ? ["Terminal cleared. Type 'help' to continue."] : [...history, `visitor@portfolio:~$ ${command}`, response]);
+    setTerminalInput("");
+  };
+  const onProjectPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    const rail = projectsRail.current;
+    if (!rail || event.pointerType !== "mouse" || event.button !== 0) return;
+    dragState.current = { active: true, startX: event.clientX, scrollLeft: rail.scrollLeft };
+    rail.classList.add("is-dragging");
+    rail.setPointerCapture(event.pointerId);
+  };
+  const onProjectPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const rail = projectsRail.current;
+    if (!rail || !dragState.current.active) return;
+    rail.scrollLeft = dragState.current.scrollLeft - (event.clientX - dragState.current.startX);
+  };
+  const onProjectPointerUp = () => { dragState.current.active = false; projectsRail.current?.classList.remove("is-dragging"); };
+
 
   useEffect(() => {
     const finePointer = window.matchMedia("(pointer: fine)").matches;
@@ -91,6 +139,22 @@ export default function Home() {
       window.removeEventListener("scroll", scroll);
       window.cancelAnimationFrame(frame);
     };
+  }, []);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero || window.matchMedia("(prefers-reduced-motion: reduce)").matches || !window.matchMedia("(pointer: fine)").matches) return;
+    const move = (event: PointerEvent) => {
+      const rect = hero.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - .5;
+      const y = (event.clientY - rect.top) / rect.height - .5;
+      hero.style.setProperty("--hero-x", `${x * 18}px`);
+      hero.style.setProperty("--hero-y", `${y * 14}px`);
+    };
+    const reset = () => { hero.style.setProperty("--hero-x", "0px"); hero.style.setProperty("--hero-y", "0px"); };
+    hero.addEventListener("pointermove", move);
+    hero.addEventListener("pointerleave", reset);
+    return () => { hero.removeEventListener("pointermove", move); hero.removeEventListener("pointerleave", reset); };
   }, []);
 
   useEffect(() => {
@@ -174,7 +238,8 @@ export default function Home() {
         <a className="nav-cta" href="mailto:soumadeepmaity2@gmail.com">LET’S TALK <ArrowUpRight size={14}/></a>
       </nav>
 
-      <section className="hero" id="top">
+      <section className="hero" id="top" ref={heroRef}>
+        <div className="hero-orbit hero-orbit-one" aria-hidden="true"/><div className="hero-orbit hero-orbit-two" aria-hidden="true"/>
         <div className="hero-kicker"><span className="eyebrow-line"/> SOFTWARE · CLOUD · SYSTEMS · CURIOSITY</div>
         <div className="hero-title-wrap">
           <motion.h1 initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .9, ease: "easeOut" }}>
@@ -203,7 +268,7 @@ export default function Home() {
           <div><span className="eyebrow">02 / SELECTED WORK</span><h2>Things in<br/><em>the making.</em></h2></div>
           <p>A selection of products and experiments shaped by curiosity, practical problems and a desire to build better systems.</p>
         </div>
-        <div className="projects">
+        <div className="projects-rail-wrap"><div className="projects" ref={projectsRail} onPointerDown={onProjectPointerDown} onPointerMove={onProjectPointerMove} onPointerUp={onProjectPointerUp} onPointerCancel={onProjectPointerUp}>
           {featured.map((project, i) => (
             <motion.article className={`project ${project.className}`} key={project.id} variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: .16 }}>
               <div className="project-meta"><span>{project.id} / 03</span><span>{project.type}</span><span>{project.year}</span></div>
@@ -217,7 +282,7 @@ export default function Home() {
               </div>
             </motion.article>
           ))}
-        </div>
+        </div><div className="rail-hint"><span>DRAG TO EXPLORE</span><span>01 — 03</span></div></div>
       </section>
 
       <section className="dark-interlude">
@@ -267,6 +332,32 @@ export default function Home() {
               </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="explorer-section" id="explore">
+        <div className="section-label"><span>05 / INTERACTIVE TOOLKIT</span><span>SELECT A TECHNOLOGY</span></div>
+        <div className="explorer-grid">
+          <div className="tech-constellation" aria-label="Interactive technology constellation">
+            <div className="constellation-lines" aria-hidden="true"/>
+            {technologies.map((tech, index) => <button key={tech.name} className={`tech-node node-${index + 1} ${activeTech === tech.name ? "active" : ""}`} onClick={() => setActiveTech(tech.name)}>{tech.name}</button>)}
+            <span className="constellation-core">SM<span>.</span></span>
+          </div>
+          <div className="tech-detail" aria-live="polite">
+            <span className="eyebrow">{technologies.find((tech) => tech.name === activeTech)?.group}</span>
+            <h2>{activeTech}<em>.</em></h2>
+            <p>{technologies.find((tech) => tech.name === activeTech)?.detail}</p>
+            <span className="detail-prompt">SELECT ANOTHER NODE TO EXPLORE ↗</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="terminal-section">
+        <div className="section-label"><span>06 / A LITTLE EXPERIMENT</span><span>COMMAND LINE INTERFACE</span></div>
+        <div className="terminal-card">
+          <div className="terminal-top"><div><i/><i/><i/></div><span><TerminalIcon size={13}/> SOUMYADEEP@PORTFOLIO:~</span><button onClick={() => setTerminalOpen(!terminalOpen)} aria-expanded={terminalOpen}>{terminalOpen ? "MINIMISE" : "OPEN TERMINAL"}</button></div>
+          {terminalOpen && <div className="terminal-body"><div className="terminal-output" aria-live="polite">{terminalHistory.map((line, index) => <p key={`${index}-${line}`} className={line.startsWith("visitor@") ? "terminal-command" : ""}>{line}</p>)}</div><form className="terminal-form" onSubmit={(event) => { event.preventDefault(); runTerminalCommand(terminalInput); }}><label htmlFor="terminal-command">visitor@portfolio:~$</label><input id="terminal-command" value={terminalInput} onChange={(event) => setTerminalInput(event.target.value)} autoComplete="off" spellCheck={false} placeholder="type help and press enter"/><button type="submit" aria-label="Run terminal command"><ArrowUpRight size={16}/></button></form></div>}
+          {!terminalOpen && <button className="terminal-launch" onClick={() => setTerminalOpen(true)}>Open the interactive terminal <ArrowUpRight size={16}/></button>}
         </div>
       </section>
 
