@@ -407,3 +407,20 @@ footer{background:var(--dark);color:#F7F5EF;padding:65px 11vw 25px}.footer-top{d
   .tech-constellation .tech-orbit-item.track-2{--orbit-radius:184px;}
   .tech-constellation .tech-node{font-size:8px;padding:7px 9px;}
 }
+
+
+/* Orbit collision fix: all nodes share one angular velocity and fixed phase spacing. */
+.tech-constellation .tech-orbit-item,
+.tech-constellation .tech-orbit-item .tech-node { animation-duration: 60s !important; }
+@media (max-width: 800px) {
+  .tech-constellation { height: 500px; max-width: 540px; }
+  .tech-constellation .tech-orbit-item.track-0 { --orbit-radius: 94px; }
+  .tech-constellation .tech-orbit-item.track-1 { --orbit-radius: 154px; }
+  .tech-constellation .tech-orbit-item.track-2 { --orbit-radius: 214px; }
+}
+@media (max-width: 420px) {
+  .tech-constellation { height: 460px; }
+  .tech-constellation .tech-orbit-item.track-0 { --orbit-radius: 82px; }
+  .tech-constellation .tech-orbit-item.track-1 { --orbit-radius: 132px; }
+  .tech-constellation .tech-orbit-item.track-2 { --orbit-radius: 182px; }
+}

@@ -338,16 +338,14 @@ export default function Home() {
           <div className="tech-constellation" aria-label="Interactive technology constellation">
             <div className="constellation-lines" aria-hidden="true"/>
             {technologies.map((tech, index) => {
-              // Ten nodes across three deliberately balanced tracks: 4 / 3 / 3.
-              // Track assignment is explicit and independent of CSS sibling selectors.
-              const track = index % 3;
-              const slot = Math.floor(index / 3);
-              const slotsPerTrack = [4, 3, 3][track];
-              const angle = slot * (360 / slotsPerTrack) + track * 18;
-              const durations = [44, 52, 60];
+              // Ten nodes keep fixed 36-degree phase spacing across three tracks.
+              // A shared angular velocity prevents tracks from drifting into collisions.
+              const track = [0, 1, 2, 0, 1, 2, 0, 1, 2, 0][index];
+              const angle = index * 36;
+              const duration = 60;
               const orbitStyle = {
-                "--orbit-duration": `${durations[track]}s`,
-                "--orbit-delay": `${-(slot / slotsPerTrack) * durations[track]}s`,
+                "--orbit-duration": `${duration}s`,
+                "--orbit-delay": `${-(angle / 360) * duration}s`,
                 "--static-angle": `${angle}deg`,
                 "--counter-angle": `${-angle}deg`,
               } as unknown as CSSProperties;
