@@ -364,3 +364,73 @@ footer{background:var(--dark);color:#F7F5EF;padding:65px 11vw 25px}.footer-top{d
   .tech-orbit-item{transform:translate(-50%,-50%) rotate(var(--static-angle)) translateX(var(--orbit-radius));}
   .tech-orbit-item .tech-node{transform:rotate(calc(-1 * var(--static-angle)));}
 }
+
+
+/* Final orbit geometry: explicit tracks prevent selector drift and node collisions. */
+.tech-constellation{
+  width:100%;
+  max-width:680px;
+  height:clamp(520px,58vw,620px);
+  margin-inline:auto;
+  overflow:visible;
+  --orbit-x-scale:1;
+}
+.tech-constellation .tech-orbit-item.track-0{--orbit-radius:clamp(118px,14vw,138px)!important;}
+.tech-constellation .tech-orbit-item.track-1{--orbit-radius:clamp(190px,23vw,218px)!important;}
+.tech-constellation .tech-orbit-item.track-2{--orbit-radius:clamp(262px,31vw,292px)!important;}
+.tech-constellation .tech-orbit-item{
+  position:absolute!important;
+  top:50%!important;
+  left:50%!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:max-content!important;
+  z-index:4;
+  transform:translate(-50%,-50%) rotate(var(--static-angle)) translateX(calc(var(--orbit-radius) * var(--orbit-x-scale)))!important;
+  transform-origin:center;
+  animation:tech-orbit-final var(--orbit-duration) linear infinite;
+  animation-delay:var(--orbit-delay);
+  will-change:transform;
+}
+.tech-constellation .tech-orbit-item .tech-node{
+  position:relative!important;
+  inset:auto!important;
+  display:block;
+  white-space:nowrap;
+  transform:rotate(calc(-1 * var(--static-angle)))!important;
+  animation:tech-counter-final var(--orbit-duration) linear infinite;
+  animation-delay:var(--orbit-delay);
+  box-shadow:0 4px 14px rgba(32,35,30,.06);
+}
+@keyframes tech-orbit-final{
+  from{transform:translate(-50%,-50%) rotate(var(--static-angle)) translateX(calc(var(--orbit-radius) * var(--orbit-x-scale)));}
+  to{transform:translate(-50%,-50%) rotate(calc(var(--static-angle) + 360deg)) translateX(calc(var(--orbit-radius) * var(--orbit-x-scale)));}
+}
+@keyframes tech-counter-final{
+  from{transform:rotate(calc(-1 * var(--static-angle)));}
+  to{transform:rotate(calc(-1 * var(--static-angle) - 360deg));}
+}
+.tech-constellation:hover .tech-orbit-item,
+.tech-constellation:focus-within .tech-orbit-item,
+.tech-constellation:hover .tech-orbit-item .tech-node,
+.tech-constellation:focus-within .tech-orbit-item .tech-node{animation-play-state:paused;}
+@media(max-width:800px){
+  .tech-constellation{height:470px;max-width:520px;--orbit-x-scale:.64;}
+  .tech-constellation .tech-orbit-item.track-0{--orbit-radius:96px!important;}
+  .tech-constellation .tech-orbit-item.track-1{--orbit-radius:148px!important;}
+  .tech-constellation .tech-orbit-item.track-2{--orbit-radius:200px!important;}
+  .tech-constellation .tech-node{font-size:9px;padding:8px 10px;}
+}
+@media(max-width:420px){
+  .tech-constellation{height:430px;--orbit-x-scale:.58;}
+  .tech-constellation .tech-orbit-item.track-0{--orbit-radius:84px!important;}
+  .tech-constellation .tech-orbit-item.track-1{--orbit-radius:130px!important;}
+  .tech-constellation .tech-orbit-item.track-2{--orbit-radius:176px!important;}
+  .tech-constellation .tech-node{font-size:8px;padding:7px 9px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .tech-constellation .tech-orbit-item,
+  .tech-constellation .tech-orbit-item .tech-node{animation:none!important;will-change:auto;}
+  .tech-constellation .tech-orbit-item{transform:translate(-50%,-50%) rotate(var(--static-angle)) translateX(calc(var(--orbit-radius) * var(--orbit-x-scale)))!important;}
+  .tech-constellation .tech-orbit-item .tech-node{transform:rotate(calc(-1 * var(--static-angle)))!important;}
+}

@@ -340,21 +340,20 @@ export default function Home() {
           <div className="tech-constellation" aria-label="Interactive technology constellation">
             <div className="constellation-lines" aria-hidden="true"/>
             {technologies.map((tech, index) => {
-              // Four nodes per track, with the tracks phase-shifted to keep labels apart.
+              // Four nodes per track. Explicit track classes keep the CSS radii
+              // independent of sibling order (the orbit guide is also a div).
               const track = index % 3;
               const slot = Math.floor(index / 3);
-              const slotsPerTrack = Math.ceil(technologies.length / 3);
-              const angle = (360 / slotsPerTrack) * slot + track * 30;
-              const durations = [42, 36, 48];
-              const radii = ["clamp(112px, 14vw, 142px)", "clamp(174px, 21vw, 208px)", "clamp(236px, 28vw, 274px)"];
+              const slotsPerTrack = 4;
+              const angle = slot * 90 + track * 45;
+              const durations = [42, 48, 54];
               const orbitStyle = {
-                "--orbit-radius": radii[track],
                 "--orbit-duration": `${durations[track]}s`,
                 "--orbit-delay": `${-(slot / slotsPerTrack) * durations[track]}s`,
                 "--static-angle": `${angle}deg`,
               } as unknown as CSSProperties;
               return (
-                <div className="tech-orbit-item" style={orbitStyle} key={tech.name}>
+                <div className={`tech-orbit-item track-${track}`} style={orbitStyle} key={tech.name}>
                   <button
                     className={`tech-node ${activeTech === tech.name ? "active" : ""}`}
                     onClick={() => setActiveTech(tech.name)}
