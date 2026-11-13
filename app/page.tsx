@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { motion, type Variants } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Github, Linkedin, Mail, Menu, X, ArrowRight, Radio, Cpu, Layers3, MapPin, Terminal as TerminalIcon, X as CloseIcon } from "lucide-react";
 import SystemStatus from "./components/system-status";
@@ -335,7 +335,36 @@ export default function Home() {
         <div className="explorer-grid">
           <div className="tech-constellation" aria-label="Interactive technology constellation">
             <div className="constellation-lines" aria-hidden="true"/>
-            {technologies.map((tech, index) => <button key={tech.name} className={`tech-node node-${index + 1} ${activeTech === tech.name ? "active" : ""}`} onClick={() => setActiveTech(tech.name)}>{tech.name}</button>)}
+            {technologies.map((tech, index) => {
+              const orbit = [
+                { radius: "clamp(132px, 18vw, 188px)", duration: 30, delay: 0, angle: 0 },
+                { radius: "clamp(102px, 14vw, 148px)", duration: 24, delay: 3, angle: 45 },
+                { radius: "clamp(132px, 18vw, 188px)", duration: 30, delay: 7.5, angle: 90 },
+                { radius: "clamp(102px, 14vw, 148px)", duration: 24, delay: 9, angle: 135 },
+                { radius: "clamp(132px, 18vw, 188px)", duration: 30, delay: 15, angle: 180 },
+                { radius: "clamp(102px, 14vw, 148px)", duration: 24, delay: 15, angle: 225 },
+                { radius: "clamp(132px, 18vw, 188px)", duration: 30, delay: 22.5, angle: 270 },
+                { radius: "clamp(102px, 14vw, 148px)", duration: 24, delay: 21, angle: 315 },
+              ][index];
+              const orbitStyle = {
+                "--orbit-radius": orbit.radius,
+                "--orbit-duration": `${orbit.duration}s`,
+                "--orbit-delay": `-${orbit.delay}s`,
+                "--static-angle": `${orbit.angle}deg`,
+                "--counter-angle": `${-orbit.angle}deg`,
+              } as unknown as CSSProperties;
+              return (
+                <div className="tech-orbit-item" style={orbitStyle} key={tech.name}>
+                  <button
+                    className={`tech-node node-${index + 1} ${activeTech === tech.name ? "active" : ""}`}
+                    onClick={() => setActiveTech(tech.name)}
+                    aria-pressed={activeTech === tech.name}
+                  >
+                    {tech.name}
+                  </button>
+                </div>
+              );
+            })}
             <span className="constellation-core">SM<span>.</span></span>
           </div>
           <div className="tech-detail" aria-live="polite">
