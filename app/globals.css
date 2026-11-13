@@ -502,3 +502,67 @@ footer{background:var(--dark);color:#F7F5EF;padding:65px 11vw 25px}.footer-top{d
 @media(prefers-reduced-motion:reduce){
  .lifetracker-arch-node,.lifetracker-decision summary svg{transition:none}
 }
+
+
+/* Phase 7 — HomeLab workflow architecture explorer */
+.homelab-phase7-section{padding-top:100px;padding-bottom:110px}
+.homelab-phase7 .homelab-flow-tabs{display:flex;flex-wrap:wrap;gap:7px;margin:38px 0 0}
+.homelab-phase7 .homelab-flow-tabs button{border:1px solid #cbd2c2;background:transparent;color:#596153;padding:11px 13px;font:8px var(--mono);letter-spacing:.08em;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.homelab-phase7 .homelab-flow-tabs button.active{background:#202820;color:#f7f5ef;border-color:#202820}
+.homelab-phase7 .homelab-flow-heading{padding:28px 0 20px}
+.homelab-phase7 .homelab-flow-heading>span,.homelab-phase7 .homelab-inspector-copy>span{font:8px var(--mono);letter-spacing:.13em;color:#89927d}
+.homelab-phase7 .homelab-flow-heading h3{font-size:clamp(25px,3.5vw,40px);font-weight:500;letter-spacing:-.06em;margin:12px 0 9px}
+.homelab-phase7 .homelab-flow-heading p{font-size:12px;line-height:1.85;color:#687064;max-width:760px;margin:0}
+.homelab-phase7 .homelab-flow-canvas{background:#202820;color:#f7f5ef;padding:20px 22px;margin-top:5px;position:relative;overflow:hidden}
+.homelab-phase7 .homelab-flow-canvas:before{content:"";position:absolute;inset:0;opacity:.14;background:repeating-linear-gradient(0deg,transparent 0 39px,#9caf88 40px),repeating-linear-gradient(90deg,transparent 0 39px,#9caf88 40px);mask-image:linear-gradient(135deg,transparent,#000 25%,#000 75%,transparent)}
+.homelab-phase7 .homelab-canvas-topline,.homelab-phase7 .homelab-canvas-bottom{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font:8px var(--mono);letter-spacing:.1em;color:#aab99b}
+.homelab-phase7 .homelab-canvas-topline span:first-child{display:flex;align-items:center;gap:8px}
+.homelab-phase7 .homelab-flow-nodes{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:25px 0;gap:0}
+.homelab-phase7 .homelab-flow-step{display:flex;flex-direction:column;align-items:center;width:min(100%,560px)}
+.homelab-phase7 .homelab-flow-node{width:100%;position:relative;display:grid;grid-template-columns:42px 1fr 18px;align-items:center;gap:13px;padding:14px 16px;border:1px solid #56634f;background:#2b372b;color:#f7f5ef;text-align:left;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.homelab-phase7 .homelab-flow-node:hover{border-color:#b7c9a6;transform:translateY(-2px)}
+.homelab-phase7 .homelab-flow-node.active{background:#9caf88;color:#202820;border-color:#9caf88}
+.homelab-phase7 .homelab-flow-node-icon{width:38px;height:38px;display:grid;place-items:center;background:#394738;color:#b7c9a6}
+.homelab-phase7 .homelab-flow-node.active .homelab-flow-node-icon{background:#819474;color:#202820}
+.homelab-phase7 .homelab-flow-node-text{display:flex;flex-direction:column;gap:4px;min-width:0}
+.homelab-phase7 .homelab-flow-node-text small{font:7px var(--mono);letter-spacing:.12em;color:#aab99b}
+.homelab-phase7 .homelab-flow-node.active .homelab-flow-node-text small{color:#45513f}
+.homelab-phase7 .homelab-flow-node-text strong{font-size:14px;font-weight:500;letter-spacing:-.025em}
+.homelab-phase7 .homelab-flow-node-text em{font-size:9px;font-style:normal;color:#c3cbbd}
+.homelab-phase7 .homelab-flow-node.active .homelab-flow-node-text em{color:#46513f}
+.homelab-phase7 .homelab-flow-node-arrow{color:#aab99b}
+.homelab-phase7 .homelab-flow-node.active .homelab-flow-node-arrow{color:#202820}
+.homelab-phase7 .homelab-flow-link{height:29px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#aab99b;gap:1px}
+.homelab-phase7 .homelab-flow-link span{width:1px;height:12px;background:#718267}
+.homelab-phase7 .homelab-canvas-bottom{border-top:1px solid #465342;padding-top:13px}
+.homelab-phase7 .homelab-canvas-bottom span:first-child{display:flex;align-items:center;gap:7px}
+.homelab-phase7 .homelab-canvas-bottom i{width:7px;height:7px;border-radius:50%;background:#9caf88;display:inline-block}
+.homelab-phase7 .homelab-inspector{display:grid;grid-template-columns:52px 1fr;gap:17px;padding:25px 23px;background:#e8ebe1;border:1px solid #d0d7c9;border-top:0}
+.homelab-phase7 .homelab-inspector-icon{width:48px;height:48px;background:#dce4d4;color:#63765a;display:grid;place-items:center}
+.homelab-phase7 .homelab-inspector-copy h4{font-size:25px;font-weight:500;letter-spacing:-.05em;margin:8px 0}
+.homelab-phase7 .homelab-inspector-copy p{font-size:11px;line-height:1.85;color:#687064;margin:0;max-width:760px}
+.homelab-phase7 .homelab-inspector-facts{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
+.homelab-phase7 .homelab-inspector-facts span{border:1px solid #c5cebb;border-radius:30px;padding:7px 10px;font:8px var(--mono);color:#596553}
+.homelab-phase7 .homelab-flow-note{display:flex;gap:12px;align-items:flex-start;padding:16px 18px;margin-top:14px;background:#e8ebe1;color:#7a8a6c}
+.homelab-phase7 .homelab-flow-note p{font-size:10px;line-height:1.75;color:#697264;margin:0}
+.homelab-phase7 .homelab-boundaries{margin-top:16px;padding:22px;background:#202820;color:#f7f5ef}
+.homelab-phase7 .homelab-boundaries>div{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;align-items:center}
+.homelab-phase7 .homelab-boundaries>div span{font:8px var(--mono);letter-spacing:.13em;color:#b7c9a6}
+.homelab-phase7 .homelab-boundaries>div small{font:7px var(--mono);letter-spacing:.1em;color:#84927a}
+.homelab-phase7 .homelab-boundaries ul{list-style:none;padding:0;margin:15px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.homelab-phase7 .homelab-boundaries li{padding:11px 0;border-top:1px solid #465342;font-size:10px;line-height:1.7;color:#c2cbbd}
+@media(max-width:800px){
+ .homelab-phase7-section{padding-top:70px;padding-bottom:75px}
+ .homelab-phase7 .homelab-flow-tabs{display:grid;grid-template-columns:1fr 1fr}
+ .homelab-phase7 .homelab-flow-tabs button{text-align:left;min-height:44px}
+ .homelab-phase7 .homelab-flow-canvas{padding:16px 13px}
+ .homelab-phase7 .homelab-flow-node{grid-template-columns:36px 1fr 16px;padding:12px}
+ .homelab-phase7 .homelab-flow-node-icon{width:34px;height:34px}
+ .homelab-phase7 .homelab-inspector{grid-template-columns:40px 1fr;padding:19px 15px;gap:12px}
+ .homelab-phase7 .homelab-inspector-icon{width:38px;height:38px}
+ .homelab-phase7 .homelab-boundaries ul{grid-template-columns:1fr}
+ .homelab-phase7 .homelab-canvas-topline span:last-child,.homelab-phase7 .homelab-canvas-bottom span:last-child{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .homelab-phase7 .homelab-flow-node,.homelab-phase7 .homelab-flow-tabs button{transition:none}
+}
