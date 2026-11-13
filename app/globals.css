@@ -972,3 +972,105 @@ button:active, .round-link:active, .case-footer-link:active {
 @media (prefers-reduced-motion: reduce) {
   .nav, .navlinks, .nav-cta, .round-link { transition: none !important; }
 }
+
+
+
+/* PHASE 8.2 — Dark-theme contrast and section-surface corrections.
+   Scope is limited to narrow, touch-first devices following system dark mode. */
+@media (max-width: 600px) and (pointer: coarse) and (prefers-color-scheme: dark) {
+  /* Home page: capability / HomeLab promo panel */
+  .capabilities {
+    background: #20251F !important;
+    color: #F0F0E8 !important;
+  }
+  .capabilities .section-heading h2,
+  .capabilities .section-heading h2 em,
+  .capabilities .capability h3 {
+    color: #F0F0E8;
+  }
+  .capabilities .section-heading p,
+  .capabilities .capability p {
+    color: #C0C8B9;
+  }
+  .capabilities .capability {
+    border-color: #414A3C;
+  }
+  .capabilities .capability>span,
+  .capabilities .capability small,
+  .capabilities .homelab-promo>div>span {
+    color: #B2BEA7;
+  }
+  .capabilities .homelab-promo {
+    border-color: #414A3C;
+  }
+  .capabilities .homelab-promo h3 { color: #F0F0E8; }
+  .capabilities .homelab-promo h3 em { color: #A8BC92; }
+  .capabilities .homelab-promo>a {
+    color: #F0F0E8 !important;
+    border-color: #84917B;
+  }
+  .capabilities .homelab-promo>a:hover {
+    color: #F0644F !important;
+    border-color: #F0644F;
+  }
+
+  /* Case studies: every light editorial panel must switch its surface and text together. */
+  .case-study .case-overview,
+  .case-study .case-design {
+    background: #20251F !important;
+    color: #F0F0E8 !important;
+  }
+  .case-study .case-overview-copy h2,
+  .case-study .case-design h2,
+  .case-study .case-overview-copy h2 em,
+  .case-study .case-design h2 em {
+    color: #F0F0E8;
+  }
+  .case-study .case-overview-copy h2 em,
+  .case-study .case-design h2 em {
+    color: #A8BC92;
+  }
+  .case-study .case-overview-copy p,
+  .case-study .case-design-copy>p,
+  .case-study .case-principles p {
+    color: #C0C8B9 !important;
+  }
+  .case-study .case-section-index { color: #AAB69F; }
+
+  .case-study .case-capabilities {
+    background: #171A16 !important;
+    color: #F0F0E8 !important;
+  }
+  .case-study .case-capabilities .case-section-heading h2,
+  .case-study .case-capabilities .case-section-heading h2 em,
+  .case-study .case-capability h3 {
+    color: #F0F0E8;
+  }
+  .case-study .case-capability p { color: #C0C8B9 !important; }
+  .case-study .case-capability-top span { color: #AAB69F; }
+  .case-study .case-capability-grid,
+  .case-study .case-capability,
+  .case-study .case-capability:nth-child(odd) {
+    border-color: #414A3C;
+  }
+
+  /* HomeLab interactive architecture panel had a hard-coded light surface. */
+  .homelab-explorer-section {
+    background: #20251F !important;
+    color: #F0F0E8 !important;
+  }
+  .homelab-explorer-content h2,
+  .homelab-explorer-content h2 em { color: #F0F0E8; }
+  .homelab-explorer-content h2 em { color: #A8BC92; }
+  .homelab-explorer-intro { color: #C0C8B9 !important; }
+  .homelab-phase7 .homelab-flow-heading p,
+  .homelab-phase7 .homelab-inspector-copy p,
+  .homelab-phase7 .homelab-flow-note p { color: #C0C8B9 !important; }
+  .homelab-phase7 .homelab-flow-note { background: #252D23; }
+  .homelab-phase7 .homelab-inspector { background: #252D23; }
+
+  /* Avoid low-contrast links and muted body copy in dark case-study footers. */
+  .case-study .case-footer-link,
+  .case-study .case-back { color: #E5E9DE; }
+  .case-study .case-footer-bottom { border-color: #414A3C; }
+}
