@@ -796,3 +796,179 @@ button:active, .round-link:active, .case-footer-link:active {
     transform: none;
   }
 }
+
+
+
+/* PHASE 8.1 — Mobile header refinement + system-aware mobile dark theme */
+
+/* Mobile header: one compact identity row, no duplicate wordmark strip. */
+@media (max-width: 680px) {
+  .topline {
+    min-height: 56px;
+    height: auto;
+    padding: 9px 5vw;
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr) 34px;
+    align-items: center;
+    column-gap: 10px;
+    line-height: 1.45;
+  }
+  .topline > span:first-child {
+    font-size: 13px;
+    line-height: 1;
+    align-self: center;
+  }
+  .topline > span:nth-child(2) {
+    min-width: 0;
+    display: block;
+    font-size: 8px;
+    line-height: 1.55;
+    letter-spacing: .075em;
+    overflow-wrap: normal;
+  }
+  .topline i {
+    margin: 0 6px 1px 7px;
+    vertical-align: middle;
+  }
+  .topline .menu-toggle {
+    display: grid;
+    place-items: center;
+    justify-self: end;
+    width: 34px;
+    height: 38px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+  }
+  /* The top row already carries SM. Hide the second, redundant identity strip. */
+  .nav {
+    height: 0;
+    min-height: 0;
+    padding: 0 5vw;
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    backdrop-filter: none;
+    position: relative;
+  }
+  .nav > .wordmark { display: none; }
+  .navlinks, .nav-cta { display: none; }
+  .nav.open {
+    height: auto;
+    min-height: 0;
+    padding: 0 6vw 18px;
+    margin-top: 0;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 12px 24px rgba(20,25,18,.06);
+  }
+  .nav.open .navlinks {
+    display: flex;
+    order: 1;
+    width: 100%;
+    flex-direction: column;
+    gap: 18px;
+    padding: 22px 0 8px;
+  }
+  .nav.open .nav-cta {
+    display: inline-flex;
+    order: 2;
+    margin-top: 12px;
+  }
+}
+
+/* System dark mode is intentionally limited to narrow, touch-first mobile screens.
+   Desktop, laptop, tablet and unfolded foldable layouts retain the existing light theme. */
+@media (max-width: 600px) and (pointer: coarse) and (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #171A16;
+    --ink: #F0F0E8;
+    --muted: #A4AA9B;
+    --line: #353B32;
+    --accent: #A8BC92;
+    --dark: #10130F;
+    --signal: #F0644F;
+    --sage-wash: #242B22;
+  }
+  body, .case-study {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .topline {
+    color: #AEB5A5;
+    border-color: var(--line);
+    background: #171A16;
+  }
+  .topline > span:first-child, .wordmark, .menu-toggle { color: var(--ink); }
+  .nav {
+    background: rgba(23,26,22,.96);
+    border-color: var(--line);
+  }
+  .nav.open {
+    background: #1C211B;
+    border-color: var(--line);
+    box-shadow: 0 12px 24px rgba(0,0,0,.24);
+  }
+  .navlinks a { color: #C1C8B9; }
+  .hero-orbit { border-color: rgba(168,188,146,.26); }
+  .hero-orbit-two { border-color: rgba(240,100,79,.22); }
+  .hero-bottom { border-color: var(--line); }
+  .hero-bottom p, .hero-index, .hero-kicker { color: #AEB5A5; }
+  .round-link { border-color: #697260; color: var(--ink); }
+  .section-heading h2, .about-copy h2, .experience-main h2,
+  .archive-head h2, .hero h1, .case-title-row h1 { color: var(--ink); }
+  .project-info, .project-meta, .archive-card, .capability,
+  .case-capability, .case-overview, .case-problem, .case-design,
+  .case-architecture, .case-reflection {
+    color: var(--ink);
+  }
+  .project-visual, .archive-image { background: #252B23; }
+  .project-info p, .about-copy p, .experience-aside p,
+  .case-overview p, .case-problem p, .case-design p,
+  .case-architecture p, .case-reflection p {
+    color: #B1B8AA;
+  }
+  .capability, .case-capability, .archive-card,
+  .lifetracker-architecture-explorer, .lifetracker-node-inspector,
+  .lifetracker-flow-intro, .lifetracker-design-decisions,
+  .lifetracker-flow-note {
+    background-color: #20251F;
+    border-color: #3A4236;
+    color: var(--ink);
+  }
+  .lifetracker-flow-intro p, .lifetracker-inspector-main p,
+  .lifetracker-flow-note p, .lifetracker-decision > p,
+  .lifetracker-decision summary em, .lifetracker-decisions-heading p {
+    color: #B1B8AA;
+  }
+  .lifetracker-flow-toolbar { background: #252C23; border-color: #3A4236; }
+  .lifetracker-flow-toolbar button { color: #D4D9CE; border-color: #59634F; }
+  .lifetracker-flow-toolbar button.is-active { background: #A8BC92; color: #171A16; border-color: #A8BC92; }
+  .lifetracker-inspector-facts span { color: #D4D9CE; border-color: #59634F; }
+  .lifetracker-decision { border-color: #3A4236; }
+  .homelab-phase7 .homelab-flow-heading p,
+  .homelab-phase7 .homelab-inspector-copy p,
+  .homelab-phase7 .homelab-flow-note p { color: #B1B8AA; }
+  .homelab-phase7 .homelab-flow-tabs button { color: #D4D9CE; border-color: #59634F; }
+  .homelab-phase7 .homelab-flow-tabs button.active { background: #A8BC92; color: #171A16; border-color: #A8BC92; }
+  .homelab-phase7 .homelab-flow-heading,
+  .homelab-phase7 .homelab-inspector { color: var(--ink); }
+  .homelab-phase7 .homelab-inspector { background: #20251F; border-color: #3A4236; }
+  .homelab-phase7 .homelab-inspector-facts span { color: #D4D9CE; border-color: #59634F; }
+  .homelab-phase7 .homelab-flow-note { background: #242B22; }
+  .case-topline { color: #AEB5A5; border-color: var(--line); }
+  .case-back { color: #D7DCCF; }
+  .case-stack span, .tags span { border-color: #59634F; color: #D4D9CE; }
+  input, textarea, select { color-scheme: dark; }
+}
+
+/* Reduced motion remains respected in either color scheme. */
+@media (prefers-reduced-motion: reduce) {
+  .nav, .navlinks, .nav-cta, .round-link { transition: none !important; }
+}
