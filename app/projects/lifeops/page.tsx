@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import LifeOpsArchitecture from "../../components/lifeops-architecture";
 import {
-  ArrowLeft, ArrowUpRight, Boxes, CalendarClock, CheckSquare,
-  ClipboardList, Database, FileText, GitBranch, Layers3, LockKeyhole,
-  ShieldCheck, Workflow,
+  ArrowLeft, ArrowUpRight, Boxes, CheckSquare, ClipboardList, FileText,
+  Layers3, ShieldCheck, Workflow,
 } from "lucide-react";
 
 const capabilities = [
@@ -42,33 +42,6 @@ const capabilities = [
     title: "Shared activity & notifications",
     description: "Record changes in an append-only activity log and surface notifications and live activity updates without introducing a separate real-time infrastructure service.",
     icon: Workflow,
-  },
-];
-
-const stack = [
-  "React 18", "TypeScript", "Vite", "React Router", "TanStack Query",
-  "Tailwind CSS 4", "FastAPI", "Python", "SQLAlchemy", "PostgreSQL 16",
-  "Alembic", "Nginx", "Docker Compose",
-];
-
-const decisions = [
-  {
-    number: "01",
-    title: "Server-side sessions",
-    text: "Opaque session tokens are stored as hashes. HttpOnly cookies and per-session CSRF tokens protect authenticated browser workflows; logout and password changes can revoke sessions.",
-    icon: LockKeyhole,
-  },
-  {
-    number: "02",
-    title: "Traceable changes",
-    text: "Record changes append activity entries in the same transaction, including field-level before-and-after values. Record numbers are generated from row-locked sequences.",
-    icon: GitBranch,
-  },
-  {
-    number: "03",
-    title: "Reliable scheduled work",
-    text: "A backend scheduler checks preventive-maintenance windows every 15 minutes. Generation is idempotent, so repeated runs do not create duplicate open tasks for a schedule.",
-    icon: CalendarClock,
   },
 ];
 
@@ -152,34 +125,15 @@ export default function LifeOpsCaseStudy() {
         </div>
       </section>
 
-      <section className="case-architecture">
-        <div className="case-section-index">05 / ARCHITECTURE</div>
+      <section className="case-architecture case-architecture-interactive">
+        <div className="case-section-index">05 / SYSTEM DESIGN</div>
         <div className="case-architecture-content">
-          <span className="case-eyebrow">A CONTAINERISED MODULAR MONOLITH</span>
-          <h2>React to API<br /><em>to relational data.</em></h2>
-          <p>The browser runs a React single-page application served by Nginx. Nginx also reverse-proxies API traffic to a FastAPI backend. The backend is organised by domain routers and services, with PostgreSQL as the persistent data store. Only the Nginx web service publishes a host port; the API and database remain on the internal Docker network.</p>
-          <div className="case-stack">{stack.map((item) => <span key={item}>{item}</span>)}</div>
-          <div className="case-architecture-note"><Database size={19} /><p><strong>Production deployment shape.</strong><br />Docker Compose runs the web, backend and PostgreSQL services. Named volumes persist database data and uploaded files across container restarts.</p></div>
-        </div>
-      </section>
-
-      <section className="case-capabilities">
-        <div className="case-section-index">06 / ENGINEERING DECISIONS</div>
-        <div className="case-capability-content">
-          <div className="case-section-heading">
-            <span className="case-eyebrow">SECURITY, AUDITABILITY, RELIABILITY</span>
-            <h2>Important details<br /><em>under the surface.</em></h2>
-          </div>
-          <div className="case-capability-grid">
-            {decisions.map(({ number, title, text, icon: Icon }) => (
-              <article className="case-capability" key={number}>
-                <div className="case-capability-top"><span>{number}</span><Icon size={21} strokeWidth={1.5} /></div>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </article>
-            ))}
-          </div>
-          <div className="case-architecture-note"><ShieldCheck size={19} /><p><strong>Security controls in the repository.</strong><br />Passwords use Argon2id; knowledge-base protected values are encrypted at rest and excluded from ordinary list/detail responses. Reveal actions are explicit and audited.</p></div>
+          <span className="case-eyebrow">TRACE A REQUEST THROUGH THE STACK</span>
+          <h2>Explore the<br /><em>architecture.</em></h2>
+          <p>Choose a flow to follow the path through the deployed system, then select any component to inspect its responsibility, boundaries and implementation details.</p>
+          <div className="case-stack">{["React 18", "TypeScript", "Vite", "React Router", "TanStack Query", "FastAPI", "Python", "SQLAlchemy", "PostgreSQL 16", "Alembic", "Nginx", "Docker Compose"].map((item) => <span key={item}>{item}</span>)}</div>
+          <LifeOpsArchitecture />
+          <div className="case-architecture-note"><Boxes size={19} /><p><strong>Deployment shape.</strong><br />Docker Compose runs the web, backend and database services. Named volumes persist PostgreSQL data and uploaded files across container restarts.</p></div>
         </div>
       </section>
 

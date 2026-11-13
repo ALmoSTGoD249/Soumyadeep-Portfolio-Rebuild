@@ -223,58 +223,68 @@ footer{background:var(--dark);color:#F7F5EF;padding:65px 11vw 25px}.footer-top{d
 @media(max-width:460px){.system-status-grid{grid-template-columns:1fr}.system-service,.system-service:nth-child(3){border-right:0;border-top:1px solid #465342}.system-service:first-child{border-top:0}.system-status-top{padding:16px}.system-status-foot{padding:13px 16px}}
 @media(prefers-reduced-motion:reduce){.is-spinning,.system-service-loading i{animation:none}}
 
-
-/* Interactive toolkit — orbital technology nodes */
-.tech-constellation{overflow:visible}
-.tech-constellation .constellation-lines{inset:9%;pointer-events:none}
-.tech-orbit-item{
-  position:absolute;
-  z-index:3;
-  left:50%;
-  top:50%;
-  width:0;
-  height:0;
-  transform-origin:0 0;
-  animation:tech-orbit var(--orbit-duration) linear infinite;
-  animation-delay:var(--orbit-delay);
-  will-change:transform;
-}
-.tech-orbit-item .tech-node{
-  position:absolute;
-  top:0;
-  right:auto;
-  bottom:auto;
-  left:var(--orbit-radius);
-  transform:translate(-50%,-50%);
-  animation:tech-counter-orbit var(--orbit-duration) linear infinite;
-  animation-delay:var(--orbit-delay);
-  white-space:nowrap;
-  will-change:transform;
-}
-.tech-orbit-item .tech-node:hover{transform:translate(-50%,-50%) scale(1.07);border-color:var(--signal)}
-.tech-orbit-item .tech-node.active{z-index:4}
-.tech-constellation:hover .tech-orbit-item,
-.tech-constellation:focus-within .tech-orbit-item,
-.tech-constellation:hover .tech-orbit-item .tech-node,
-.tech-constellation:focus-within .tech-orbit-item .tech-node{
-  animation-play-state:paused;
-}
-@keyframes tech-orbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes tech-counter-orbit{
-  from{transform:translate(-50%,-50%) rotate(0deg)}
-  to{transform:translate(-50%,-50%) rotate(-360deg)}
-}
-/* Keep the original hand-placed positions as a stable, motion-free fallback. */
-@media(prefers-reduced-motion:reduce){
-  .tech-orbit-item{animation:none;transform:rotate(var(--static-angle))}
-  .tech-orbit-item .tech-node{animation:none;transform:translate(-50%,-50%) rotate(var(--counter-angle))}
-  .tech-constellation:hover .tech-orbit-item,
-  .tech-constellation:focus-within .tech-orbit-item,
-  .tech-constellation:hover .tech-orbit-item .tech-node,
-  .tech-constellation:focus-within .tech-orbit-item .tech-node{animation:none}
-}
-@media(max-width:800px){
-  .tech-constellation{height:340px;max-width:500px;width:100%;margin:auto}
-  .tech-orbit-item .tech-node{font-size:9px;padding:8px 11px}
-  .tech-orbit-item{--orbit-duration:36s}
-}
+/* Phase 6 — interactive LifeOps architecture explorer */
+.case-architecture-interactive .case-architecture-content>p{max-width:720px}
+.lifeops-architecture-explorer{margin:42px 0 35px;max-width:100%}
+.lifeops-flow-toolbar{display:flex;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--line);padding-bottom:15px}
+.lifeops-flow-toolbar button{border:1px solid #cbd2c2;background:transparent;color:#687064;padding:10px 13px;font:8px var(--mono);letter-spacing:.08em;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.lifeops-flow-toolbar button:hover,.lifeops-flow-toolbar button.is-active{background:var(--dark);border-color:var(--dark);color:var(--paper)}
+.lifeops-flow-intro{padding:23px 0 18px}
+.lifeops-flow-intro>span,.lifeops-inspector-main>span,.lifeops-tradeoffs-heading>span{font:8px var(--mono);letter-spacing:.13em;color:#87917d}
+.lifeops-flow-intro h3{font-size:clamp(24px,3.5vw,38px);font-weight:500;letter-spacing:-.06em;margin:10px 0 8px}
+.lifeops-flow-intro p{font-size:11px;line-height:1.8;color:#70746a;max-width:700px;margin:0}
+.lifeops-architecture-map{position:relative;isolation:isolate;overflow:hidden;padding:60px 22px 20px;background:#202820;color:#f7f5ef;min-height:275px}
+.lifeops-architecture-map:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.18;background-image:linear-gradient(rgba(156,175,136,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(156,175,136,.2) 1px,transparent 1px);background-size:26px 26px;mask-image:linear-gradient(120deg,transparent,#000 25%,#000 80%,transparent)}
+.lifeops-boundary-label{position:absolute;top:15px;display:flex;align-items:center;gap:7px;font:7px var(--mono);letter-spacing:.12em;color:#aab99b}
+.public-boundary{left:20px}.private-boundary{right:20px;color:#d3a18f}
+.lifeops-node-row{display:flex;align-items:stretch;justify-content:center;gap:7px;min-height:150px}
+.lifeops-flow-step{display:flex;align-items:center;flex:1;min-width:0;gap:6px}
+.lifeops-arch-node{position:relative;display:flex;flex:1;min-width:0;min-height:112px;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:14px;padding:13px 12px;border:1px solid #56634f;background:#293329;color:#e7eddf;text-align:left;cursor:pointer;transition:border-color .25s,background .25s,transform .25s,box-shadow .25s}
+.lifeops-arch-node:hover{border-color:#9caf88;transform:translateY(-3px)}
+.lifeops-arch-node.selected{background:#394637;border-color:#9caf88;box-shadow:0 0 0 1px #9caf8840,0 10px 24px #1118}
+.lifeops-arch-node-icon{color:#a9bb98;display:flex}
+.lifeops-arch-node-copy{display:flex;flex-direction:column;gap:5px;min-width:0}
+.lifeops-arch-node-copy small{font:6px var(--mono);letter-spacing:.1em;color:#9caf88;white-space:normal}
+.lifeops-arch-node-copy strong{font-size:clamp(12px,1.4vw,17px);font-weight:500;letter-spacing:-.04em;white-space:normal}
+.lifeops-arch-node-copy em{font-size:8px;line-height:1.45;font-style:normal;color:#aab49e;white-space:normal}
+.lifeops-node-open{position:absolute;right:9px;top:9px;color:#84917b;opacity:0;transition:opacity .2s}
+.lifeops-arch-node:hover .lifeops-node-open,.lifeops-arch-node.selected .lifeops-node-open{opacity:1}
+.lifeops-flow-connector{display:flex;align-items:center;justify-content:center;gap:2px;flex:0 0 25px;color:#9caf88;position:relative}
+.lifeops-flow-connector span{height:1px;flex:1;background:#697c5f;position:relative;overflow:hidden}
+.lifeops-flow-connector span:after{content:"";position:absolute;inset:0;background:#e0e9d5;transform:translateX(-100%);animation:lifeops-flow-pulse 2.2s ease-in-out infinite}
+@keyframes lifeops-flow-pulse{55%,100%{transform:translateX(100%)}}
+.mode-events .lifeops-flow-connector{transform:scaleX(-1)}
+.lifeops-arch-footnote{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:25px;padding-top:13px;border-top:1px solid #485544;font:7px var(--mono);letter-spacing:.08em;color:#9da995}
+.lifeops-arch-footnote>span{display:flex;align-items:center;gap:7px}
+.lifeops-legend-dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+.active-dot{background:#9caf88;box-shadow:0 0 8px #9caf88}.flow-dot{background:#d9e5ce}
+.lifeops-node-inspector{display:grid;grid-template-columns:48px 1fr;gap:17px;margin-top:14px;padding:22px;background:#e8ebe1;border:1px solid #d5dccd}
+.lifeops-inspector-icon{width:42px;height:42px;display:grid;place-items:center;background:#d7dfce;color:#596b4e}
+.lifeops-inspector-main h4{font-size:25px;font-weight:500;letter-spacing:-.055em;margin:7px 0 8px}
+.lifeops-inspector-main>p{font-size:11px;line-height:1.8;color:#626b5e;max-width:720px;margin:0}
+.lifeops-inspector-facts{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.lifeops-inspector-facts span{padding:7px 9px;border:1px solid #c5cebb;color:#596452;font:7px var(--mono);letter-spacing:.03em}
+.lifeops-flow-note{display:flex;align-items:flex-start;gap:12px;padding:17px 0;border-bottom:1px solid var(--line);color:#829276}
+.lifeops-flow-note p{font-size:10px;line-height:1.7;color:#70746a;margin:0;max-width:700px}
+.lifeops-security-boundary{margin-top:25px;padding:21px;background:#202820;color:#f7f5ef;display:grid;grid-template-columns:.42fr 1fr;gap:20px}
+.lifeops-security-boundary>div{display:flex;align-items:flex-start;gap:10px;color:#a9bb98;font:8px var(--mono);letter-spacing:.1em}
+.lifeops-security-boundary ul{margin:0;padding:0 0 0 16px;display:grid;grid-template-columns:1fr 1fr;gap:11px 22px}
+.lifeops-security-boundary li{font-size:9px;line-height:1.65;color:#c0c8b8}
+.lifeops-tradeoffs{margin-top:48px;border-top:1px solid var(--line)}
+.lifeops-tradeoffs-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
+.lifeops-tradeoffs-heading p{font-size:9px;color:#7a8074;margin:0}
+.lifeops-tradeoff{border-bottom:1px solid var(--line)}
+.lifeops-tradeoff summary{list-style:none;display:grid;grid-template-columns:35px minmax(180px,.85fr) 1fr 18px;align-items:center;gap:12px;padding:18px 0;cursor:pointer}
+.lifeops-tradeoff summary::-webkit-details-marker{display:none}
+.lifeops-tradeoff summary>span{font:8px var(--mono);color:var(--signal)}
+.lifeops-tradeoff summary strong{font-size:12px;font-weight:500}
+.lifeops-tradeoff summary em{font-size:9px;line-height:1.5;font-style:normal;color:#7a8074}
+.lifeops-tradeoff summary>svg{color:#8a9480;transition:transform .2s}
+.lifeops-tradeoff[open] summary>svg{transform:rotate(45deg)}
+.lifeops-tradeoff>p{font-size:10px;line-height:1.85;color:#697064;margin:0 35px 20px 47px;max-width:720px}
+@media(max-width:900px){.lifeops-node-row{flex-wrap:wrap}.lifeops-flow-step{flex:1 1 calc(50% - 12px)}.lifeops-flow-connector{flex:0 0 20px}.lifeops-arch-node{min-height:105px}.lifeops-security-boundary{grid-template-columns:1fr}.lifeops-security-boundary ul{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.lifeops-flow-toolbar{display:grid;grid-template-columns:1fr}.lifeops-flow-toolbar button{text-align:left}.lifeops-architecture-map{padding:58px 13px 16px}.private-boundary{top:31px;left:13px;right:auto}.lifeops-node-row{display:flex;flex-direction:column;gap:7px}.lifeops-flow-step{width:100%;flex-direction:column;gap:5px}.lifeops-arch-node{width:100%;min-height:78px;flex-direction:row;align-items:center;justify-content:flex-start;padding:12px}.lifeops-arch-node-icon{flex:0 0 28px}.lifeops-arch-node-copy strong{font-size:15px}.lifeops-arch-node-copy small{font-size:7px}.lifeops-arch-node-copy em{font-size:9px}.lifeops-flow-connector{flex:0 0 17px;flex-direction:column}.lifeops-flow-connector span{width:1px;height:9px;flex:0 0 9px}.lifeops-flow-connector span:after{animation:lifeops-flow-pulse-vertical 2.2s ease-in-out infinite}.lifeops-flow-connector svg{transform:rotate(90deg)}
+@keyframes lifeops-flow-pulse-vertical{55%,100%{transform:translateY(100%)}}
+.mode-events .lifeops-flow-connector{transform:scaleY(-1)}
+.lifeops-arch-footnote{font-size:6px}.lifeops-node-inspector{grid-template-columns:1fr;padding:17px}.lifeops-inspector-main h4{font-size:22px}.lifeops-security-boundary ul{grid-template-columns:1fr}.lifeops-tradeoffs-heading{align-items:flex-start;flex-direction:column}.lifeops-tradeoff summary{grid-template-columns:25px 1fr 18px;gap:8px}.lifeops-tradeoff summary em{grid-column:2/3}.lifeops-tradeoff summary>svg{grid-column:3;grid-row:1}.lifeops-tradeoff>p{margin:0 0 18px 33px}}
+@media(prefers-reduced-motion:reduce){.lifeops-flow-connector span:after{animation:none}.lifeops-flow-connector span:after{transform:none}.lifeops-arch-node,.lifeops-flow-toolbar button,.lifeops-tradeoff summary>svg{transition:none}}

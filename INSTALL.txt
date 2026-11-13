@@ -1,0 +1,14 @@
+PHASE 6 — LIFEOPS INTERACTIVE ARCHITECTURE
+
+Copy these files into the existing Soumyadeep-Portfolio-Rebuild repository:
+
+1) app/projects/lifeops/page.tsx
+2) app/components/lifeops-architecture.tsx
+3) app/globals.css
+
+The globals.css in this patch is based on the latest uploaded portfolio stylesheet and preserves its existing styles, including the orbital toolkit, HomeLab page, live status panel, and interactive hover treatment. Merge rather than overwrite if you have made newer CSS changes since uploading it.
+
+Then rebuild from the portfolio repository:
+  docker compose up -d --build
+
+The interactive diagram is a portfolio-only explanatory view. It does not connect to or inspect the running LifeOps application.
