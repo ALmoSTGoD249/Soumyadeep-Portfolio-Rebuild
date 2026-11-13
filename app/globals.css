@@ -391,3 +391,19 @@ footer{background:var(--dark);color:#F7F5EF;padding:65px 11vw 25px}.footer-top{d
   .tech-constellation .tech-orbit-item,
   .tech-constellation .tech-orbit-item .tech-node{animation-duration:120s!important;}
 }
+
+
+/* Ten-node orbit balance: retain clear spacing on narrow screens. */
+@media(max-width:800px){
+  .tech-constellation{height:500px;max-width:540px;}
+  .tech-constellation .tech-orbit-item.track-0{--orbit-radius:104px;}
+  .tech-constellation .tech-orbit-item.track-1{--orbit-radius:158px;}
+  .tech-constellation .tech-orbit-item.track-2{--orbit-radius:210px;}
+}
+@media(max-width:420px){
+  .tech-constellation{height:460px;}
+  .tech-constellation .tech-orbit-item.track-0{--orbit-radius:88px;}
+  .tech-constellation .tech-orbit-item.track-1{--orbit-radius:136px;}
+  .tech-constellation .tech-orbit-item.track-2{--orbit-radius:184px;}
+  .tech-constellation .tech-node{font-size:8px;padding:7px 9px;}
+}

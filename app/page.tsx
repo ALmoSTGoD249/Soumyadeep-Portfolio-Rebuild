@@ -62,9 +62,7 @@ export default function Home() {
     { name: "Agentic AI", group: "AI SOLUTIONS", detail: "Exploring agentic workflows and AI-assisted solution development." },
     { name: "React", group: "FRONTEND", detail: "Building interactive interfaces and product experiences with React and TypeScript." },
     { name: "PostgreSQL", group: "DATA", detail: "Relational data modelling and persistence for personal application projects." },
-    { name: "TypeScript", group: "LANGUAGE & TOOLING", detail: "Typed application development across React interfaces, API integrations and maintainable frontend code." },
     { name: "FastAPI", group: "BACKEND ENGINEERING", detail: "Building Python APIs with structured routing, request validation and service-layer organisation." },
-    { name: "Nginx", group: "WEB & REVERSE PROXY", detail: "Serving frontend applications and routing requests to backend services in containerised deployments." },
     { name: "Git", group: "VERSION CONTROL", detail: "Tracking application changes, maintaining project history and collaborating through Git-based workflows." }
   ];
   const runTerminalCommand = (raw: string) => {
@@ -74,7 +72,7 @@ export default function Home() {
       help: "Available: about · projects · stack · experience · contact · clear",
       about: "Soumyadeep Maity — software, cloud and systems enthusiast based in Kolkata, India.",
       projects: "Featured: LifeOps · LifeTracker · RacingNewsNetwork. Scroll to Selected Work for details.",
-      stack: "Azure · Docker · Linux · Python · React · TypeScript · PostgreSQL · Agentic AI",
+      stack: "Azure · DevOps · Docker · Linux · Python · React · FastAPI · PostgreSQL · Agentic AI · Git",
       experience: "Tata Consultancy Services — Associate System Engineer. Functional focus: Azure DevOps, Cloud Platform Engineering and Agentic AI Solution Development.",
       contact: "Email: soumadeepmaity2@gmail.com · LinkedIn: linkedin.com/in/soumyadeep-maity-3913101b4",
       clear: "__CLEAR__"
@@ -340,13 +338,13 @@ export default function Home() {
           <div className="tech-constellation" aria-label="Interactive technology constellation">
             <div className="constellation-lines" aria-hidden="true"/>
             {technologies.map((tech, index) => {
-              // Four nodes per track. Explicit track classes keep the CSS radii
-              // independent of sibling order (the orbit guide is also a div).
+              // Ten nodes across three deliberately balanced tracks: 4 / 3 / 3.
+              // Track assignment is explicit and independent of CSS sibling selectors.
               const track = index % 3;
               const slot = Math.floor(index / 3);
-              const slotsPerTrack = 4;
-              const angle = slot * 90 + track * 45;
-              const durations = [42, 48, 54];
+              const slotsPerTrack = [4, 3, 3][track];
+              const angle = slot * (360 / slotsPerTrack) + track * 18;
+              const durations = [44, 52, 60];
               const orbitStyle = {
                 "--orbit-duration": `${durations[track]}s`,
                 "--orbit-delay": `${-(slot / slotsPerTrack) * durations[track]}s`,
