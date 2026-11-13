@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import LifeTrackerArchitecture from "../../components/lifetracker-architecture";
 import { ArrowLeft, ArrowUpRight, Wallet, Users, Receipt, CalendarDays, CheckSquare, StickyNote, Database, ShieldCheck, Layers3 } from "lucide-react";
 
 const capabilities = [
@@ -93,13 +94,14 @@ export default function LifeTrackerCaseStudy() {
         </div>
       </section>
 
-      <section className="case-architecture">
-        <div className="case-section-index">05 / IMPLEMENTATION</div>
+      <section className="case-architecture case-architecture-interactive lifetracker-architecture-section">
+        <div className="case-section-index">05 / SYSTEM DESIGN</div>
         <div className="case-architecture-content">
-          <span className="case-eyebrow">SELF-HOSTED APPLICATION ARCHITECTURE</span>
-          <h2>Lightweight frontend.<br /><em>Structured backend.</em></h2>
-          <p>The deployed application uses a static HTML, CSS and JavaScript frontend served by Nginx, a FastAPI backend on the internal application network and PostgreSQL 16 for persistent data. Docker Compose manages the frontend, backend, database and backup service.</p>
+          <span className="case-eyebrow">TRACE A WORKFLOW THROUGH THE STACK</span>
+          <h2>Explore the<br /><em>architecture.</em></h2>
+          <p>Follow an expense, shared bill, budget view or backup workflow through the deployed application. Select each component to inspect its role and operational boundary.</p>
           <div className="case-stack">{stack.map((item) => <span key={item}>{item}</span>)}</div>
+          <LifeTrackerArchitecture />
           <div className="case-architecture-note"><Database size={19} /><p><strong>Operational details matter.</strong><br />The database uses a persistent Docker volume, with a separate backup service writing database backups to a mounted backups directory. The backend health endpoint is available at <code>/api/health</code>.</p></div>
         </div>
       </section>
