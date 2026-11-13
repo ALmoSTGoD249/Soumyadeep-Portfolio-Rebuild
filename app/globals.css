@@ -1074,3 +1074,530 @@ button:active, .round-link:active, .case-footer-link:active {
   .case-study .case-back { color: #E5E9DE; }
   .case-study .case-footer-bottom { border-color: #414A3C; }
 }
+
+
+
+/* PHASE 8.3 — Site-wide mobile dark theme normalization.
+   Covers every homepage section, all case studies, and embedded explorers.
+   Desktop/tablet/foldable layouts remain on the original light theme. */
+@media (max-width: 600px) and (pointer: coarse) and (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #171A16;
+    --ink: #F0F0E8;
+    --muted: #AEB6A5;
+    --line: #3B4337;
+    --accent: #A8BC92;
+    --dark: #10130F;
+    --signal: #F0644F;
+  }
+
+  body, main, .case-study {
+    background: #171A16 !important;
+    color: #F0F0E8 !important;
+  }
+
+  /* Global typography and dividers */
+  .eyebrow, .section-label, .hero-kicker, .hero-index, .hero-scroll,
+  .project-meta, .archive-card-meta, .footer-location,
+  .footer-bottom>span, .case-kicker, .case-eyebrow, .case-section-index,
+  .case-topline, .case-image-label, .case-hero-note, .detail-prompt {
+    color: #AEB6A5 !important;
+  }
+  p, li, small, .muted, .section-heading p, .experience-aside p,
+  .about-copy p, .project-info p, .archive-card p {
+    color: #C0C8B9;
+  }
+  h1, h2, h3, h4, strong, .wordmark, .navlinks a,
+  .project-info h3, .archive-card h3, .experience-main h2,
+  .about-copy h2, .section-heading h2, .archive-head h2 {
+    color: #F0F0E8;
+  }
+  .eyebrow em, h2 em, h3 em { color: #A8BC92; }
+  hr, .hero-bottom, .experience-role, .capability-grid,
+  .archive-section, .footer-bottom, .case-capability-grid {
+    border-color: #3B4337 !important;
+  }
+
+  /* Header, navigation and homepage hero */
+  .topline, .nav, .nav.open {
+    background: #171A16 !important;
+    color: #F0F0E8 !important;
+    border-color: #3B4337 !important;
+  }
+  .nav.open { box-shadow: 0 12px 24px rgba(0,0,0,.28); }
+  .navlinks a, .nav-cta, .menu-toggle { color: #F0F0E8 !important; }
+  .hero { background: #171A16 !important; color: #F0F0E8 !important; }
+  .hero h1, .hero-title-wrap, .hero-bottom p { color: #F0F0E8 !important; }
+  .hero-orbit { border-color: rgba(168,188,146,.30) !important; }
+  .hero-orbit-two { border-color: rgba(240,100,79,.24) !important; }
+  .hero-bottom { border-color: #3B4337 !important; }
+  .round-link { color: #F0F0E8 !important; border-color: #697661 !important; }
+
+  /* Manifesto and profile */
+  .dark-interlude { background: #10130F !important; color: #F0F0E8 !important; }
+  .dark-interlude .eyebrow, .dark-interlude .dark-bottom { color: #A8BC92 !important; }
+  .about-section, .experience-section {
+    background: #1C211B !important;
+    color: #F0F0E8 !important;
+  }
+  .portrait-wrap { background: #293126 !important; }
+  .portrait-caption { color: #F0F0E8 !important; }
+  .experience-role, .career-block, .career-tags, .tags span {
+    border-color: #414A3C !important;
+    color: #D7DED0 !important;
+  }
+  .experience-status { color: #A8BC92 !important; }
+
+  /* Work cards, project images and archive */
+  .work-section, .archive-section {
+    background: #171A16 !important;
+    color: #F0F0E8 !important;
+  }
+  .project, .project-info, .archive-card { color: #F0F0E8 !important; }
+  .project-meta, .project-info p, .archive-card p { color: #B8C1B1 !important; }
+  .project-visual, .archive-image { background: #252D23 !important; }
+  .project-action, .text-link, .archive-toggle {
+    color: #E5E9DE !important;
+    border-color: #697661 !important;
+  }
+
+  /* Capabilities and HomeLab promo */
+  .capabilities {
+    background: #20251F !important;
+    color: #F0F0E8 !important;
+  }
+  .capabilities .section-heading h2, .capabilities .capability h3,
+  .capabilities .homelab-promo h3 { color: #F0F0E8 !important; }
+  .capabilities .section-heading p, .capabilities .capability p {
+    color: #C0C8B9 !important;
+  }
+  .capabilities .capability {
+    background: transparent !important;
+    border-color: #414A3C !important;
+  }
+  .capabilities .capability>span, .capabilities .capability small,
+  .capabilities .homelab-promo>div>span { color: #AEBB9F !important; }
+  .capabilities .homelab-promo { border-color: #414A3C !important; }
+  .capabilities .homelab-promo h3 em { color: #A8BC92 !important; }
+  .capabilities .homelab-promo>a {
+    color: #F0F0E8 !important;
+    border-color: #84917B !important;
+  }
+
+  /* Terminal and status panel */
+  .terminal-section { background: #171A16 !important; color: #F0F0E8 !important; }
+  .terminal-card { background: #20251F !important; border-color: #414A3C !important; }
+  .terminal-top { background: #252D23 !important; border-color: #414A3C !important; }
+  .terminal-body, .terminal-output, .terminal-form, .terminal-form input {
+    color: #E5E9DE !important;
+  }
+  .terminal-form input { background: #171A16 !important; border-color: #59634F !important; }
+  .system-status-section { background: #202820 !important; color: #F0F0E8 !important; }
+  .system-status-heading h2, .system-status-heading h2 em { color: #F0F0E8 !important; }
+  .system-status-heading>p, .system-status-overview, .system-status-foot {
+    color: #C0C8B9 !important;
+  }
+  .system-status-card, .system-service {
+    background: #252D23 !important;
+    border-color: #414A3C !important;
+    color: #F0F0E8 !important;
+  }
+  .system-service-name, .system-service-detail, .system-service-latency {
+    color: #D7DED0 !important;
+  }
+
+  /* All project detail pages: shared case-study structure */
+  .case-study { background: #171A16 !important; color: #F0F0E8 !important; }
+  .case-topline { background: #171A16 !important; border-color: #3B4337 !important; }
+  .case-hero, .case-overview, .case-problem, .case-capabilities,
+  .case-design, .case-architecture, .case-reflection {
+    color: #F0F0E8 !important;
+  }
+  .case-hero { background: #171A16 !important; }
+  .case-title-row h1, .case-subtitle { color: #F0F0E8 !important; }
+  .case-title-row h1 span { color: #A8BC92 !important; }
+  .case-overview, .case-design {
+    background: #20251F !important;
+  }
+  .case-overview-copy h2, .case-design h2,
+  .case-overview-copy h2 em, .case-design h2 em {
+    color: #F0F0E8 !important;
+  }
+  .case-overview-copy h2 em, .case-design h2 em { color: #A8BC92 !important; }
+  .case-overview-copy p, .case-design-copy>p,
+  .case-principles small, .case-principles strong {
+    color: #C0C8B9 !important;
+  }
+  .case-problem, .case-reflection { background: #10130F !important; }
+  .case-problem h2, .case-reflection h2,
+  .case-problem h2 em, .case-reflection h2 em { color: #F0F0E8 !important; }
+  .case-problem-grid p, .case-reflection>div>p { color: #C0C8B9 !important; }
+  .case-capabilities { background: #171A16 !important; }
+  .case-section-heading h2, .case-section-heading h2 em,
+  .case-capability h3 { color: #F0F0E8 !important; }
+  .case-capability p { color: #C0C8B9 !important; }
+  .case-capability-top, .case-capability-top span { color: #A8BC92 !important; }
+  .case-capability-grid, .case-capability { border-color: #414A3C !important; }
+  .case-architecture { background: #1C211B !important; }
+  .case-architecture-content h2, .case-architecture-content h2 em { color: #F0F0E8 !important; }
+  .case-architecture-content>p, .case-architecture-note p { color: #C0C8B9 !important; }
+  .case-architecture-note { background: #252D23 !important; border-color: #414A3C !important; }
+  .case-stack span { background: #20251F !important; border-color: #59634F !important; color: #D7DED0 !important; }
+  .case-principles { border-color: #414A3C !important; }
+  .case-principles span { color: #A8BC92 !important; }
+  .case-footer { background: #10130F !important; color: #F0F0E8 !important; }
+  .case-footer h2, .case-footer h2 em { color: #F0F0E8 !important; }
+  .case-footer h2 em { color: #A8BC92 !important; }
+  .case-footer-link, .case-footer-bottom, .case-back { color: #D7DED0 !important; }
+  .case-footer-link, .case-footer-bottom { border-color: #414A3C !important; }
+
+  /* Interactive LifeOps architecture explorer */
+  .lifeops-architecture-explorer, .lifeops-flow-intro,
+  .lifeops-node-inspector, .lifeops-security-boundary,
+  .lifeops-tradeoffs, .lifeops-tradeoff {
+    background: #20251F !important;
+    color: #F0F0E8 !important;
+    border-color: #414A3C !important;
+  }
+  .lifeops-flow-toolbar { border-color: #414A3C !important; }
+  .lifeops-flow-toolbar button {
+    background: #252D23 !important;
+    color: #D7DED0 !important;
+    border-color: #59634F !important;
+  }
+  .lifeops-flow-toolbar button.is-active {
+    background: #A8BC92 !important;
+    color: #171A16 !important;
+    border-color: #A8BC92 !important;
+  }
+  .lifeops-arch-node, .lifeops-flow-step { color: #F0F0E8 !important; }
+  .lifeops-arch-node-copy p, .lifeops-inspector-main p,
+  .lifeops-flow-note, .lifeops-arch-footnote { color: #C0C8B9 !important; }
+
+  /* Interactive LifeTracker architecture explorer */
+  .lifetracker-architecture-explorer, .lifetracker-node-inspector,
+  .lifetracker-flow-intro, .lifetracker-design-decisions,
+  .lifetracker-flow-note, .lifetracker-decision {
+    background: #20251F !important;
+    color: #F0F0E8 !important;
+    border-color: #414A3C !important;
+  }
+  .lifetracker-flow-toolbar {
+    background: #252D23 !important;
+    border-color: #414A3C !important;
+  }
+  .lifetracker-flow-toolbar button {
+    background: transparent !important;
+    color: #D7DED0 !important;
+    border-color: #59634F !important;
+  }
+  .lifetracker-flow-toolbar button.is-active {
+    background: #A8BC92 !important;
+    color: #171A16 !important;
+    border-color: #A8BC92 !important;
+  }
+  .lifetracker-flow-intro p, .lifetracker-inspector-main p,
+  .lifetracker-flow-note p, .lifetracker-decision p,
+  .lifetracker-design-decisions p { color: #C0C8B9 !important; }
+  .lifetracker-inspector-facts span { color: #D7DED0 !important; border-color: #59634F !important; }
+  .lifetracker-flow-connector span { background: #84917B !important; }
+
+  /* Interactive HomeLab architecture explorer */
+  .homelab-explorer-section { background: #20251F !important; color: #F0F0E8 !important; }
+  .homelab-explorer-content h2, .homelab-explorer-content h2 em { color: #F0F0E8 !important; }
+  .homelab-explorer-content h2 em { color: #A8BC92 !important; }
+  .homelab-explorer-intro { color: #C0C8B9 !important; }
+  .homelab-architecture { color: #F0F0E8 !important; }
+  .homelab-map { background: #10130F !important; }
+  .homelab-node-detail, .homelab-phase7 .homelab-inspector,
+  .homelab-phase7 .homelab-flow-note {
+    background: #252D23 !important;
+    color: #F0F0E8 !important;
+    border-color: #414A3C !important;
+  }
+  .homelab-phase7 .homelab-flow-tabs button {
+    background: #20251F !important;
+    color: #D7DED0 !important;
+    border-color: #59634F !important;
+  }
+  .homelab-phase7 .homelab-flow-tabs button.active {
+    background: #A8BC92 !important;
+    color: #171A16 !important;
+  }
+  .homelab-phase7 .homelab-flow-heading p,
+  .homelab-phase7 .homelab-inspector-copy p,
+  .homelab-phase7 .homelab-flow-note p { color: #C0C8B9 !important; }
+
+  /* Contact and footer */
+  footer { background: #10130F !important; color: #F0F0E8 !important; }
+  footer h2, footer h2 em, .footer-top, .footer-bottom, .socials a {
+    color: #F0F0E8 !important;
+  }
+  .footer-top h2 em { color: #A8BC92 !important; }
+  .footer-location, .footer-bottom>span { color: #AEB6A5 !important; }
+  .email-link, .copy-email { color: #F0F0E8 !important; border-color: #59634F !important; }
+  .socials { border-color: #3B4337 !important; }
+}
+
+
+
+/* PHASE 8.4 — User-selectable theme on desktop and wide phones.
+   Narrow phones continue to follow the operating-system appearance automatically. */
+.portfolio-theme-toggle {
+  position: fixed;
+  z-index: 120;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 0 15px;
+  border: 1px solid var(--line, #cbd2c2);
+  border-radius: 999px;
+  background: var(--paper, #f7f5ef);
+  color: var(--ink, #20231e);
+  box-shadow: 0 8px 26px rgba(20,24,18,.12);
+  font: 9px var(--mono, monospace);
+  letter-spacing: .09em;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;
+}
+.portfolio-theme-toggle:hover { transform: translateY(-2px); }
+.portfolio-theme-toggle:focus-visible { outline: 2px solid var(--accent, #9caf88); outline-offset: 4px; }
+.portfolio-theme-toggle[data-ready="false"] { visibility: hidden; }
+
+@media (max-width: 600px) and (pointer: coarse) {
+  .portfolio-theme-toggle { display: none; }
+}
+
+/* Compact capability cards: deliberate hierarchy instead of tall, awkward panels. */
+@media (max-width: 680px) {
+  .capabilities { padding: 66px 5vw 76px; }
+  .capability-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 34px;
+    border: 0;
+  }
+  .capability,
+  .capability:not(:first-child),
+  .capability:last-child {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) auto;
+    align-items: center;
+    min-height: 0;
+    padding: 18px 17px 20px;
+    border: 1px solid #cbd2c2;
+    background: rgba(255,255,255,.28);
+    gap: 0 12px;
+  }
+  .capability>span { grid-column: 1; grid-row: 1; float: none; align-self: center; }
+  .capability>svg { grid-column: 2; grid-row: 1; justify-self: end; width: 21px; height: 21px; }
+  .capability h3 {
+    grid-column: 1 / -1;
+    margin: 18px 0 9px;
+    font-size: clamp(25px, 7vw, 31px);
+    line-height: 1.02;
+  }
+  .capability p { grid-column: 1 / -1; max-width: none; margin: 0; font-size: 12px; line-height: 1.7; }
+  .capability small { grid-column: 1 / -1; margin-top: 14px; font-size: 8px; line-height: 1.6; }
+  .homelab-promo { margin-top: 34px; padding-top: 23px; gap: 22px; }
+  .homelab-promo h3 { font-size: clamp(25px, 7vw, 34px); }
+  .homelab-promo>a { min-height: 42px; align-items: center; }
+}
+@media (min-width: 681px) and (max-width: 900px) {
+  .capability { padding-right: 18px; min-height: 280px; }
+  .capability:not(:first-child) { padding-left: 18px; }
+  .capability h3 { font-size: 27px; }
+}
+
+/* Explicit dark theme. Used by the manual toggle on desktop and wide phones. */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #171a16;
+  --ink: #f0f0e8;
+  --muted: #aeb6a5;
+  --line: #3b4337;
+  --accent: #a8bc92;
+  --dark: #10130f;
+  --signal: #f0644f;
+}
+html[data-theme="dark"] body,
+html[data-theme="dark"] main,
+html[data-theme="dark"] .case-study {
+  background: #171a16 !important;
+  color: #f0f0e8 !important;
+}
+html[data-theme="dark"] .topline,
+html[data-theme="dark"] .nav,
+html[data-theme="dark"] .nav.open,
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .work-section,
+html[data-theme="dark"] .archive-section,
+html[data-theme="dark"] .terminal-section {
+  background: #171a16 !important;
+  color: #f0f0e8 !important;
+  border-color: #3b4337 !important;
+}
+html[data-theme="dark"] .about-section,
+html[data-theme="dark"] .experience-section,
+html[data-theme="dark"] .case-overview,
+html[data-theme="dark"] .case-design,
+html[data-theme="dark"] .case-architecture,
+html[data-theme="dark"] .homelab-explorer-section {
+  background: #20251f !important;
+  color: #f0f0e8 !important;
+}
+html[data-theme="dark"] .capabilities {
+  background: #20251f !important;
+  color: #f0f0e8 !important;
+}
+html[data-theme="dark"] .dark-interlude,
+html[data-theme="dark"] .case-problem,
+html[data-theme="dark"] .case-reflection,
+html[data-theme="dark"] .case-footer,
+html[data-theme="dark"] footer {
+  background: #10130f !important;
+  color: #f0f0e8 !important;
+}
+html[data-theme="dark"] .section-heading h2,
+html[data-theme="dark"] .archive-head h2,
+html[data-theme="dark"] .about-copy h2,
+html[data-theme="dark"] .experience-main h2,
+html[data-theme="dark"] .hero h1,
+html[data-theme="dark"] .case-study h1,
+html[data-theme="dark"] .case-study h2,
+html[data-theme="dark"] .case-study h3,
+html[data-theme="dark"] .footer-top h2,
+html[data-theme="dark"] .capability h3,
+html[data-theme="dark"] .homelab-promo h3 {
+  color: #f0f0e8 !important;
+}
+html[data-theme="dark"] .case-title-row h1 span,
+html[data-theme="dark"] .case-study h2 em,
+html[data-theme="dark"] .footer-top h2 em,
+html[data-theme="dark"] .homelab-promo h3 em,
+html[data-theme="dark"] .about-copy h2 em {
+  color: #a8bc92 !important;
+}
+html[data-theme="dark"] p,
+html[data-theme="dark"] li,
+html[data-theme="dark"] small,
+html[data-theme="dark"] .section-heading p,
+html[data-theme="dark"] .about-copy p,
+html[data-theme="dark"] .experience-aside p,
+html[data-theme="dark"] .project-info p,
+html[data-theme="dark"] .archive-card p,
+html[data-theme="dark"] .case-study p,
+html[data-theme="dark"] .capability p,
+html[data-theme="dark"] .system-status-heading>p {
+  color: #c0c8b9;
+}
+html[data-theme="dark"] .eyebrow,
+html[data-theme="dark"] .section-label,
+html[data-theme="dark"] .hero-kicker,
+html[data-theme="dark"] .hero-index,
+html[data-theme="dark"] .hero-scroll,
+html[data-theme="dark"] .project-meta,
+html[data-theme="dark"] .archive-card-meta,
+html[data-theme="dark"] .case-kicker,
+html[data-theme="dark"] .case-eyebrow,
+html[data-theme="dark"] .case-section-index,
+html[data-theme="dark"] .footer-location,
+html[data-theme="dark"] .footer-bottom>span,
+html[data-theme="dark"] .capability>span,
+html[data-theme="dark"] .capability small {
+  color: #aeb6a5 !important;
+}
+html[data-theme="dark"] .capability,
+html[data-theme="dark"] .archive-card,
+html[data-theme="dark"] .case-capability,
+html[data-theme="dark"] .case-architecture-note,
+html[data-theme="dark"] .lifeops-architecture-explorer,
+html[data-theme="dark"] .lifeops-flow-intro,
+html[data-theme="dark"] .lifeops-node-inspector,
+html[data-theme="dark"] .lifeops-security-boundary,
+html[data-theme="dark"] .lifetracker-architecture-explorer,
+html[data-theme="dark"] .lifetracker-node-inspector,
+html[data-theme="dark"] .lifetracker-flow-intro,
+html[data-theme="dark"] .lifetracker-design-decisions,
+html[data-theme="dark"] .lifetracker-flow-note,
+html[data-theme="dark"] .homelab-phase7 .homelab-inspector,
+html[data-theme="dark"] .homelab-phase7 .homelab-flow-note {
+  background: #20251f !important;
+  color: #f0f0e8 !important;
+  border-color: #414a3c !important;
+}
+html[data-theme="dark"] .capability-grid,
+html[data-theme="dark"] .case-capability-grid,
+html[data-theme="dark"] .case-capability,
+html[data-theme="dark"] .case-principles,
+html[data-theme="dark"] .footer-bottom,
+html[data-theme="dark"] .socials {
+  border-color: #414a3c !important;
+}
+html[data-theme="dark"] .homelab-promo,
+html[data-theme="dark"] .homelab-promo>a,
+html[data-theme="dark"] .case-stack span,
+html[data-theme="dark"] .tags span,
+html[data-theme="dark"] .case-footer-link,
+html[data-theme="dark"] .case-back,
+html[data-theme="dark"] .project-action,
+html[data-theme="dark"] .text-link,
+html[data-theme="dark"] .email-link,
+html[data-theme="dark"] .copy-email {
+  color: #e5e9de !important;
+  border-color: #697661 !important;
+}
+html[data-theme="dark"] .project-visual,
+html[data-theme="dark"] .archive-image,
+html[data-theme="dark"] .portrait-wrap {
+  background: #252d23 !important;
+}
+html[data-theme="dark"] .terminal-card,
+html[data-theme="dark"] .system-status-card,
+html[data-theme="dark"] .system-service {
+  background: #20251f !important;
+  color: #f0f0e8 !important;
+  border-color: #414a3c !important;
+}
+html[data-theme="dark"] .terminal-top,
+html[data-theme="dark"] .lifetracker-flow-toolbar,
+html[data-theme="dark"] .homelab-phase7 .homelab-flow-tabs button,
+html[data-theme="dark"] .lifeops-flow-toolbar button,
+html[data-theme="dark"] .lifetracker-flow-toolbar button {
+  background: #252d23 !important;
+  color: #d7ded0 !important;
+  border-color: #59634f !important;
+}
+html[data-theme="dark"] .lifetracker-flow-toolbar button.is-active,
+html[data-theme="dark"] .lifeops-flow-toolbar button.is-active,
+html[data-theme="dark"] .homelab-phase7 .homelab-flow-tabs button.active {
+  background: #a8bc92 !important;
+  color: #171a16 !important;
+  border-color: #a8bc92 !important;
+}
+html[data-theme="dark"] .case-footer h2,
+html[data-theme="dark"] .case-footer h2 em,
+html[data-theme="dark"] .footer-top h2,
+html[data-theme="dark"] .footer-top h2 em {
+  color: #f0f0e8 !important;
+}
+html[data-theme="dark"] .case-footer h2 em,
+html[data-theme="dark"] .footer-top h2 em { color: #a8bc92 !important; }
+html[data-theme="dark"] .portfolio-theme-toggle {
+  background: #252d23;
+  color: #f0f0e8;
+  border-color: #59634f;
+  box-shadow: 0 8px 26px rgba(0,0,0,.32);
+}
+
+/* Respect reduced motion for theme changes and touch interaction. */
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-theme-toggle { transition: none !important; }
+  .portfolio-theme-toggle:hover { transform: none; }
+}
