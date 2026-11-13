@@ -1601,3 +1601,182 @@ html[data-theme="dark"] .portfolio-theme-toggle {
   .portfolio-theme-toggle { transition: none !important; }
   .portfolio-theme-toggle:hover { transform: none; }
 }
+
+
+
+/* PHASE 8.5 — Orbit, case-study cards, manifesto contrast and cursor layering. */
+
+/* The manifesto is an intentionally light editorial panel in both themes.
+   Keep its text dark; only the emphasized phrase uses sage. */
+html[data-theme="dark"] .manifesto {
+  background: #E8EBE1 !important;
+  color: #252820 !important;
+}
+html[data-theme="dark"] .manifesto .section-label,
+html[data-theme="dark"] .manifesto .manifesto-foot {
+  color: #74776D !important;
+}
+html[data-theme="dark"] .manifesto .manifesto-text {
+  color: #252820 !important;
+}
+html[data-theme="dark"] .manifesto .manifesto-text em {
+  color: #82966F !important;
+}
+
+/* Case-study capability cards now follow the homepage toolkit-card language:
+   individual panels, compact rhythm, aligned number/icon, heading, then copy. */
+@media (max-width: 680px) {
+  .case-capability-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-top: 30px !important;
+    border-top: 0 !important;
+  }
+  .case-capability,
+  .case-capability:nth-child(odd),
+  .case-capability:nth-child(even) {
+    display: grid !important;
+    grid-template-columns: minmax(0,1fr) auto;
+    align-items: center;
+    gap: 0 12px;
+    min-height: 0 !important;
+    padding: 18px 17px 20px !important;
+    border: 1px solid var(--line) !important;
+    background: var(--paper) !important;
+    color: var(--ink) !important;
+  }
+  .case-capability-top {
+    display: contents !important;
+  }
+  .case-capability-top span {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    color: var(--accent) !important;
+    font: 9px var(--mono);
+  }
+  .case-capability-top svg {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    width: 21px;
+    height: 21px;
+    color: var(--accent);
+  }
+  .case-capability h3 {
+    grid-column: 1 / -1;
+    margin: 18px 0 9px !important;
+    font-size: clamp(23px, 6.2vw, 29px) !important;
+    line-height: 1.06;
+    letter-spacing: -.045em;
+  }
+  .case-capability p {
+    grid-column: 1 / -1;
+    max-width: none !important;
+    margin: 0 !important;
+    color: var(--muted) !important;
+    font-size: 12px !important;
+    line-height: 1.7 !important;
+  }
+}
+
+/* Orbit: keep nodes moving on touch screens. Sticky :hover/focus used to freeze
+   each ring at unrelated angles, causing the nodes to bunch up. */
+@media (max-width: 760px) {
+  .explorer-section {
+    overflow: hidden;
+    padding: 76px 5vw 82px !important;
+  }
+  .explorer-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0,1fr) !important;
+    gap: 42px !important;
+    margin-top: 38px !important;
+  }
+  .tech-constellation {
+    width: 100%;
+    max-width: 430px;
+    height: 340px !important;
+    margin-inline: auto;
+    overflow: visible;
+  }
+  .tech-orbit-item {
+    --orbit-radius: 125px !important;
+    animation-play-state: running !important;
+  }
+  .tech-orbit-item:nth-child(even) {
+    --orbit-radius: 88px !important;
+  }
+  .tech-orbit-item .tech-node {
+    animation-play-state: running !important;
+    padding: 9px 12px;
+    font-size: 9px;
+  }
+  .tech-constellation:hover .tech-orbit-item,
+  .tech-constellation:focus-within .tech-orbit-item,
+  .tech-constellation:hover .tech-orbit-item .tech-node,
+  .tech-constellation:focus-within .tech-orbit-item .tech-node {
+    animation-play-state: running !important;
+  }
+  .constellation-lines { inset: 4% !important; }
+  .tech-detail {
+    min-height: 0 !important;
+    padding-top: 22px;
+  }
+  .tech-detail h2 {
+    margin: 22px 0 14px !important;
+    font-size: clamp(44px, 12vw, 62px) !important;
+  }
+  .tech-detail p { min-height: 0 !important; }
+}
+
+/* Dark theme must style the entire interactive toolkit, not just the detail copy.
+   This also restores readable node labels when mobile follows system dark mode. */
+html[data-theme="dark"] .explorer-section {
+  background: #20251F !important;
+  color: #F0F0E8 !important;
+}
+html[data-theme="dark"] .explorer-section .section-label,
+html[data-theme="dark"] .explorer-section .detail-prompt {
+  color: #AEBB9F !important;
+}
+html[data-theme="dark"] .constellation-lines,
+html[data-theme="dark"] .constellation-lines::before,
+html[data-theme="dark"] .constellation-lines::after {
+  border-color: rgba(168,188,146,.34) !important;
+}
+html[data-theme="dark"] .tech-node {
+  background: #30382D !important;
+  color: #F0F0E8 !important;
+  border-color: #738269 !important;
+  box-shadow: 0 5px 18px rgba(0,0,0,.24) !important;
+}
+html[data-theme="dark"] .tech-node.active {
+  background: #A8BC92 !important;
+  color: #171A16 !important;
+  border-color: #A8BC92 !important;
+}
+html[data-theme="dark"] .constellation-core {
+  background: #10130F !important;
+  color: #F0F0E8 !important;
+  box-shadow: 0 0 0 12px rgba(168,188,146,.18) !important;
+}
+html[data-theme="dark"] .tech-detail {
+  border-color: #414A3C !important;
+}
+html[data-theme="dark"] .tech-detail h2 {
+  color: #F0F0E8 !important;
+}
+html[data-theme="dark"] .tech-detail p {
+  color: #C0C8B9 !important;
+}
+
+/* Keep the fixed theme control underneath the custom cursor layer. */
+.portfolio-theme-toggle { z-index: 80 !important; }
+.cursor-dot, .cursor-ring { z-index: 160 !important; }
+
+/* The root body cursor is native on touch devices; avoid a fake cursor layer. */
+@media (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none !important; }
+}
