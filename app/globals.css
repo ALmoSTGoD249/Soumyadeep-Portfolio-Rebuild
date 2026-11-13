@@ -288,3 +288,72 @@ footer{background:var(--dark);color:#F7F5EF;padding:65px 11vw 25px}.footer-top{d
 .mode-events .lifeops-flow-connector{transform:scaleY(-1)}
 .lifeops-arch-footnote{font-size:6px}.lifeops-node-inspector{grid-template-columns:1fr;padding:17px}.lifeops-inspector-main h4{font-size:22px}.lifeops-security-boundary ul{grid-template-columns:1fr}.lifeops-tradeoffs-heading{align-items:flex-start;flex-direction:column}.lifeops-tradeoff summary{grid-template-columns:25px 1fr 18px;gap:8px}.lifeops-tradeoff summary em{grid-column:2/3}.lifeops-tradeoff summary>svg{grid-column:3;grid-row:1}.lifeops-tradeoff>p{margin:0 0 18px 33px}}
 @media(prefers-reduced-motion:reduce){.lifeops-flow-connector span:after{animation:none}.lifeops-flow-connector span:after{transform:none}.lifeops-arch-node,.lifeops-flow-toolbar button,.lifeops-tradeoff summary>svg{transition:none}}
+
+
+/* Orbit repair — animate the constellation nodes around the central mark. */
+.tech-constellation {
+  --orbit-ease: linear;
+}
+.tech-orbit-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  z-index: 3;
+  animation: constellation-orbit var(--orbit-duration) var(--orbit-ease) var(--orbit-delay) infinite;
+  transform: rotate(var(--static-angle)) translateX(var(--orbit-radius));
+  transform-origin: 0 0;
+  will-change: transform;
+}
+.tech-orbit-item .tech-node {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  white-space: nowrap;
+  transform: translate(-50%, -50%) rotate(var(--counter-angle));
+  animation: constellation-counter-orbit var(--orbit-duration) linear var(--orbit-delay) infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+@keyframes constellation-orbit {
+  from { transform: rotate(var(--static-angle)) translateX(var(--orbit-radius)); }
+  to { transform: rotate(calc(var(--static-angle) + 360deg)) translateX(var(--orbit-radius)); }
+}
+@keyframes constellation-counter-orbit {
+  from { transform: translate(-50%, -50%) rotate(var(--counter-angle)); }
+  to { transform: translate(-50%, -50%) rotate(calc(var(--counter-angle) - 360deg)); }
+}
+.tech-constellation:hover .tech-orbit-item,
+.tech-constellation:focus-within .tech-orbit-item,
+.tech-constellation:hover .tech-orbit-item .tech-node,
+.tech-constellation:focus-within .tech-orbit-item .tech-node {
+  animation-play-state: paused;
+}
+.tech-orbit-item .tech-node:hover,
+.tech-orbit-item .tech-node:focus-visible {
+  z-index: 5;
+  border-color: var(--signal);
+  box-shadow: 0 8px 22px rgba(32,35,30,.14);
+}
+.tech-orbit-item .tech-node.active {
+  z-index: 4;
+}
+@media(max-width:800px) {
+  .tech-constellation { height: 340px; }
+  .tech-orbit-item .tech-node { padding: 8px 11px; font-size: 9px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .tech-orbit-item,
+  .tech-orbit-item .tech-node {
+    animation: none !important;
+    will-change: auto;
+  }
+  .tech-orbit-item {
+    transform: rotate(var(--static-angle)) translateX(var(--orbit-radius));
+  }
+  .tech-orbit-item .tech-node {
+    transform: translate(-50%, -50%) rotate(var(--counter-angle));
+  }
+}

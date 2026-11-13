@@ -337,14 +337,14 @@ export default function Home() {
             <div className="constellation-lines" aria-hidden="true"/>
             {technologies.map((tech, index) => {
               const orbit = [
-                { radius: "clamp(132px, 18vw, 188px)", duration: 30, delay: 0, angle: 0 },
-                { radius: "clamp(102px, 14vw, 148px)", duration: 24, delay: 3, angle: 45 },
-                { radius: "clamp(132px, 18vw, 188px)", duration: 30, delay: 7.5, angle: 90 },
-                { radius: "clamp(102px, 14vw, 148px)", duration: 24, delay: 9, angle: 135 },
-                { radius: "clamp(132px, 18vw, 188px)", duration: 30, delay: 15, angle: 180 },
-                { radius: "clamp(102px, 14vw, 148px)", duration: 24, delay: 15, angle: 225 },
-                { radius: "clamp(132px, 18vw, 188px)", duration: 30, delay: 22.5, angle: 270 },
-                { radius: "clamp(102px, 14vw, 148px)", duration: 24, delay: 21, angle: 315 },
+                { radius: "clamp(112px, 16vw, 168px)", duration: 30, delay: 0, angle: 0 },
+                { radius: "clamp(84px, 12vw, 128px)", duration: 24, delay: 3, angle: 45 },
+                { radius: "clamp(112px, 16vw, 168px)", duration: 30, delay: 7.5, angle: 90 },
+                { radius: "clamp(84px, 12vw, 128px)", duration: 24, delay: 9, angle: 135 },
+                { radius: "clamp(112px, 16vw, 168px)", duration: 30, delay: 15, angle: 180 },
+                { radius: "clamp(84px, 12vw, 128px)", duration: 24, delay: 15, angle: 225 },
+                { radius: "clamp(112px, 16vw, 168px)", duration: 30, delay: 22.5, angle: 270 },
+                { radius: "clamp(84px, 12vw, 128px)", duration: 24, delay: 21, angle: 315 },
               ][index];
               const orbitStyle = {
                 "--orbit-radius": orbit.radius,
