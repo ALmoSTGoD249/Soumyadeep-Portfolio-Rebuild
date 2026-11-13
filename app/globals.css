@@ -566,3 +566,233 @@ footer{background:var(--dark);color:#F7F5EF;padding:65px 11vw 25px}.footer-top{d
 @media(prefers-reduced-motion:reduce){
  .homelab-phase7 .homelab-flow-node,.homelab-phase7 .homelab-flow-tabs button{transition:none}
 }
+
+
+
+/* PHASE 8 — Mobile-first layout refinement and restrained motion polish.
+   Appended to the stable Phase 7 stylesheet; no page or orbit markup is replaced. */
+
+:root {
+  --motion-fast: 180ms;
+  --motion-base: 280ms;
+  --motion-slow: 520ms;
+  --ease-editorial: cubic-bezier(.2,.72,.2,1);
+}
+
+/* Consistent interaction feedback across the portfolio */
+a, button, [role="button"], .project-visual img, .archive-image img,
+.case-capability, .capability, .archive-card, .system-service,
+.case-footer-link, .round-link {
+  transition-timing-function: var(--ease-editorial);
+}
+a, button, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+a:focus-visible, button:focus-visible, [role="button"]:focus-visible {
+  outline: 2px solid var(--accent, #9caf88);
+  outline-offset: 4px;
+}
+.project-visual img, .archive-image img {
+  transition: transform var(--motion-slow) var(--ease-editorial), filter var(--motion-base) ease;
+}
+.project:hover .project-visual img, .archive-card:hover .archive-image img {
+  transform: scale(1.025);
+}
+.capability, .case-capability, .archive-card, .system-service {
+  transition: background-color var(--motion-base) ease, border-color var(--motion-base) ease,
+    transform var(--motion-base) var(--ease-editorial), box-shadow var(--motion-base) ease;
+}
+.capability:hover, .case-capability:hover, .archive-card:hover {
+  transform: translateY(-3px);
+}
+.case-back, .case-footer-link, .round-link, .text-link, .project-action {
+  transition: color var(--motion-fast) ease, background-color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease, transform var(--motion-fast) var(--ease-editorial);
+}
+button:active, .round-link:active, .case-footer-link:active {
+  transform: scale(.98);
+}
+
+/* Tablets and compact laptops */
+@media (max-width: 900px) {
+  .hero { padding-left: 7vw; padding-right: 7vw; }
+  .case-hero { padding-left: 7vw; padding-right: 7vw; }
+  .case-overview, .case-problem, .case-capabilities, .case-design,
+  .case-architecture, .case-reflection { padding-left: 7vw; padding-right: 7vw; }
+  .case-footer { padding-left: 7vw; padding-right: 7vw; }
+  .about-section, .experience-section, .work-section, .archive-section,
+  .terminal-section, .system-status-section { padding-left: 7vw; padding-right: 7vw; }
+  .tech-constellation { max-width: 620px; }
+}
+
+/* Phones */
+@media (max-width: 680px) {
+  html { scroll-padding-top: 76px; }
+  body { overflow-x: hidden; }
+  .topline { min-height: 64px; padding: 0 5vw; }
+  .wordmark { font-size: 15px; }
+  .navlinks { gap: 14px; }
+  .navlinks a { font-size: 8px; }
+  .nav-cta { padding: 9px 11px; }
+  .menu-toggle { min-width: 42px; min-height: 42px; }
+
+  .hero {
+    min-height: min(820px, calc(100svh - 64px));
+    padding: 8vh 6vw 28px;
+  }
+  .hero-title-wrap { display: block; margin: 9vh 0 7vh; }
+  .hero h1 { font-size: clamp(62px, 17vw, 112px); line-height: .86; letter-spacing: -.09em; }
+  .hero-index { margin-top: 24px; padding: 0; flex-direction: row; flex-wrap: wrap; gap: 12px 18px; }
+  .hero-bottom { gap: 16px; align-items: flex-end; }
+  .hero-kicker { font-size: 8px; }
+  .hero-scroll { font-size: 8px; }
+
+  .section-heading { gap: 16px; align-items: flex-start; }
+  .section-heading h2 { font-size: clamp(38px, 11vw, 64px); }
+  .about-section, .experience-section, .work-section, .archive-section,
+  .terminal-section, .system-status-section { padding: 68px 6vw; }
+  .about-grid, .experience-grid { grid-template-columns: 1fr; gap: 34px; margin-top: 38px; }
+  .portrait-wrap { height: min(112vw, 480px); max-width: none; }
+  .about-copy h2, .experience-main h2 { font-size: clamp(40px, 11vw, 62px); margin: 16px 0 24px; }
+  .experience-aside { padding-top: 0; }
+  .experience-role { gap: 18px; flex-direction: column; }
+  .career-tags, .tags { gap: 7px; flex-wrap: wrap; }
+
+  .projects { gap: 58px; }
+  .project-meta { gap: 10px; font-size: 8px; }
+  .project-visual { height: clamp(230px, 68vw, 390px); }
+  .project-info { padding-top: 18px; }
+  .project-info h3 { font-size: clamp(28px, 8vw, 42px); }
+  .project-action { margin-top: 12px; }
+  .editorial-project-grid { display: flex; flex-direction: column; gap: 28px; }
+  .editorial-project-grid .project { width: 100%; }
+  .archive-grid { grid-template-columns: 1fr; gap: 22px; }
+  .archive-image { aspect-ratio: 1.35; }
+  .capability-grid { grid-template-columns: 1fr; }
+  .capability { min-height: 0; padding: 20px 0; }
+  .dark-inner { padding: 70px 6vw; }
+  .dark-inner h2 { font-size: clamp(38px, 10vw, 60px); }
+  .terminal-card { width: 100%; }
+  .terminal-body { padding: 16px; }
+  .terminal-output { max-height: 220px; overflow-y: auto; }
+
+  .tech-constellation {
+    width: 100%;
+    max-width: 500px;
+    height: clamp(390px, 112vw, 500px);
+    margin: 8px auto 0;
+  }
+  .tech-constellation .constellation-lines { inset: 7%; }
+  .tech-detail { margin-top: 16px; }
+  .system-status-grid { grid-template-columns: 1fr 1fr; }
+  .system-service { min-height: 116px; padding: 16px 12px; }
+  .system-service-name { font-size: 12px; }
+
+  .case-topline { height: 54px; padding: 0 6vw; font-size: 8px; }
+  .case-hero { padding: 62px 6vw 68px; }
+  .case-title-row { display: block; margin: 38px 0 30px; }
+  .case-title-row h1 { font-size: clamp(66px, 17vw, 112px); line-height: .86; overflow-wrap: anywhere; }
+  .case-title-row h1 span { letter-spacing: -.08em; }
+  .case-subtitle { font-size: 16px; line-height: 1.55; margin-top: 20px; }
+  .case-hero-image { margin-top: 32px; }
+  .case-hero-note { margin-top: 20px; }
+  .case-overview, .case-problem, .case-capabilities, .case-design,
+  .case-architecture, .case-reflection { padding: 62px 6vw; }
+  .case-overview-copy h2, .case-problem h2, .case-section-heading h2,
+  .case-design h2, .case-architecture h2, .case-reflection h2 {
+    font-size: clamp(36px, 10vw, 58px);
+    margin-bottom: 22px;
+  }
+  .case-problem-grid { grid-template-columns: 1fr; gap: 22px; }
+  .case-capability-grid { grid-template-columns: 1fr; }
+  .case-capability, .case-capability:nth-child(even) { padding: 22px 0; border-right: 0; min-height: 0; }
+  .case-stack { gap: 7px; flex-wrap: wrap; }
+  .case-stack span { font-size: 8px; padding: 8px 10px; }
+  .case-design-copy { grid-template-columns: 1fr; gap: 18px; }
+  .case-footer { padding: 60px 6vw 28px; }
+  .case-footer h2 { font-size: clamp(38px, 11vw, 62px); }
+  .case-footer-actions { flex-wrap: wrap; gap: 10px; }
+
+  .homelab-hero-grid { padding: 14px; }
+  .homelab-hero-panel { min-height: 300px; }
+  .homelab-server-visual { min-height: 240px; }
+  .homelab-hardware { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .homelab-map { overflow-x: auto; }
+  .homelab-map-lines { min-width: 560px; }
+  .homelab-node-detail { grid-template-columns: 1fr; }
+
+  .lifeops-flow-toolbar { display: grid; grid-template-columns: 1fr 1fr; }
+  .lifeops-flow-toolbar button { min-height: 44px; text-align: left; }
+  .lifeops-architecture-map { padding: 58px 13px 16px; }
+  .lifeops-node-row { flex-direction: column; gap: 7px; }
+  .lifeops-flow-step { width: 100%; flex-direction: column; gap: 5px; }
+  .lifeops-arch-node { width: 100%; min-height: 78px; flex-direction: row; align-items: center; justify-content: flex-start; padding: 12px; }
+  .lifeops-node-inspector { grid-template-columns: 1fr; padding: 17px; }
+  .lifeops-security-boundary ul { grid-template-columns: 1fr; }
+
+  .lifetracker-phase6, .lifetracker-architecture-explorer { max-width: 100%; }
+  .lifetracker-flow-toolbar { display: grid; grid-template-columns: 1fr 1fr; }
+  .lifetracker-flow-toolbar button { min-height: 44px; text-align: left; }
+  .lifetracker-architecture-map { padding: 16px 12px; }
+  .lifetracker-node-row { flex-direction: column; }
+  .lifetracker-flow-step { width: 100%; flex-direction: column; }
+  .lifetracker-flow-connector { flex-direction: row; flex: 0 0 18px; }
+  .lifetracker-flow-connector span { width: 28px; height: 1px; }
+  .lifetracker-node-inspector { grid-template-columns: 1fr; padding: 18px 15px; }
+  .lifetracker-boundary-panel ul { grid-template-columns: 1fr; }
+  .lifetracker-design-decisions { padding: 20px 15px 8px; }
+
+  .homelab-phase7-section { padding: 62px 6vw; }
+  .homelab-phase7 .homelab-flow-tabs { display: grid; grid-template-columns: 1fr 1fr; }
+  .homelab-phase7 .homelab-flow-tabs button { min-height: 46px; text-align: left; }
+  .homelab-phase7 .homelab-flow-node { grid-template-columns: 36px 1fr 16px; padding: 12px; }
+  .homelab-phase7 .homelab-inspector { grid-template-columns: 1fr; padding: 18px 15px; }
+  .homelab-phase7 .homelab-boundaries ul { grid-template-columns: 1fr; }
+
+  .footer-top { display: block; }
+  .footer-top h2 { font-size: clamp(42px, 12vw, 68px); }
+  .footer-bottom { gap: 12px; flex-wrap: wrap; }
+  .contact-actions { flex-wrap: wrap; }
+}
+
+/* Very narrow phones */
+@media (max-width: 390px) {
+  .hero { padding-left: 5vw; padding-right: 5vw; }
+  .hero h1 { font-size: clamp(56px, 16.5vw, 72px); }
+  .section-heading h2 { font-size: 36px; }
+  .about-section, .experience-section, .work-section, .archive-section,
+  .terminal-section, .system-status-section { padding-left: 5vw; padding-right: 5vw; }
+  .case-hero, .case-overview, .case-problem, .case-capabilities,
+  .case-design, .case-architecture, .case-reflection, .case-footer {
+    padding-left: 5vw; padding-right: 5vw;
+  }
+  .case-title-row h1 { font-size: clamp(58px, 16vw, 76px); }
+  .system-status-grid { grid-template-columns: 1fr; }
+  .system-service, .system-service:nth-child(3) { border-right: 0; }
+  .lifeops-flow-toolbar, .lifetracker-flow-toolbar { grid-template-columns: 1fr; }
+  .tech-constellation { height: 370px; }
+}
+
+/* Reduced motion: keep the layout responsive without forced entrance or hover movement. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .capability:hover, .case-capability:hover, .archive-card:hover,
+  .project:hover .project-visual img { transform: none; }
+}
+
+
+@media (hover: none) {
+  .capability:hover, .case-capability:hover, .archive-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .project:hover .project-visual img, .archive-card:hover .archive-image img {
+    transform: none;
+  }
+}
