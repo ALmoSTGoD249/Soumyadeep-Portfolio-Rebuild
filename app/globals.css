@@ -10,7 +10,15 @@
 .archive-section{padding:115px 11vw 130px}.archive-head{display:flex;justify-content:space-between;align-items:end}.archive-toggle{display:flex;gap:10px;align-items:center;background:none;border:0;border-bottom:1px solid var(--ink);padding:0 0 8px;cursor:pointer;transition:color .2s,border-color .2s}.archive-toggle:hover{color:var(--signal);border-color:var(--signal)}.archive-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:45px 25px;margin-top:55px}.archive-card{display:block}.archive-image{height:260px;position:relative;overflow:hidden;background:#E8EBE1}.archive-image img{object-fit:cover;transition:transform .5s}.archive-card:hover .archive-image img{transform:scale(1.04)}.archive-card-meta{display:flex;justify-content:space-between;color:#85897D;margin-top:15px}.archive-card h3{font-size:24px;letter-spacing:-.05em;font-weight:500;margin:10px 0}.archive-card p{font-size:11px;line-height:1.7;color:#74776D;max-width:420px;margin:0}
 footer{background:var(--dark);color:#F7F5EF;padding:65px 11vw 25px}.footer-top{display:flex;justify-content:space-between}.footer-top .eyebrow{color:#9CAF88}.footer-location{display:flex;align-items:center;gap:7px;color:#A7AC9D}footer h2{font-size:clamp(75px,12vw,160px);line-height:.82;letter-spacing:-.09em;font-weight:500;margin:95px 0 45px}footer h2 em{color:#9CAF88}.email-link{display:inline-flex;gap:14px;align-items:center;font-size:clamp(14px,2vw,21px);padding-bottom:10px;border-bottom:1px solid #65665f;transition:color .2s,border-color .2s}.email-link:hover{color:var(--signal);border-color:var(--signal)}.footer-bottom{margin-top:125px;padding-top:22px;border-top:1px solid #42443f;display:flex;align-items:center;justify-content:space-between}.footer-bottom .wordmark{font-size:15px}.socials{display:flex;gap:22px}.socials a{display:flex;align-items:center;gap:7px;color:#B8BDB0;font-size:8px}.socials a:hover{color:#fff}.footer-bottom>span{color:#898a81;font-size:8px}
 @media(max-width:800px){.topline{padding:0 6vw}.nav{padding:0 6vw;height:66px}.menu-toggle{display:block;color:var(--ink);cursor:pointer}.navlinks,.nav-cta{display:none}.nav.open{align-items:flex-start;height:auto;min-height:66px;padding-top:23px;padding-bottom:24px;flex-wrap:wrap}.nav.open .navlinks{display:flex;order:3;width:100%;flex-direction:column;gap:22px;padding:28px 0 5px}.nav.open .nav-cta{display:flex;order:4;margin-top:20px}.hero{padding:9vh 7vw 32px;min-height:calc(90svh - 100px)}.hero-title-wrap{display:block;margin:10vh 0}.hero h1{font-size:clamp(68px,15vw,120px)}.hero-index{padding:30px 0 0}.hero-bottom{grid-template-columns:1fr auto;gap:20px}.hero-bottom p{font-size:12px}.hero-scroll{grid-column:1/-1;text-align:left;margin-top:10px}.hero-number{display:none}.manifesto,.work-section,.about-section,.capabilities,.archive-section,.dark-interlude,footer{padding-left:7vw;padding-right:7vw}.manifesto-text{margin:65px 0;font-size:clamp(32px,7vw,55px)}.manifesto-foot span:last-child{display:none}.work-section{padding-top:85px;padding-bottom:90px}.section-heading{display:block;margin-bottom:50px}.section-heading p{margin-top:25px}.projects{gap:70px}.project-meta{font-size:8px}.project-info{display:block}.project-action{margin-top:23px}.project-visual{height:55vw;min-height:250px}.dark-interlude{padding-top:80px}.dark-inner>p{margin:60px 0 80px}.about-section{padding-top:85px;padding-bottom:90px}.about-grid{grid-template-columns:1fr;gap:45px;margin-top:45px}.portrait-wrap{height:105vw;max-height:550px;width:100%;max-width:none}.about-copy h2{margin-bottom:25px}.capabilities{padding-top:75px;padding-bottom:80px}.capability-grid{grid-template-columns:1fr;margin-top:45px}.capability{min-height:0;padding:25px 0 30px;border-right:0;border-bottom:1px solid #CDD3C5}.capability:not(:first-child){padding-left:0}.capability h3{margin-top:25px}.capability small{margin-top:18px}.archive-section{padding-top:85px;padding-bottom:90px}.archive-head{align-items:flex-start;gap:20px;flex-direction:column}.archive-grid{grid-template-columns:1fr;gap:35px;margin-top:40px}.archive-image{height:62vw;max-height:330px}footer{padding-top:55px}.footer-top{gap:20px;flex-direction:column}.footer-location{font-size:8px}footer h2{margin:75px 0 35px}.footer-bottom{margin-top:85px;align-items:flex-start;gap:25px;flex-direction:column}.socials{flex-wrap:wrap}.footer-bottom>span{margin-top:5px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *:not(.tech-orbit-item):not(.tech-node),
+  *:not(.tech-orbit-item):not(.tech-node)::before,
+  *:not(.tech-orbit-item):not(.tech-node)::after{
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+  }
+}
 
 .experience-section{padding:100px 11vw 110px;background:var(--paper)}
 .experience-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:9vw;margin-top:65px}
@@ -300,137 +308,86 @@ footer{background:var(--dark);color:#F7F5EF;padding:65px 11vw 25px}.footer-top{d
 @media(prefers-reduced-motion:reduce){.tech-orbit-item,.tech-orbit-item .tech-node{animation:none!important;will-change:auto}.tech-orbit-item{transform:translate(-50%,-50%) rotate(var(--static-angle)) translateX(var(--orbit-radius))!important}.tech-orbit-item .tech-node{transform:rotate(calc(-1 * var(--static-angle)))!important}}
 
 
-/* Orbit refinement: three evenly spaced tracks, with labels kept horizontal. */
+
+
+/* Interactive technology orbit — single source of truth.
+   Each wrapper travels around the centre; its button counter-rotates to stay readable. */
 .tech-constellation{
-  width:100%;
-  max-width:680px;
-  height:clamp(500px,54vw,590px);
-  margin-inline:auto;
-  overflow:visible;
-}
-.tech-constellation .constellation-lines{inset:8%;}
-.tech-orbit-item{
-  position:absolute;
-  z-index:3;
-  top:50%;
-  left:50%;
-  width:max-content;
-  transform:translate(-50%,-50%) rotate(var(--static-angle)) translateX(var(--orbit-radius));
-  transform-origin:center;
-  animation:tech-orbit var(--orbit-duration) linear infinite;
-  animation-delay:var(--orbit-delay);
-  will-change:transform;
-}
-.tech-orbit-item .tech-node{
   position:relative;
-  inset:auto;
-  display:block;
-  white-space:nowrap;
-  transform:rotate(calc(-1 * var(--static-angle)));
-  animation:tech-counter-orbit var(--orbit-duration) linear infinite;
-  animation-delay:var(--orbit-delay);
-  box-shadow:0 4px 14px rgba(32,35,30,.055);
-  transition:background .25s,color .25s,border-color .25s,box-shadow .25s;
-}
-.tech-orbit-item .tech-node:hover{translate:0 -3px;}
-@keyframes tech-orbit{
-  from{transform:translate(-50%,-50%) rotate(var(--static-angle)) translateX(var(--orbit-radius));}
-  to{transform:translate(-50%,-50%) rotate(calc(var(--static-angle) + 360deg)) translateX(var(--orbit-radius));}
-}
-@keyframes tech-counter-orbit{
-  from{transform:rotate(calc(-1 * var(--static-angle)));}
-  to{transform:rotate(calc(-1 * var(--static-angle) - 360deg));}
-}
-.tech-constellation:hover .tech-orbit-item,
-.tech-constellation:focus-within .tech-orbit-item,
-.tech-constellation:hover .tech-orbit-item .tech-node,
-.tech-constellation:focus-within .tech-orbit-item .tech-node{animation-play-state:paused;}
-@media(max-width:800px){
-  .tech-constellation{height:460px;max-width:540px;}
-  .tech-orbit-item:nth-of-type(3n + 1){--orbit-radius:clamp(88px,19vw,112px)!important;}
-  .tech-orbit-item:nth-of-type(3n + 2){--orbit-radius:clamp(142px,29vw,170px)!important;}
-  .tech-orbit-item:nth-of-type(3n){--orbit-radius:clamp(196px,39vw,228px)!important;}
-  .tech-node{font-size:9px;padding:8px 11px;}
-}
-@media(max-width:420px){
-  .tech-constellation{height:420px;}
-  .tech-orbit-item:nth-of-type(3n + 1){--orbit-radius:88px!important;}
-  .tech-orbit-item:nth-of-type(3n + 2){--orbit-radius:137px!important;}
-  .tech-orbit-item:nth-of-type(3n){--orbit-radius:185px!important;}
-  .tech-node{font-size:8px;padding:7px 9px;}
-}
-@media(prefers-reduced-motion:reduce){
-  .tech-orbit-item,.tech-orbit-item .tech-node{animation:none!important;}
-  .tech-orbit-item{transform:translate(-50%,-50%) rotate(var(--static-angle)) translateX(var(--orbit-radius));}
-  .tech-orbit-item .tech-node{transform:rotate(calc(-1 * var(--static-angle)));}
-}
-
-
-/* Final orbit geometry: explicit tracks prevent selector drift and node collisions. */
-.tech-constellation{
   width:100%;
   max-width:680px;
   height:clamp(520px,58vw,620px);
   margin-inline:auto;
   overflow:visible;
-  --orbit-x-scale:1;
+  isolation:isolate;
 }
-.tech-constellation .tech-orbit-item.track-0{--orbit-radius:clamp(118px,14vw,138px)!important;}
-.tech-constellation .tech-orbit-item.track-1{--orbit-radius:clamp(190px,23vw,218px)!important;}
-.tech-constellation .tech-orbit-item.track-2{--orbit-radius:clamp(262px,31vw,292px)!important;}
+.tech-constellation .constellation-lines{inset:8%;pointer-events:none;}
 .tech-constellation .tech-orbit-item{
   position:absolute!important;
   top:50%!important;
   left:50%!important;
   right:auto!important;
   bottom:auto!important;
-  width:max-content!important;
+  width:0!important;
+  height:0!important;
   z-index:4;
-  transform:translate(-50%,-50%) rotate(var(--static-angle)) translateX(calc(var(--orbit-radius) * var(--orbit-x-scale)))!important;
+  transform:translate(-50%,-50%) rotate(var(--static-angle)) translateX(var(--orbit-radius));
   transform-origin:center;
-  animation:tech-orbit-final var(--orbit-duration) linear infinite;
+  animation:tech-orbit-travel var(--orbit-duration) linear infinite;
   animation-delay:var(--orbit-delay);
   will-change:transform;
 }
+.tech-constellation .tech-orbit-item.track-0{--orbit-radius:clamp(118px,14vw,138px);}
+.tech-constellation .tech-orbit-item.track-1{--orbit-radius:clamp(190px,23vw,218px);}
+.tech-constellation .tech-orbit-item.track-2{--orbit-radius:clamp(262px,31vw,292px);}
 .tech-constellation .tech-orbit-item .tech-node{
-  position:relative!important;
-  inset:auto!important;
+  position:absolute!important;
+  top:0!important;
+  left:0!important;
+  right:auto!important;
+  bottom:auto!important;
   display:block;
   white-space:nowrap;
-  transform:rotate(calc(-1 * var(--static-angle)))!important;
-  animation:tech-counter-final var(--orbit-duration) linear infinite;
+  transform:translate(-50%,-50%) rotate(var(--counter-angle));
+  transform-origin:center;
+  animation:tech-orbit-counter var(--orbit-duration) linear infinite;
   animation-delay:var(--orbit-delay);
   box-shadow:0 4px 14px rgba(32,35,30,.06);
+  transition:background .25s,color .25s,border-color .25s,box-shadow .25s,scale .25s;
 }
-@keyframes tech-orbit-final{
-  from{transform:translate(-50%,-50%) rotate(var(--static-angle)) translateX(calc(var(--orbit-radius) * var(--orbit-x-scale)));}
-  to{transform:translate(-50%,-50%) rotate(calc(var(--static-angle) + 360deg)) translateX(calc(var(--orbit-radius) * var(--orbit-x-scale)));}
-}
-@keyframes tech-counter-final{
-  from{transform:rotate(calc(-1 * var(--static-angle)));}
-  to{transform:rotate(calc(-1 * var(--static-angle) - 360deg));}
-}
-.tech-constellation:hover .tech-orbit-item,
+.tech-constellation .tech-orbit-item .tech-node:hover,
+.tech-constellation .tech-orbit-item .tech-node:focus-visible{scale:1.06;outline:2px solid var(--accent);outline-offset:3px;}
+/* Only the node under the pointer pauses. Selecting/focusing a node never freezes the whole system. */
+.tech-constellation .tech-orbit-item:hover,
+.tech-constellation .tech-orbit-item:hover .tech-node{animation-play-state:paused!important;}
 .tech-constellation:focus-within .tech-orbit-item,
-.tech-constellation:hover .tech-orbit-item .tech-node,
-.tech-constellation:focus-within .tech-orbit-item .tech-node{animation-play-state:paused;}
+.tech-constellation:hover .tech-orbit-item,
+.tech-constellation:focus-within .tech-orbit-item .tech-node,
+.tech-constellation:hover .tech-orbit-item .tech-node{animation-play-state:running!important;}
+@keyframes tech-orbit-travel{
+  from{transform:translate(-50%,-50%) rotate(var(--static-angle)) translateX(var(--orbit-radius));}
+  to{transform:translate(-50%,-50%) rotate(calc(var(--static-angle) + 1turn)) translateX(var(--orbit-radius));}
+}
+@keyframes tech-orbit-counter{
+  from{transform:translate(-50%,-50%) rotate(var(--counter-angle));}
+  to{transform:translate(-50%,-50%) rotate(calc(var(--counter-angle) - 1turn));}
+}
 @media(max-width:800px){
-  .tech-constellation{height:470px;max-width:520px;--orbit-x-scale:.64;}
-  .tech-constellation .tech-orbit-item.track-0{--orbit-radius:96px!important;}
-  .tech-constellation .tech-orbit-item.track-1{--orbit-radius:148px!important;}
-  .tech-constellation .tech-orbit-item.track-2{--orbit-radius:200px!important;}
+  .tech-constellation{height:470px;max-width:520px;}
+  .tech-constellation .tech-orbit-item.track-0{--orbit-radius:96px;}
+  .tech-constellation .tech-orbit-item.track-1{--orbit-radius:148px;}
+  .tech-constellation .tech-orbit-item.track-2{--orbit-radius:200px;}
   .tech-constellation .tech-node{font-size:9px;padding:8px 10px;}
 }
 @media(max-width:420px){
-  .tech-constellation{height:430px;--orbit-x-scale:.58;}
-  .tech-constellation .tech-orbit-item.track-0{--orbit-radius:84px!important;}
-  .tech-constellation .tech-orbit-item.track-1{--orbit-radius:130px!important;}
-  .tech-constellation .tech-orbit-item.track-2{--orbit-radius:176px!important;}
+  .tech-constellation{height:430px;}
+  .tech-constellation .tech-orbit-item.track-0{--orbit-radius:84px;}
+  .tech-constellation .tech-orbit-item.track-1{--orbit-radius:130px;}
+  .tech-constellation .tech-orbit-item.track-2{--orbit-radius:176px;}
   .tech-constellation .tech-node{font-size:8px;padding:7px 9px;}
 }
+/* Reduced-motion preference: keep the requested orbit, but make it deliberately slow. */
 @media(prefers-reduced-motion:reduce){
   .tech-constellation .tech-orbit-item,
-  .tech-constellation .tech-orbit-item .tech-node{animation:none!important;will-change:auto;}
-  .tech-constellation .tech-orbit-item{transform:translate(-50%,-50%) rotate(var(--static-angle)) translateX(calc(var(--orbit-radius) * var(--orbit-x-scale)))!important;}
-  .tech-constellation .tech-orbit-item .tech-node{transform:rotate(calc(-1 * var(--static-angle)))!important;}
+  .tech-constellation .tech-orbit-item .tech-node{animation-duration:120s!important;}
 }

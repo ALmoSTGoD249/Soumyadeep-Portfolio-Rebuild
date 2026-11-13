@@ -1,9 +1,15 @@
-Technology orbit overlap fix
+Technology Orbit Motion Fix
 
-Replace app/page.tsx and app/globals.css in the portfolio repository.
-This update uses explicit track classes (not nth-of-type selectors), three concentric orbital radii, 45-degree phase offsets, horizontal counter-rotation, and compressed mobile ellipses.
+Replace these files in the portfolio repository:
+  app/page.tsx
+  app/globals.css
 
-Rebuild:
+Then rebuild:
   docker compose up -d --build
 
-No case-study files are changed.
+What this fixes:
+- The orbit wrapper and counter-rotating label now have one consistent animation system.
+- The counter-angle CSS variable is supplied for every node.
+- Hover pauses only the node under the pointer; selecting/focusing a node no longer freezes the entire constellation.
+- The global reduced-motion rule no longer collapses the orbit to a near-zero duration. Reduced-motion users get a much slower 120-second orbit.
+- Keeps the 12 technologies and three explicit tracks.

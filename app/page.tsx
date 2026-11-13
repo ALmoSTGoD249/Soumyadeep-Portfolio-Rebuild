@@ -351,6 +351,7 @@ export default function Home() {
                 "--orbit-duration": `${durations[track]}s`,
                 "--orbit-delay": `${-(slot / slotsPerTrack) * durations[track]}s`,
                 "--static-angle": `${angle}deg`,
+                "--counter-angle": `${-angle}deg`,
               } as unknown as CSSProperties;
               return (
                 <div className={`tech-orbit-item track-${track}`} style={orbitStyle} key={tech.name}>
