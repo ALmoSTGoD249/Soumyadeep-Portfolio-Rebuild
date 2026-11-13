@@ -61,7 +61,11 @@ export default function Home() {
     { name: "Python", group: "DEVELOPMENT", detail: "Scripting, application development and machine-learning experimentation." },
     { name: "Agentic AI", group: "AI SOLUTIONS", detail: "Exploring agentic workflows and AI-assisted solution development." },
     { name: "React", group: "FRONTEND", detail: "Building interactive interfaces and product experiences with React and TypeScript." },
-    { name: "PostgreSQL", group: "DATA", detail: "Relational data modelling and persistence for personal application projects." }
+    { name: "PostgreSQL", group: "DATA", detail: "Relational data modelling and persistence for personal application projects." },
+    { name: "TypeScript", group: "LANGUAGE & TOOLING", detail: "Typed application development across React interfaces, API integrations and maintainable frontend code." },
+    { name: "FastAPI", group: "BACKEND ENGINEERING", detail: "Building Python APIs with structured routing, request validation and service-layer organisation." },
+    { name: "Nginx", group: "WEB & REVERSE PROXY", detail: "Serving frontend applications and routing requests to backend services in containerised deployments." },
+    { name: "Git", group: "VERSION CONTROL", detail: "Tracking application changes, maintaining project history and collaborating through Git-based workflows." }
   ];
   const runTerminalCommand = (raw: string) => {
     const command = raw.trim().toLowerCase();
@@ -336,27 +340,20 @@ export default function Home() {
           <div className="tech-constellation" aria-label="Interactive technology constellation">
             <div className="constellation-lines" aria-hidden="true"/>
             {technologies.map((tech, index) => {
-              const orbit = [
-                { radius: "clamp(112px, 16vw, 168px)", duration: 30, delay: 0, angle: 0 },
-                { radius: "clamp(84px, 12vw, 128px)", duration: 24, delay: 3, angle: 45 },
-                { radius: "clamp(112px, 16vw, 168px)", duration: 30, delay: 7.5, angle: 90 },
-                { radius: "clamp(84px, 12vw, 128px)", duration: 24, delay: 9, angle: 135 },
-                { radius: "clamp(112px, 16vw, 168px)", duration: 30, delay: 15, angle: 180 },
-                { radius: "clamp(84px, 12vw, 128px)", duration: 24, delay: 15, angle: 225 },
-                { radius: "clamp(112px, 16vw, 168px)", duration: 30, delay: 22.5, angle: 270 },
-                { radius: "clamp(84px, 12vw, 128px)", duration: 24, delay: 21, angle: 315 },
-              ][index];
+              const outerOrbit = index % 2 === 0;
+              const orbitIndex = Math.floor(index / 2);
+              const countOnOrbit = Math.ceil(technologies.length / 2);
+              const angle = (360 / countOnOrbit) * orbitIndex + (outerOrbit ? 0 : 30);
               const orbitStyle = {
-                "--orbit-radius": orbit.radius,
-                "--orbit-duration": `${orbit.duration}s`,
-                "--orbit-delay": `-${orbit.delay}s`,
-                "--static-angle": `${orbit.angle}deg`,
-                "--counter-angle": `${-orbit.angle}deg`,
+                "--orbit-radius": outerOrbit ? "clamp(142px, 19vw, 202px)" : "clamp(104px, 14vw, 150px)",
+                "--orbit-duration": outerOrbit ? "34s" : "27s",
+                "--orbit-delay": `${-(orbitIndex / countOnOrbit) * (outerOrbit ? 34 : 27)}s`,
+                "--static-angle": `${angle}deg`,
               } as unknown as CSSProperties;
               return (
                 <div className="tech-orbit-item" style={orbitStyle} key={tech.name}>
                   <button
-                    className={`tech-node node-${index + 1} ${activeTech === tech.name ? "active" : ""}`}
+                    className={`tech-node ${activeTech === tech.name ? "active" : ""}`}
                     onClick={() => setActiveTech(tech.name)}
                     aria-pressed={activeTech === tech.name}
                   >
