@@ -1782,63 +1782,206 @@ html[data-theme="dark"] .tech-detail p {
 }
 
 
-/* Fit-first lightbox: open images contained within the viewport. */
-.lifeops-image-lightbox {
-  box-sizing: border-box;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
+/* LifeOps current screenshot gallery */
+.lifeops-screen-gallery {
+  background: #20231e;
+  color: #f1efe7;
+  padding: clamp(64px, 9vw, 132px) max(6vw, calc((100vw - 1440px) / 2));
   overflow: hidden;
 }
-.lifeops-image-lightbox *,
-.lifeops-image-lightbox *::before,
-.lifeops-image-lightbox *::after { box-sizing: border-box; }
-.lifeops-image-lightbox-stage {
+.lifeops-gallery-heading {
+  max-width: 1440px;
+  margin: 0 auto clamp(42px, 6vw, 82px);
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 40px;
+}
+.lifeops-gallery-heading h2 {
+  margin: 18px 0 0;
+  font-size: clamp(42px, 6vw, 78px);
+  line-height: .98;
+  letter-spacing: -.07em;
+  font-weight: 500;
+}
+.lifeops-gallery-heading h2 em,
+.lifeops-gallery-mobile-copy h3 em {
+  color: #9caf88;
+  font-family: var(--serif);
+  font-weight: 500;
+}
+.lifeops-gallery-heading > p {
+  max-width: 300px;
+  color: #b9bcb1;
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 0 0 5px;
+}
+.lifeops-screen-gallery figure { margin: 0; min-width: 0; }
+.lifeops-gallery-image {
+  overflow: hidden;
+  background: #171a16;
+  border: 1px solid rgba(156, 175, 136, .24);
+}
+.lifeops-gallery-desktop { border-radius: 8px; }
+.lifeops-gallery-desktop img { display: block; width: 100%; height: auto; }
+.lifeops-gallery-home { max-width: 1440px; margin: 0 auto; }
+.lifeops-screen-gallery figcaption {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding-top: 18px;
+  min-height: 48px;
+}
+.lifeops-screen-gallery figcaption span {
+  flex: 0 0 auto;
+  color: #aebd9b;
+  font: 9px var(--mono);
+  letter-spacing: .12em;
+}
+.lifeops-screen-gallery figcaption strong {
+  color: #f1efe7;
+  font-size: 13px;
+  font-weight: 500;
+}
+.lifeops-gallery-work {
+  max-width: 1440px;
+  margin: clamp(58px, 8vw, 110px) auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 3vw, 48px);
+}
+.lifeops-gallery-mobile {
+  max-width: 1440px;
+  margin: clamp(90px, 12vw, 160px) auto 0;
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(40px, 8vw, 120px);
+}
+.lifeops-gallery-mobile-copy { max-width: 520px; }
+.lifeops-gallery-mobile-copy h3 {
+  margin: 20px 0;
+  font-size: clamp(40px, 5vw, 66px);
+  line-height: 1;
+  letter-spacing: -.065em;
+  font-weight: 500;
+}
+.lifeops-gallery-mobile-copy p {
+  color: #b9bcb1;
+  font-size: 13px;
+  line-height: 1.9;
+  max-width: 390px;
+}
+.lifeops-gallery-mobile-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(20px, 3vw, 42px);
+}
+.lifeops-gallery-phone {
+  width: min(100%, 230px);
+  margin: 0 auto;
+  border-radius: 20px;
+  border-color: rgba(156, 175, 136, .38);
+  box-shadow: 0 20px 55px rgba(0,0,0,.22);
+}
+.lifeops-gallery-phone img { display: block; width: 100%; height: auto; }
+.lifeops-gallery-mobile-pair figcaption {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  padding-top: 24px;
+}
+.lifeops-gallery-mobile-pair figcaption strong { line-height: 1.5; }
+@media (max-width: 800px) {
+  .lifeops-screen-gallery { padding: 72px 6vw 84px; }
+  .lifeops-gallery-heading { display: block; margin-bottom: 42px; }
+  .lifeops-gallery-heading > p { margin-top: 20px; }
+  .lifeops-gallery-work { grid-template-columns: 1fr; gap: 42px; }
+  .lifeops-gallery-mobile { grid-template-columns: 1fr; gap: 42px; margin-top: 82px; }
+  .lifeops-gallery-mobile-pair { gap: 16px; }
+  .lifeops-gallery-mobile-pair figcaption { padding-top: 22px; }
+  .lifeops-screen-gallery figcaption { gap: 10px; flex-wrap: wrap; }
+}
+
+
+/* Keep the established gallery layout; image click only opens a simple preview. */
+.lifeops-gallery-image-button {
+  display: block;
   position: relative;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  text-align: left;
+  cursor: zoom-in;
+  line-height: 0;
+}
+.lifeops-gallery-image-button > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+.lifeops-gallery-desktop { width: 100%; }
+.lifeops-gallery-phone { width: min(100%, 230px); margin: 0 auto; }
+.lifeops-image-lightbox {
+  position: fixed;
+  z-index: 99999;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 32px 32px;
+  background: rgba(12, 15, 12, .94);
+  cursor: zoom-out;
+}
+.lifeops-image-lightbox-close {
+  position: fixed;
+  z-index: 2;
+  top: 22px;
+  right: 24px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(238, 240, 232, .22);
+  border-radius: 50%;
+  color: #f1efe7;
+  background: rgba(35, 39, 33, .88);
+  cursor: pointer;
+  transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+.lifeops-image-lightbox-close:hover {
+  color: #20231e;
+  background: #9caf88;
+  border-color: #9caf88;
+}
+.lifeops-image-lightbox-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   min-width: 0;
   min-height: 0;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  overflow: auto;
-  padding: 0;
+  cursor: default;
 }
 .lifeops-image-lightbox-stage > img {
-  display: block !important;
-  flex: 0 0 auto;
+  display: block;
   width: auto !important;
   height: auto !important;
-  max-width: calc(100vw - 72px) !important;
-  max-height: calc(100dvh - 112px) !important;
+  max-width: min(100%, 1800px) !important;
+  max-height: calc(100dvh - 100px) !important;
   object-fit: contain !important;
-  object-position: center;
-  transform: none !important;
-  cursor: zoom-in;
-}
-.lifeops-image-lightbox-stage > img.is-zoomed {
-  max-width: none !important;
-  max-height: none !important;
-  width: auto !important;
-  height: auto !important;
-  cursor: zoom-out;
-}
-.lifeops-lightbox-instruction {
-  position: absolute;
-  right: 12px;
-  bottom: 10px;
-  padding: 7px 9px;
-  color: #e9ecdf;
-  background: rgba(20, 24, 19, .78);
-  font: 9px var(--mono);
-  letter-spacing: .08em;
-  pointer-events: none;
 }
 @media (max-width: 800px) {
-  .lifeops-image-lightbox { padding: 12px; }
-  .lifeops-image-lightbox-stage > img {
-    max-width: calc(100vw - 32px) !important;
-    max-height: calc(100dvh - 92px) !important;
-  }
+  .lifeops-image-lightbox { padding: 60px 12px 20px; }
+  .lifeops-image-lightbox-close { top: 12px; right: 12px; width: 36px; height: 36px; }
+  .lifeops-image-lightbox-stage > img { max-width: 100% !important; max-height: calc(100dvh - 88px) !important; }
 }
