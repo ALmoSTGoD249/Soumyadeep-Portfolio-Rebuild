@@ -1782,120 +1782,63 @@ html[data-theme="dark"] .tech-detail p {
 }
 
 
-/* LifeOps gallery refinement: images are the artwork, not framed cards. */
-.lifeops-gallery-image {
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  overflow: visible !important;
+/* Fit-first lightbox: open images contained within the viewport. */
+.lifeops-image-lightbox {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
 }
-.lifeops-gallery-desktop,
-.lifeops-gallery-phone {
-  border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  background: transparent !important;
-}
-.lifeops-gallery-phone { width: min(100%, 230px); }
-.lifeops-gallery-image-button {
-  display: block;
+.lifeops-image-lightbox *,
+.lifeops-image-lightbox *::before,
+.lifeops-image-lightbox *::after { box-sizing: border-box; }
+.lifeops-image-lightbox-stage {
   position: relative;
   width: 100%;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  cursor: zoom-in;
-  text-align: left;
-}
-.lifeops-gallery-image-button img {
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: transform 260ms ease, opacity 260ms ease;
-}
-.lifeops-gallery-image-button:hover img { transform: scale(1.008); }
-.lifeops-gallery-zoom-hint {
-  position: absolute;
-  right: 14px;
-  bottom: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 9px 12px;
-  color: #f1efe7;
-  background: rgba(25, 29, 24, .88);
-  border: 1px solid rgba(156,175,136,.28);
-  border-radius: 2px;
-  font: 9px var(--mono);
-  letter-spacing: .08em;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 180ms ease, transform 180ms ease;
-  pointer-events: none;
-}
-.lifeops-gallery-image-button:hover .lifeops-gallery-zoom-hint,
-.lifeops-gallery-image-button:focus-visible .lifeops-gallery-zoom-hint {
-  opacity: 1;
-  transform: translateY(0);
-}
-.lifeops-screen-gallery figcaption {
-  padding-top: 24px !important;
-  min-height: 0 !important;
-}
-.lifeops-gallery-mobile-pair figcaption { padding-top: 28px !important; }
-.lifeops-image-lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: grid;
-  grid-template-rows: auto minmax(0,1fr);
-  padding: clamp(14px, 3vw, 34px);
-  background: rgba(12, 14, 12, .96);
-  backdrop-filter: blur(14px);
-}
-.lifeops-image-lightbox-toolbar {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 12px;
-  padding-bottom: 14px;
-}
-.lifeops-image-lightbox-toolbar span {
-  margin-right: auto;
-  color: #b8c4aa;
-  font: 10px var(--mono);
-  letter-spacing: .1em;
-}
-.lifeops-image-lightbox-toolbar button {
-  display: inline-flex;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  display: flex !important;
   align-items: center;
   justify-content: center;
-  min-width: 40px;
-  min-height: 40px;
-  padding: 0 13px;
-  color: #f1efe7;
-  background: #252b23;
-  border: 1px solid #59634f;
-  border-radius: 2px;
-  cursor: pointer;
-}
-.lifeops-image-lightbox-stage {
-  min-height: 0;
-  display: grid;
-  place-items: center;
   overflow: auto;
+  padding: 0;
 }
-.lifeops-image-lightbox-stage img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+.lifeops-image-lightbox-stage > img {
+  display: block !important;
+  flex: 0 0 auto;
+  width: auto !important;
+  height: auto !important;
+  max-width: calc(100vw - 72px) !important;
+  max-height: calc(100dvh - 112px) !important;
+  object-fit: contain !important;
+  object-position: center;
+  transform: none !important;
+  cursor: zoom-in;
+}
+.lifeops-image-lightbox-stage > img.is-zoomed {
+  max-width: none !important;
+  max-height: none !important;
+  width: auto !important;
+  height: auto !important;
   cursor: zoom-out;
 }
-@media (prefers-reduced-motion: reduce) {
-  .lifeops-gallery-image-button img,
-  .lifeops-gallery-zoom-hint { transition: none !important; }
+.lifeops-lightbox-instruction {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  padding: 7px 9px;
+  color: #e9ecdf;
+  background: rgba(20, 24, 19, .78);
+  font: 9px var(--mono);
+  letter-spacing: .08em;
+  pointer-events: none;
+}
+@media (max-width: 800px) {
+  .lifeops-image-lightbox { padding: 12px; }
+  .lifeops-image-lightbox-stage > img {
+    max-width: calc(100vw - 32px) !important;
+    max-height: calc(100dvh - 92px) !important;
+  }
 }
