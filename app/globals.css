@@ -2031,27 +2031,28 @@ html[data-theme="dark"] .tech-detail p {
 .rnn .project-visual,
 .rnn .project-visual img { background-color: #08090a; }
 
-/* LifeOps capabilities: use one shared desktop content edge instead of
-   reserving a wide label column that leaves the heading and cards indented. */
+
+/* Shared desktop capability alignment for HomeLab and LifeTracker case studies. */
 @media (min-width: 801px) {
-  .case-study:has(.lifeops-screen-gallery) .case-capabilities {
+  .homelab-study .case-capabilities,
+  .lifetracker-study .case-capabilities {
     grid-template-columns: minmax(0, 1fr);
     gap: 28px;
   }
-  .case-study:has(.lifeops-screen-gallery) .case-capability-content {
-    min-width: 0;
-    width: 100%;
-  }
-  .case-study:has(.lifeops-screen-gallery) .case-section-heading,
-  .case-study:has(.lifeops-screen-gallery) .case-capability-grid {
-    width: 100%;
-  }
-}
 
-/* Match the left capability-card inset to the right column's 28px gutter.
-   Desktop only: the existing compact mobile card padding remains unchanged. */
-@media (min-width: 801px) {
-  .case-study:has(.lifeops-screen-gallery) .case-capability:nth-child(odd) {
+  .homelab-study .case-capability-content,
+  .lifetracker-study .case-capability-content,
+  .homelab-study .case-section-heading,
+  .lifetracker-study .case-section-heading,
+  .homelab-study .case-capability-grid,
+  .lifetracker-study .case-capability-grid {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Keep the left and right card gutters visually balanced. */
+  .homelab-study .case-capability:nth-child(odd),
+  .lifetracker-study .case-capability:nth-child(odd) {
     padding-left: 28px !important;
   }
 }

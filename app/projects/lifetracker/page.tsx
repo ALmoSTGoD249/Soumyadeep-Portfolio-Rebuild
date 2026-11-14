@@ -16,7 +16,7 @@ const stack = ["Vanilla JavaScript", "HTML & CSS", "Nginx", "FastAPI", "PostgreS
 
 export default function LifeTrackerCaseStudy() {
   return (
-    <main className="case-study">
+    <main className="case-study lifetracker-study">
       <div className="case-topline">
         <Link href="/" className="case-back"><ArrowLeft size={15} /> BACK TO PORTFOLIO</Link>
         <span>SELECTED PROJECT / 02</span>
