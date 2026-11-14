@@ -66,62 +66,31 @@ export default function LifeOpsCaseStudy() {
           </div>
         </div>
         <div className="case-hero-image">
-          <Image src="/images/lifeops.png" alt="LifeOps application interface preview" fill priority sizes="(max-width: 800px) 100vw, 78vw" />
+          <Image src="/images/lifeopshome.png" alt="LifeOps current desktop home page" fill priority sizes="(max-width: 800px) 100vw, 78vw" />
           <span className="case-image-label">LIFEOPS / APPLICATION PREVIEW</span>
         </div>
       </header>
 
-      <section className="lifeops-showcase" aria-label="LifeOps product screenshots">
+      <section className="lifeops-showcase" aria-label="LifeOps current home page on mobile">
         <div className="case-section-index">01 / THE PRODUCT</div>
         <div className="lifeops-showcase-content">
           <div className="lifeops-showcase-heading">
-            <span className="case-eyebrow">BUILT FOR THE WAY A HOUSEHOLD WORKS</span>
-            <h2>One workspace.<br /><em>Everyday operations.</em></h2>
-            <p>A closer look at the live application across its dashboard, task management, settings and mobile experience.</p>
+            <span className="case-eyebrow">THE SAME WORKSPACE, ON THE MOVE</span>
+            <h2>One home.<br /><em>Across every screen.</em></h2>
+            <p>The current LifeOps home page, shown on desktop and mobile. Both views bring household operations into one consistent workspace.</p>
           </div>
-
-          <figure className="lifeops-screen lifeops-screen-dashboard">
-            <div className="lifeops-screen-meta"><span>02 / OVERVIEW</span><span>DESKTOP INTERFACE</span></div>
-            <div className="lifeops-screen-frame">
-              <Image src="/images/lifeopshome.png" alt="LifeOps desktop overview dashboard" fill sizes="(max-width: 800px) 100vw, 72vw" />
-            </div>
-            <figcaption><strong>Household overview</strong><span>Live operational summary and shared household context.</span></figcaption>
-          </figure>
-
-          <div className="lifeops-screen-pair">
-            <figure className="lifeops-screen">
-              <div className="lifeops-screen-meta"><span>02 / TASK MANAGEMENT</span><span>DESKTOP</span></div>
-              <div className="lifeops-screen-frame">
-                <Image src="/images/lifeopstasks.png" alt="LifeOps task management interface" fill sizes="(max-width: 800px) 100vw, 42vw" />
-              </div>
-              <figcaption><strong>Tasks & shared work</strong><span>Organise ownership, progress and recurring work.</span></figcaption>
-            </figure>
-            <figure className="lifeops-screen">
-              <div className="lifeops-screen-meta"><span>03 / PREFERENCES</span><span>DESKTOP</span></div>
-              <div className="lifeops-screen-frame">
-                <Image src="/images/lifeopssettings.png" alt="LifeOps settings interface" fill sizes="(max-width: 800px) 100vw, 42vw" />
-              </div>
-              <figcaption><strong>Settings & control</strong><span>Configure the workspace around the household.</span></figcaption>
-            </figure>
-          </div>
-
-          <div className="lifeops-mobile-showcase">
+          <div className="lifeops-mobile-showcase lifeops-home-mobile-showcase">
             <div className="lifeops-mobile-copy">
-              <span className="case-eyebrow">DESIGNED TO TRAVEL</span>
-              <h3>Household operations,<br /><em>wherever you are.</em></h3>
-              <p>Responsive views keep key information and workflows accessible on smaller screens.</p>
+              <span className="case-eyebrow">RESPONSIVE BY DESIGN</span>
+              <h3>Everything in reach,<br /><em>wherever you are.</em></h3>
+              <p>A mobile view of the same home page, keeping the household overview accessible on smaller screens.</p>
             </div>
             <figure className="lifeops-mobile-screen">
-              <div className="lifeops-screen-meta"><span>04 / MOBILE HOME</span></div>
+              <div className="lifeops-screen-meta"><span>02 / HOME PAGE</span><span>MOBILE</span></div>
               <div className="lifeops-mobile-frame">
-                <Image src="/images/lifeopsmobilehome.png" alt="LifeOps mobile home dashboard" fill sizes="(max-width: 800px) 45vw, 230px" />
+                <Image src="/images/lifeopsmobilehome.png" alt="LifeOps current mobile home page" fill sizes="(max-width: 800px) 45vw, 230px" />
               </div>
-            </figure>
-            <figure className="lifeops-mobile-screen">
-              <div className="lifeops-screen-meta"><span>05 / MOBILE INCIDENT</span></div>
-              <div className="lifeops-mobile-frame">
-                <Image src="/images/lifeopsincmobile.png" alt="LifeOps mobile incident management view" fill sizes="(max-width: 800px) 45vw, 230px" />
-              </div>
+              <figcaption><strong>Mobile home</strong><span>The current LifeOps home page, adapted for mobile.</span></figcaption>
             </figure>
           </div>
         </div>
