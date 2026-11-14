@@ -1782,7 +1782,6 @@ html[data-theme="dark"] .tech-detail p {
 }
 
 
-<<<<<<< HEAD
 /* Featured work rotation: retain the editorial grid; animate cards between its slots. */
 .editorial-project-grid { position: relative; }
 .editorial-project-grid > .project {
@@ -1791,7 +1790,8 @@ html[data-theme="dark"] .tech-detail p {
 }
 @media (prefers-reduced-motion: reduce) {
   .editorial-project-grid > .project { will-change: auto; }
-=======
+}
+
 /* LifeOps current screenshot gallery */
 .lifeops-screen-gallery {
   background: #20231e;
@@ -1994,5 +1994,37 @@ html[data-theme="dark"] .tech-detail p {
   .lifeops-image-lightbox { padding: 60px 12px 20px; }
   .lifeops-image-lightbox-close { top: 12px; right: 12px; width: 36px; height: 36px; }
   .lifeops-image-lightbox-stage > img { max-width: 100% !important; max-height: calc(100dvh - 88px) !important; }
->>>>>>> 3ee46af42dc94d5714e48dfc962031fcaea64e2a
+
+
+/* Project spotlight duration — resets with each rotation. */
+.project-duration {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  overflow: hidden;
+  background: rgba(45, 49, 42, .16);
 }
+.project-duration > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #9caf88;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: project-spotlight-duration 8.5s linear forwards;
+}
+@keyframes project-spotlight-duration {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-duration > span { animation: none; transform: scaleX(1); }
+}
+
+/* Match each image canvas to its project's own visual palette. */
+.lifeops .project-visual,
+.lifeops .project-visual img { background-color: #20241f; }
+.lifetracker .project-visual,
+.lifetracker .project-visual img { background-color: #0e0f18; }
+.rnn .project-visual,
+.rnn .project-visual img { background-color: #08090a; }

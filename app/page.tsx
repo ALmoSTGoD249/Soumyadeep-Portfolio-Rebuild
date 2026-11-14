@@ -289,6 +289,9 @@ export default function Home() {
                 <Image src={project.image} alt={`${project.name} project preview`} fill priority={i === 0} sizes="(max-width: 800px) 100vw, 90vw" />
                 {project.className === "rnn" && <div className="rnn-stamp"><span>RNN</span><small>RACING NEWS NETWORK<br/>SIM RACING DIVISION</small></div>}
               </div>
+              <div className="project-duration" aria-hidden="true">
+                <span key={featuredOffset} />
+              </div>
               <div className="project-info">
                 <div><h3>{project.name}</h3><p>{project.description}</p><div className="tags">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div></div>
                 <a href={project.href} className="project-action">{project.action} <ArrowUpRight size={15}/></a>
