@@ -2031,13 +2031,27 @@ html[data-theme="dark"] .tech-detail p {
 .rnn .project-visual,
 .rnn .project-visual img { background-color: #08090a; }
 
-/* Desktop-only: give the LifeOps product capabilities content more room. */
+/* LifeOps capabilities: use one shared desktop content edge instead of
+   reserving a wide label column that leaves the heading and cards indented. */
 @media (min-width: 801px) {
-  .case-study .case-capabilities {
-    grid-template-columns: 180px minmax(0, 1fr);
-    gap: clamp(32px, 4vw, 72px);
+  .case-study:has(.lifeops-screen-gallery) .case-capabilities {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
   }
-  .case-study .case-capability-content {
+  .case-study:has(.lifeops-screen-gallery) .case-capability-content {
     min-width: 0;
+    width: 100%;
+  }
+  .case-study:has(.lifeops-screen-gallery) .case-section-heading,
+  .case-study:has(.lifeops-screen-gallery) .case-capability-grid {
+    width: 100%;
+  }
+}
+
+/* Match the left capability-card inset to the right column's 28px gutter.
+   Desktop only: the existing compact mobile card padding remains unchanged. */
+@media (min-width: 801px) {
+  .case-study:has(.lifeops-screen-gallery) .case-capability:nth-child(odd) {
+    padding-left: 28px !important;
   }
 }
