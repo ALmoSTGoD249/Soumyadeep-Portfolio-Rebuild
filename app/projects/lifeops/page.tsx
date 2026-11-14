@@ -66,10 +66,6 @@ export default function LifeOpsCaseStudy() {
             <p>A shared household operations platform that adapts service-management workflows for everyday life.</p>
           </div>
         </div>
-        <div className="case-hero-image">
-          <Image src="/images/lifeopshome.png" alt="Current LifeOps desktop home dashboard" fill priority sizes="(max-width: 800px) 100vw, 78vw" />
-          <span className="case-image-label">LIFEOPS / APPLICATION PREVIEW</span>
-        </div>
       </header>
 
       <section className="lifeops-screen-gallery" aria-labelledby="lifeops-gallery-title">
