@@ -1782,73 +1782,126 @@ html[data-theme="dark"] .tech-detail p {
 }
 
 
-/* LifeOps case-study screenshot composition — desktop + current mobile home only. */
-.lifeops-responsive-showcase {
-  padding: 105px 11vw 115px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 390px);
-  align-items: center;
-  gap: clamp(55px, 9vw, 150px);
+/* LifeOps current screenshot gallery */
+.lifeops-screen-gallery {
   background: #20231e;
-  color: #f2f0e8;
+  color: #f1efe7;
+  padding: clamp(64px, 9vw, 132px) max(6vw, calc((100vw - 1440px) / 2));
   overflow: hidden;
 }
-.lifeops-responsive-copy { max-width: 620px; }
-.lifeops-responsive-copy .case-eyebrow { color: #aebd9b; }
-.lifeops-responsive-copy h2 {
-  margin: 24px 0 24px;
-  font-size: clamp(48px, 6.4vw, 86px);
+.lifeops-gallery-heading {
+  max-width: 1440px;
+  margin: 0 auto clamp(42px, 6vw, 82px);
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 40px;
+}
+.lifeops-gallery-heading h2 {
+  margin: 18px 0 0;
+  font-size: clamp(42px, 6vw, 78px);
   line-height: .98;
-  letter-spacing: -.075em;
+  letter-spacing: -.07em;
   font-weight: 500;
 }
-.lifeops-responsive-copy h2 em {
+.lifeops-gallery-heading h2 em,
+.lifeops-gallery-mobile-copy h3 em {
   color: #9caf88;
   font-family: var(--serif);
   font-weight: 500;
-  letter-spacing: -.07em;
 }
-.lifeops-responsive-copy p {
-  max-width: 490px;
-  margin: 0;
-  color: #c0c2b7;
-  font-size: 14px;
-  line-height: 1.9;
+.lifeops-gallery-heading > p {
+  max-width: 300px;
+  color: #b9bcb1;
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 0 0 5px;
 }
-.lifeops-showcase-index {
-  display: block;
-  margin-top: 48px;
+.lifeops-screen-gallery figure { margin: 0; min-width: 0; }
+.lifeops-gallery-image {
+  overflow: hidden;
+  background: #171a16;
+  border: 1px solid rgba(156, 175, 136, .24);
+}
+.lifeops-gallery-desktop { border-radius: 8px; }
+.lifeops-gallery-desktop img { display: block; width: 100%; height: auto; }
+.lifeops-gallery-home { max-width: 1440px; margin: 0 auto; }
+.lifeops-screen-gallery figcaption {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding-top: 18px;
+  min-height: 48px;
+}
+.lifeops-screen-gallery figcaption span {
+  flex: 0 0 auto;
   color: #aebd9b;
   font: 9px var(--mono);
   letter-spacing: .12em;
 }
-.lifeops-mobile-figure { margin: 0; width: 100%; max-width: 340px; justify-self: center; }
-.lifeops-mobile-frame {
-  width: 100%;
-  overflow: hidden;
-  border: 1px solid rgba(190, 202, 174, .35);
-  border-radius: 22px;
-  background: #151914;
-  box-shadow: 0 24px 70px rgba(0,0,0,.28);
+.lifeops-screen-gallery figcaption strong {
+  color: #f1efe7;
+  font-size: 13px;
+  font-weight: 500;
 }
-.lifeops-mobile-frame img { display: block; width: 100%; height: auto; }
-.lifeops-mobile-figure figcaption {
+.lifeops-gallery-work {
+  max-width: 1440px;
+  margin: clamp(58px, 8vw, 110px) auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 3vw, 48px);
+}
+.lifeops-gallery-mobile {
+  max-width: 1440px;
+  margin: clamp(90px, 12vw, 160px) auto 0;
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(40px, 8vw, 120px);
+}
+.lifeops-gallery-mobile-copy { max-width: 520px; }
+.lifeops-gallery-mobile-copy h3 {
+  margin: 20px 0;
+  font-size: clamp(40px, 5vw, 66px);
+  line-height: 1;
+  letter-spacing: -.065em;
+  font-weight: 500;
+}
+.lifeops-gallery-mobile-copy p {
+  color: #b9bcb1;
+  font-size: 13px;
+  line-height: 1.9;
+  max-width: 390px;
+}
+.lifeops-gallery-mobile-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(20px, 3vw, 42px);
+}
+.lifeops-gallery-phone {
+  width: min(100%, 230px);
+  margin: 0 auto;
+  border-radius: 20px;
+  border-color: rgba(156, 175, 136, .38);
+  box-shadow: 0 20px 55px rgba(0,0,0,.22);
+}
+.lifeops-gallery-phone img { display: block; width: 100%; height: auto; }
+.lifeops-gallery-mobile-pair figcaption {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding-top: 14px;
-  color: #f2f0e8;
-  font-size: 13px;
-  line-height: 1.5;
+  align-items: flex-start;
+  gap: 7px;
+  padding-top: 24px;
 }
-.lifeops-mobile-figure figcaption span { color: #b9bcb1; font-size: 12px; }
+.lifeops-gallery-mobile-pair figcaption strong { line-height: 1.5; }
 @media (max-width: 800px) {
-  .lifeops-responsive-showcase {
-    padding: 72px 7vw 82px;
-    grid-template-columns: 1fr;
-    gap: 38px;
-  }
-  .lifeops-responsive-copy h2 { font-size: clamp(43px, 11vw, 66px); }
-  .lifeops-showcase-index { margin-top: 30px; }
-  .lifeops-mobile-figure { width: min(78vw, 340px); }
+  .lifeops-screen-gallery { padding: 72px 6vw 84px; }
+  .lifeops-gallery-heading { display: block; margin-bottom: 42px; }
+  .lifeops-gallery-heading > p { margin-top: 20px; }
+  .lifeops-gallery-work { grid-template-columns: 1fr; gap: 42px; }
+  .lifeops-gallery-mobile { grid-template-columns: 1fr; gap: 42px; margin-top: 82px; }
+  .lifeops-gallery-mobile-pair { gap: 16px; }
+  .lifeops-gallery-mobile-pair figcaption { padding-top: 22px; }
+  .lifeops-screen-gallery figcaption { gap: 10px; flex-wrap: wrap; }
 }

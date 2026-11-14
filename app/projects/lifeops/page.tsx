@@ -71,25 +71,58 @@ export default function LifeOpsCaseStudy() {
         </div>
       </header>
 
-      <section className="lifeops-responsive-showcase" aria-labelledby="lifeops-responsive-title">
-        <div className="lifeops-responsive-copy">
-          <span className="case-eyebrow">RESPONSIVE BY DESIGN</span>
-          <h2 id="lifeops-responsive-title">Everything in reach,<br /><em>wherever you are.</em></h2>
-          <p>The same LifeOps home page, adapted for smaller screens. Household activity and everyday actions stay accessible on the move.</p>
-          <span className="lifeops-showcase-index">02 / HOME PAGE · MOBILE</span>
-        </div>
-        <figure className="lifeops-mobile-figure">
-          <div className="lifeops-mobile-frame">
-            <Image
-              src="/images/lifeopsmobilehome.png"
-              alt="Current LifeOps mobile home dashboard"
-              width={438}
-              height={822}
-              sizes="(max-width: 800px)  min(78vw, 340px), 300px"
-            />
+      <section className="lifeops-screen-gallery" aria-labelledby="lifeops-gallery-title">
+        <div className="lifeops-gallery-heading">
+          <div>
+            <span className="case-eyebrow">CURRENT PRODUCT SCREENS</span>
+            <h2 id="lifeops-gallery-title">One workspace.<br /><em>Everyday operations.</em></h2>
           </div>
-          <figcaption><strong>LifeOps on mobile</strong><span>The current home page, adapted for a smaller screen.</span></figcaption>
+          <p>Recent views from the live LifeOps interface, across desktop and mobile.</p>
+        </div>
+
+        <figure className="lifeops-gallery-home">
+          <div className="lifeops-gallery-image lifeops-gallery-desktop">
+            <Image src="/images/lifeopshome.png" alt="LifeOps current desktop home dashboard" width={2557} height={1262} priority sizes="(max-width: 900px) 100vw, 82vw" />
+          </div>
+          <figcaption><span>01 / HOME</span><strong>Household operations at a glance</strong></figcaption>
         </figure>
+
+        <div className="lifeops-gallery-work">
+          <figure>
+            <div className="lifeops-gallery-image lifeops-gallery-desktop">
+              <Image src="/images/lifeopstasks.png" alt="LifeOps current task management interface" width={2555} height={1265} sizes="(max-width: 800px) 100vw, 44vw" />
+            </div>
+            <figcaption><span>02 / TASKS</span><strong>Shared work, clearly organised</strong></figcaption>
+          </figure>
+          <figure>
+            <div className="lifeops-gallery-image lifeops-gallery-desktop">
+              <Image src="/images/lifeopssettings.png" alt="LifeOps current settings interface" width={2556} height={1265} sizes="(max-width: 800px) 100vw, 44vw" />
+            </div>
+            <figcaption><span>03 / SETTINGS</span><strong>Household preferences and controls</strong></figcaption>
+          </figure>
+        </div>
+
+        <div className="lifeops-gallery-mobile">
+          <div className="lifeops-gallery-mobile-copy">
+            <span className="case-eyebrow">RESPONSIVE BY DESIGN</span>
+            <h3>Everything in reach,<br /><em>wherever you are.</em></h3>
+            <p>The same workspace, adapted for smaller screens. Keep household activity and everyday actions accessible on the move.</p>
+          </div>
+          <div className="lifeops-gallery-mobile-pair">
+            <figure>
+              <div className="lifeops-gallery-image lifeops-gallery-phone">
+                <Image src="/images/lifeopsmobilehome.png" alt="LifeOps current mobile home dashboard" width={433} height={953} sizes="(max-width: 800px) 42vw, 230px" />
+              </div>
+              <figcaption><span>04 / MOBILE HOME</span><strong>Home, wherever you are</strong></figcaption>
+            </figure>
+            <figure>
+              <div className="lifeops-gallery-image lifeops-gallery-phone">
+                <Image src="/images/lifeopsincmobile.png" alt="LifeOps current mobile incident interface" width={436} height={951} sizes="(max-width: 800px) 42vw, 230px" />
+              </div>
+              <figcaption><span>05 / MOBILE INCIDENTS</span><strong>Handle issues on the move</strong></figcaption>
+            </figure>
+          </div>
+        </div>
       </section>
 
       <section className="case-overview">
