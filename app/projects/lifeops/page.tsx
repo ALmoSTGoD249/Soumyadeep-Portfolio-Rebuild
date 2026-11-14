@@ -66,38 +66,34 @@ export default function LifeOpsCaseStudy() {
           </div>
         </div>
         <div className="case-hero-image">
-          <Image src="/images/lifeopshome.png" alt="LifeOps current desktop home page" fill priority sizes="(max-width: 800px) 100vw, 78vw" />
+          <Image src="/images/lifeopshome.png" alt="Current LifeOps desktop home dashboard" fill priority sizes="(max-width: 800px) 100vw, 78vw" />
           <span className="case-image-label">LIFEOPS / APPLICATION PREVIEW</span>
         </div>
       </header>
 
-      <section className="lifeops-showcase" aria-label="LifeOps current home page on mobile">
-        <div className="case-section-index">01 / THE PRODUCT</div>
-        <div className="lifeops-showcase-content">
-          <div className="lifeops-showcase-heading">
-            <span className="case-eyebrow">THE SAME WORKSPACE, ON THE MOVE</span>
-            <h2>One home.<br /><em>Across every screen.</em></h2>
-            <p>The current LifeOps home page, shown on desktop and mobile. Both views bring household operations into one consistent workspace.</p>
-          </div>
-          <div className="lifeops-mobile-showcase lifeops-home-mobile-showcase">
-            <div className="lifeops-mobile-copy">
-              <span className="case-eyebrow">RESPONSIVE BY DESIGN</span>
-              <h3>Everything in reach,<br /><em>wherever you are.</em></h3>
-              <p>A mobile view of the same home page, keeping the household overview accessible on smaller screens.</p>
-            </div>
-            <figure className="lifeops-mobile-screen">
-              <div className="lifeops-screen-meta"><span>02 / HOME PAGE</span><span>MOBILE</span></div>
-              <div className="lifeops-mobile-frame">
-                <Image src="/images/lifeopsmobilehome.png" alt="LifeOps current mobile home page" fill sizes="(max-width: 800px) 45vw, 230px" />
-              </div>
-              <figcaption><strong>Mobile home</strong><span>The current LifeOps home page, adapted for mobile.</span></figcaption>
-            </figure>
-          </div>
+      <section className="lifeops-responsive-showcase" aria-labelledby="lifeops-responsive-title">
+        <div className="lifeops-responsive-copy">
+          <span className="case-eyebrow">RESPONSIVE BY DESIGN</span>
+          <h2 id="lifeops-responsive-title">Everything in reach,<br /><em>wherever you are.</em></h2>
+          <p>The same LifeOps home page, adapted for smaller screens. Household activity and everyday actions stay accessible on the move.</p>
+          <span className="lifeops-showcase-index">02 / HOME PAGE · MOBILE</span>
         </div>
+        <figure className="lifeops-mobile-figure">
+          <div className="lifeops-mobile-frame">
+            <Image
+              src="/images/lifeopsmobilehome.png"
+              alt="Current LifeOps mobile home dashboard"
+              width={438}
+              height={822}
+              sizes="(max-width: 800px)  min(78vw, 340px), 300px"
+            />
+          </div>
+          <figcaption><strong>LifeOps on mobile</strong><span>The current home page, adapted for a smaller screen.</span></figcaption>
+        </figure>
       </section>
 
       <section className="case-overview">
-        <div className="case-section-index">02 / OVERVIEW</div>
+        <div className="case-section-index">01 / OVERVIEW</div>
         <div className="case-overview-copy">
           <h2>Service-management patterns.<br /><em>Reworked for home.</em></h2>
           <p>LifeOps is a self-hosted household service-management application. It brings incidents, tasks, service requests, assets, preventive maintenance and knowledge into one shared workspace, so household work has an owner, a state and a history.</p>
@@ -106,7 +102,7 @@ export default function LifeOpsCaseStudy() {
       </section>
 
       <section className="case-problem">
-        <div className="case-section-index">03 / THE PROBLEM</div>
+        <div className="case-section-index">02 / THE PROBLEM</div>
         <div>
           <span className="case-eyebrow">FROM INFORMAL COORDINATION TO VISIBLE WORK</span>
           <h2>Requests, repairs and routines<br /><em>need more than reminders.</em></h2>
@@ -118,7 +114,7 @@ export default function LifeOpsCaseStudy() {
       </section>
 
       <section className="case-capabilities">
-        <div className="case-section-index">04 / PRODUCT CAPABILITIES</div>
+        <div className="case-section-index">03 / PRODUCT CAPABILITIES</div>
         <div className="case-capability-content">
           <div className="case-section-heading">
             <span className="case-eyebrow">A CONNECTED HOUSEHOLD WORKSPACE</span>
@@ -137,7 +133,7 @@ export default function LifeOpsCaseStudy() {
       </section>
 
       <section className="case-design">
-        <div className="case-section-index">05 / WORKFLOW DESIGN</div>
+        <div className="case-section-index">04 / WORKFLOW DESIGN</div>
         <div className="case-design-copy">
           <span className="case-eyebrow">CLEAR STATES. EXPLICIT HANDOFFS.</span>
           <h2>Model the work,<br /><em>not just the screens.</em></h2>
@@ -151,7 +147,7 @@ export default function LifeOpsCaseStudy() {
       </section>
 
       <section className="case-architecture case-architecture-interactive">
-        <div className="case-section-index">06 / SYSTEM DESIGN</div>
+        <div className="case-section-index">05 / SYSTEM DESIGN</div>
         <div className="case-architecture-content">
           <span className="case-eyebrow">TRACE A REQUEST THROUGH THE STACK</span>
           <h2>Explore the<br /><em>architecture.</em></h2>

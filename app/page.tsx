@@ -11,7 +11,7 @@ const featured = [
     id: "01", name: "LifeOps", type: "PERSONAL SERVICE MANAGEMENT", year: "2026",
     description: "A private, shared operations hub inspired by enterprise service management. Bringing incidents, requests, tasks, assets and everyday household workflows into one considered system.",
     tags: ["Next.js", "FastAPI", "PostgreSQL", "Docker"],
-    image: "/images/lifeops.png", className: "lifeops",
+    image: "/images/lifeopshome.png", className: "lifeops",
     href: "/projects/lifeops", action: "EXPLORE CASE STUDY"
   },
   {
