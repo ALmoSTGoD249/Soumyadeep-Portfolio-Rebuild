@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import LifeOpsArchitecture from "../../components/lifeops-architecture";
+import ImageLightbox from "../../components/image-lightbox";
 import {
   ArrowLeft, ArrowUpRight, Boxes, CheckSquare, ClipboardList, FileText,
   Layers3, ShieldCheck, Workflow,
@@ -65,11 +66,51 @@ export default function LifeOpsCaseStudy() {
             <p>A shared household operations platform that adapts service-management workflows for everyday life.</p>
           </div>
         </div>
-        <div className="case-hero-image">
-          <Image src="/images/lifeops.png" alt="LifeOps application interface preview" fill priority sizes="(max-width: 800px) 100vw, 78vw" />
-          <span className="case-image-label">LIFEOPS / APPLICATION PREVIEW</span>
-        </div>
       </header>
+
+      <section className="lifeops-screen-gallery" aria-labelledby="lifeops-gallery-title">
+        <div className="lifeops-gallery-heading">
+          <div>
+            <span className="case-eyebrow">CURRENT PRODUCT SCREENS</span>
+            <h2 id="lifeops-gallery-title">One workspace.<br /><em>Everyday operations.</em></h2>
+          </div>
+          <p>Recent views from the live LifeOps interface, across desktop and mobile. Select any image to inspect it more closely.</p>
+        </div>
+
+        <figure className="lifeops-gallery-home">
+          <ImageLightbox src="/images/lifeopshome.png" alt="LifeOps current desktop home dashboard" width={2557} height={1262} variant="desktop" priority />
+          <figcaption><span>01 / HOME</span><strong>Household operations at a glance</strong></figcaption>
+        </figure>
+
+        <div className="lifeops-gallery-work">
+          <figure>
+            <ImageLightbox src="/images/lifeopstasks.png" alt="LifeOps current task management interface" width={2555} height={1265} variant="desktop" />
+            <figcaption><span>02 / TASKS</span><strong>Shared work, clearly organised</strong></figcaption>
+          </figure>
+          <figure>
+            <ImageLightbox src="/images/lifeopssettings.png" alt="LifeOps current settings interface" width={2556} height={1265} variant="desktop" />
+            <figcaption><span>03 / SETTINGS</span><strong>Household preferences and controls</strong></figcaption>
+          </figure>
+        </div>
+
+        <div className="lifeops-gallery-mobile">
+          <div className="lifeops-gallery-mobile-copy">
+            <span className="case-eyebrow">RESPONSIVE BY DESIGN</span>
+            <h3>Everything in reach,<br /><em>wherever you are.</em></h3>
+            <p>The same workspace, adapted for smaller screens. Keep household activity and everyday actions accessible on the move.</p>
+          </div>
+          <div className="lifeops-gallery-mobile-pair">
+            <figure>
+              <ImageLightbox src="/images/lifeopsmobilehome.png" alt="LifeOps current mobile home dashboard" width={433} height={953} variant="phone" />
+              <figcaption><span>04 / MOBILE HOME</span><strong>Home, wherever you are</strong></figcaption>
+            </figure>
+            <figure>
+              <ImageLightbox src="/images/lifeopsincmobile.png" alt="LifeOps current mobile incident interface" width={436} height={951} variant="phone" />
+              <figcaption><span>05 / MOBILE INCIDENTS</span><strong>Handle issues on the move</strong></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
 
       <section className="case-overview">
         <div className="case-section-index">01 / OVERVIEW</div>
