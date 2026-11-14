@@ -16,7 +16,8 @@ type Props = {
 export default function ImageLightbox({
   src, alt, width, height, variant = "desktop", priority = false,
 }: Props) {
-  const [open, setOpen] = useState(false);\n  const [zoomed, setZoomed] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [zoomed, setZoomed] = useState(false);
 
   useEffect(() => {
     if (!open) return;
