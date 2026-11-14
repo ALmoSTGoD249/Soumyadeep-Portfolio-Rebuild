@@ -1780,3 +1780,39 @@ html[data-theme="dark"] .tech-detail p {
 @media (pointer: coarse) {
   .cursor-dot, .cursor-ring { display: none !important; }
 }
+
+/* LifeOps case study — current product screenshot gallery */
+.lifeops-showcase{padding:100px 11vw 115px;background:#20231E;color:#F7F5EF;display:grid;grid-template-columns:.32fr 1fr;gap:7vw}
+.lifeops-showcase .case-section-index{color:#A4AA9B}
+.lifeops-showcase-content{min-width:0}
+.lifeops-showcase-heading{max-width:760px;margin-bottom:58px}
+.lifeops-showcase-heading h2{font-size:clamp(44px,6vw,78px);font-weight:500;letter-spacing:-.075em;line-height:.98;margin:22px 0}
+.lifeops-showcase-heading h2 em,.lifeops-mobile-copy h3 em{font-family:var(--serif);font-weight:500;color:var(--accent);letter-spacing:-.07em}
+.lifeops-showcase-heading>p,.lifeops-mobile-copy>p{font-size:13px;line-height:1.9;color:#B7BDB0;max-width:570px}
+.lifeops-screen{margin:0;min-width:0}
+.lifeops-screen-meta{display:flex;justify-content:space-between;gap:12px;color:#A5AA9D;font:8px var(--mono);letter-spacing:.1em;padding-bottom:12px}
+.lifeops-screen-frame{position:relative;overflow:hidden;background:#171A17;border:1px solid #454B40;border-radius:5px;aspect-ratio:2.02}
+.lifeops-screen-frame img{object-fit:contain}
+.lifeops-screen figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:14px 0 0;border-top:1px solid #454B40;margin-top:12px}
+.lifeops-screen figcaption strong{font-size:14px;font-weight:500}
+.lifeops-screen figcaption span{font-size:10px;color:#A5AA9D;text-align:right}
+.lifeops-screen-dashboard{margin-bottom:58px}
+.lifeops-screen-pair{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.lifeops-screen-pair .lifeops-screen-frame{aspect-ratio:2.02}
+.lifeops-mobile-showcase{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:30px;margin-top:90px;padding-top:55px;border-top:1px solid #454B40}
+.lifeops-mobile-copy{max-width:340px}
+.lifeops-mobile-copy h3{font-size:clamp(30px,4vw,48px);font-weight:500;line-height:1.02;letter-spacing:-.065em;margin:18px 0}
+.lifeops-mobile-screen{width:clamp(130px,16vw,205px)}
+.lifeops-mobile-frame{position:relative;aspect-ratio:436/951;overflow:hidden;background:#171A17;border:1px solid #454B40;border-radius:13px;padding:5px}
+.lifeops-mobile-frame img{object-fit:contain;border-radius:9px}
+@media(max-width:800px){
+ .lifeops-showcase{padding:75px 7vw 85px;grid-template-columns:1fr;gap:30px}
+ .lifeops-showcase-heading{margin-bottom:40px}
+ .lifeops-screen-dashboard{margin-bottom:42px}
+ .lifeops-screen-pair{grid-template-columns:1fr;gap:35px}
+ .lifeops-mobile-showcase{grid-template-columns:1fr 1fr;gap:20px;margin-top:65px;padding-top:40px}
+ .lifeops-mobile-copy{grid-column:1/-1;max-width:100%}
+ .lifeops-mobile-screen{width:100%;max-width:210px;justify-self:center}
+ .lifeops-screen figcaption{align-items:flex-start;flex-direction:column;gap:5px}
+ .lifeops-screen figcaption span{text-align:left}
+}
