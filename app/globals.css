@@ -1995,6 +1995,7 @@ html[data-theme="dark"] .tech-detail p {
   .lifeops-image-lightbox-close { top: 12px; right: 12px; width: 36px; height: 36px; }
   .lifeops-image-lightbox-stage > img { max-width: 100% !important; max-height: calc(100dvh - 88px) !important; }
 
+<<<<<<< HEAD
 
 /* Project spotlight duration — resets with each rotation. */
 .project-duration {
@@ -2003,6 +2004,8 @@ html[data-theme="dark"] .tech-detail p {
   height: 3px;
   overflow: hidden;
   background: rgba(45, 49, 42, .16);
+=======
+>>>>>>> 17bf11e (local fix)
 }
 .project-duration > span {
   display: block;
