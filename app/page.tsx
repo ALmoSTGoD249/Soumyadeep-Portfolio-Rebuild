@@ -11,7 +11,7 @@ const featured = [
     id: "01", name: "LifeOps", type: "PERSONAL SERVICE MANAGEMENT", year: "2026",
     description: "A private, shared operations hub inspired by enterprise service management. Bringing incidents, requests, tasks, assets and everyday household workflows into one considered system.",
     tags: ["Next.js", "FastAPI", "PostgreSQL", "Docker"],
-    image: "/images/lifeops.png", className: "lifeops",
+    image: "/images/lifeopshome.png", className: "lifeops",
     href: "/projects/lifeops", action: "EXPLORE CASE STUDY"
   },
   {
@@ -40,6 +40,22 @@ const archive = [
 const reveal: Variants = { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0, transition: { duration: .7, ease: "easeOut" } } };
 
 export default function Home() {
+  const [featuredOffset, setFeaturedOffset] = useState(0);
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
+    const rotation = window.setInterval(() => {
+      setFeaturedOffset((current) => (current + 1) % featured.length);
+    }, 8500);
+    return () => window.clearInterval(rotation);
+  }, []);
+
+  const visibleFeatured = [
+    ...featured.slice(featuredOffset),
+    ...featured.slice(0, featuredOffset),
+  ];
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [archiveOpen, setArchiveOpen] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
@@ -257,8 +273,17 @@ export default function Home() {
           <p>A selection of products and experiments shaped by curiosity, practical problems and a desire to build better systems.</p>
         </div>
         <div className="projects editorial-project-grid">
-          {featured.map((project, i) => (
-            <motion.article className={`project ${project.className}`} key={project.id} variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: .16 }}>
+          {visibleFeatured.map((project, i) => (
+            <motion.article
+              className={`project ${project.className}`}
+              key={project.id}
+              layout
+              transition={{ layout: { duration: 1.15, ease: [0.22, 1, 0.36, 1] } }}
+              variants={reveal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: .16 }}
+            >
               <div className="project-meta"><span>{project.id} / 03</span><span>{project.type}</span><span>{project.year}</span></div>
               <div className="project-visual">
                 <Image src={project.image} alt={`${project.name} project preview`} fill priority={i === 0} sizes="(max-width: 800px) 100vw, 90vw" />

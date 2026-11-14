@@ -1780,3 +1780,14 @@ html[data-theme="dark"] .tech-detail p {
 @media (pointer: coarse) {
   .cursor-dot, .cursor-ring { display: none !important; }
 }
+
+
+/* Featured work rotation: retain the editorial grid; animate cards between its slots. */
+.editorial-project-grid { position: relative; }
+.editorial-project-grid > .project {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .editorial-project-grid > .project { will-change: auto; }
+}
