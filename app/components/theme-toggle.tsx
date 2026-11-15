@@ -23,7 +23,7 @@ export default function ThemeToggle() {
       window.localStorage.removeItem("portfolio-theme");
       apply(systemDark.matches ? "dark" : "light");
     } else {
-      apply(stored === "dark" || stored === "light" ? stored : "light");
+      apply(stored === "dark" || stored === "light" ? stored : "dark");
     }
     setReady(true);
 
