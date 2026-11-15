@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import LifeTrackerArchitecture from "../../components/lifetracker-architecture";
+import ImageLightbox from "../../components/image-lightbox";
 import { ArrowLeft, ArrowUpRight, Wallet, Users, Receipt, CalendarDays, CheckSquare, StickyNote, Database, ShieldCheck, Layers3 } from "lucide-react";
 
 const capabilities = [
@@ -34,11 +34,55 @@ export default function LifeTrackerCaseStudy() {
             <p>A personal and shared-life tracker that brings expenses, bills, budgets and household coordination into one place.</p>
           </div>
         </div>
-        <div className="case-hero-image">
-          <Image src="/images/lifetracker.png" alt="LifeTracker application dashboard preview" fill priority sizes="(max-width: 800px) 100vw, 78vw" />
-          <span className="case-image-label">LIFETRACKER / APPLICATION PREVIEW</span>
-        </div>
       </header>
+
+      <section className="lifeops-screen-gallery lifetracker-screen-gallery" aria-labelledby="lifetracker-gallery-title">
+        <div className="lifeops-gallery-heading">
+          <div>
+            <span className="case-eyebrow">PRODUCT SCREEN GALLERY</span>
+            <h2 id="lifetracker-gallery-title">A clearer view.<br /><em>Personal and shared.</em></h2>
+          </div>
+          <p>Selected views from LifeTracker 2.0 across desktop and mobile. Open any screen to inspect the interface in detail.</p>
+        </div>
+
+        <figure className="lifeops-gallery-home">
+          <ImageLightbox src="/images/lifetrackerhome.png" alt="LifeTracker 2.0 desktop Today dashboard" width={2555} height={1267} variant="desktop" priority />
+          <figcaption><span>01 / TODAY</span><strong>A single view of budgets and daily activity</strong></figcaption>
+        </figure>
+
+        <div className="lifeops-gallery-work">
+          <figure>
+            <ImageLightbox src="/images/lifetrackershared.png" alt="LifeTracker shared workspace dashboard" width={2246} height={1264} variant="desktop" />
+            <figcaption><span>02 / SHARED WORKSPACE</span><strong>Shared expenses, without mixing personal records</strong></figcaption>
+          </figure>
+          <figure>
+            <ImageLightbox src="/images/lifetrackerbillsplitter.png" alt="LifeTracker bill splitting interface" width={2236} height={1257} variant="desktop" />
+            <figcaption><span>03 / BILL SPLITTER</span><strong>Track contributions and settle shared costs</strong></figcaption>
+          </figure>
+        </div>
+
+        <div className="lifeops-gallery-mobile">
+          <div className="lifeops-gallery-mobile-copy">
+            <span className="case-eyebrow">DESKTOP TO MOBILE</span>
+            <h3>Everyday money,<br /><em>always in reach.</em></h3>
+            <p>Responsive screens keep personal tracking, shared bills and household activity accessible on smaller devices.</p>
+          </div>
+          <div className="lifeops-gallery-mobile-pair">
+            <figure>
+              <ImageLightbox src="/images/lifetrackerhomemobile.png" alt="LifeTracker mobile Today dashboard" width={435} height={952} variant="phone" />
+              <figcaption><span>04 / MOBILE TODAY</span><strong>Your daily overview, on the move</strong></figcaption>
+            </figure>
+            <figure>
+              <ImageLightbox src="/images/lifetrackersharedmobile.png" alt="LifeTracker mobile shared workspace" width={431} height={959} variant="phone" />
+              <figcaption><span>05 / MOBILE SHARED</span><strong>Shared activity in your pocket</strong></figcaption>
+            </figure>
+            <figure>
+              <ImageLightbox src="/images/lifetrackerbillsplittermobile.png" alt="LifeTracker mobile bill splitter" width={435} height={949} variant="phone" />
+              <figcaption><span>06 / MOBILE SPLITTER</span><strong>Review a split from anywhere</strong></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
 
       <section className="case-overview">
         <div className="case-section-index">01 / OVERVIEW</div>

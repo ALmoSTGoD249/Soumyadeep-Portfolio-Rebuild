@@ -2056,3 +2056,50 @@ html[data-theme="dark"] .tech-detail p {
     padding-left: 28px !important;
   }
 }
+
+/* LifeTracker screen gallery — shares the LifeOps case-study visual language. */
+.lifetracker-screen-gallery { background: #f4f3eb; }
+.lifetracker-screen-gallery .lifeops-gallery-home .lifeops-gallery-image-button,
+.lifetracker-screen-gallery .lifeops-gallery-work .lifeops-gallery-image-button { background: #141619; }
+.lifetracker-screen-gallery .lifeops-gallery-mobile-pair { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.lifetracker-screen-gallery .lifeops-gallery-mobile-pair figure { min-width: 0; }
+
+/* RacingNewsNetwork case study. */
+.rnn-case-hero { padding-bottom: 80px; }
+.rnn-case-hero .case-title-row h1 { font-size: clamp(62px, 11vw, 150px); }
+.rnn-case-hero .case-title-row h1 span { display: inline-block; }
+.rnn-case-hero .case-title-row h1 i { display: block; font-family: var(--serif); font-size: .58em; letter-spacing: -.07em; }
+.rnn-hero-visual { position: relative; background: #08090a; overflow: hidden; }
+.rnn-hero-visual .lifeops-gallery-image-button { width: 100%; display: block; background: #08090a; }
+.rnn-hero-visual .lifeops-gallery-image-button img { display: block; width: 100%; height: auto; max-height: 650px; object-fit: contain; }
+.rnn-hero-mark { position: absolute; left: 24px; bottom: 20px; color: #f4f3eb; font: 700 13px var(--mono); letter-spacing: .1em; pointer-events: none; }
+.rnn-hero-mark span { color: #b5b9ac; font-size: 8px; font-weight: 400; }
+.rnn-pillars { background: #e8ebe1; }
+.rnn-photo-section { padding: 100px 11vw 120px; background: #11140f; color: #f4f3eb; }
+.rnn-photo-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 55px; }
+.rnn-photo-heading .case-eyebrow { color: #a8bc92; }
+.rnn-photo-heading h2 { margin: 20px 0 0; font-size: clamp(48px, 7vw, 86px); font-weight: 500; line-height: .94; letter-spacing: -.075em; }
+.rnn-photo-heading h2 em { color: #a8bc92; font-family: var(--serif); font-weight: 500; }
+.rnn-photo-heading > p { max-width: 300px; margin: 0 0 5px; color: #aeb5a7; font-size: 12px; line-height: 1.85; }
+.rnn-photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 24px; }
+.rnn-photo-grid figure { min-width: 0; margin: 0; }
+.rnn-photo-grid figure.rnn-photo-feature { grid-column: 1 / -1; }
+.rnn-photo-grid .lifeops-gallery-image-button { display: block; width: 100%; overflow: hidden; background: #08090a; }
+.rnn-photo-grid .lifeops-gallery-image-button img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+.rnn-photo-grid figure:hover .lifeops-gallery-image-button img { transform: scale(1.018); }
+.rnn-photo-grid figcaption { display: flex; flex-direction: column; gap: 9px; padding-top: 15px; }
+.rnn-photo-grid figcaption span { color: #a8bc92; font: 8px var(--mono); letter-spacing: .12em; }
+.rnn-photo-grid figcaption strong { max-width: 620px; color: #e3e7dc; font-size: 12px; line-height: 1.65; font-weight: 400; }
+.rnn-reflection { background: #08090a; }
+.rnn-reflection .case-section-index { color: #9da395; }
+.rnn-reflection > div > svg { color: #a8bc92; margin-bottom: 25px; }
+@media (max-width: 800px) {
+  .lifetracker-screen-gallery .lifeops-gallery-mobile-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rnn-case-hero .case-title-row h1 { font-size: clamp(55px, 15vw, 100px); }
+  .rnn-photo-section { padding: 72px 7vw 85px; }
+  .rnn-photo-heading { display: block; margin-bottom: 38px; }
+  .rnn-photo-heading > p { margin-top: 24px; }
+  .rnn-photo-grid { grid-template-columns: 1fr; gap: 34px; }
+  .rnn-photo-grid figure.rnn-photo-feature { grid-column: auto; }
+  .rnn-hero-mark { left: 14px; bottom: 12px; font-size: 10px; }
+}

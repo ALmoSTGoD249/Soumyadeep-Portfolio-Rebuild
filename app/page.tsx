@@ -26,7 +26,7 @@ const featured = [
     description: "A motorsport destination in the making: race coverage, results and the wider racing conversation, alongside a home for my sim-racing team and its drivers.",
     tags: ["Motorsport", "Sim racing", "Media platform", "Community"],
     image: "/images/rnn-car.png", className: "rnn",
-    href: "#contact", action: "IN DEVELOPMENT"
+    href: "/projects/rnn", action: "EXPLORE CASE STUDY"
   }
 ];
 
