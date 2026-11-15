@@ -2103,3 +2103,197 @@ html[data-theme="dark"] .tech-detail p {
   .rnn-photo-grid figure.rnn-photo-feature { grid-column: auto; }
   .rnn-hero-mark { left: 14px; bottom: 12px; font-size: 10px; }
 }
+
+
+/* LifeTracker case study — editorial portfolio palette blended with the product identity.
+   Light mode keeps the portfolio's warm paper and sage; burgundy, lilac and acid green
+   appear as controlled product accents rather than replacing the site's visual language. */
+.lifetracker-study {
+  --lt-plum: #2b1d2c;
+  --lt-plum-deep: #211723;
+  --lt-lilac: #b99bd2;
+  --lt-lilac-soft: #eee5f4;
+  --lt-acid: #c8f34a;
+  --lt-muted: #696b63;
+  --lt-card: #eeeae2;
+  background: var(--paper);
+  color: var(--ink);
+}
+.lifetracker-study .case-title-row h1 span { color: var(--lt-plum); }
+.lifetracker-study .case-kicker span,
+.lifetracker-study .case-hero-note span,
+.lifetracker-study .case-principles span { color: #a94738; }
+.lifetracker-study .case-overview {
+  background: #ecebe3;
+  color: #292b26;
+}
+.lifetracker-study .case-overview-copy h2 em,
+.lifetracker-study .case-problem h2 em,
+.lifetracker-study .case-section-heading h2 em,
+.lifetracker-study .case-design h2 em,
+.lifetracker-study .case-architecture h2 em,
+.lifetracker-study .case-reflection h2 em {
+  color: #8f729f;
+}
+.lifetracker-study .case-problem {
+  background: var(--lt-plum);
+  color: #f7f5ef;
+}
+.lifetracker-study .case-problem .case-eyebrow,
+.lifetracker-study .case-problem .case-section-index { color: #d4c2df; }
+.lifetracker-study .case-problem-grid p { color: #e0d7e3; }
+.lifetracker-study .case-capabilities { background: var(--paper); }
+.lifetracker-study .case-capability-top { color: #9878ad; }
+.lifetracker-study .case-capability h3 { color: var(--ink); }
+.lifetracker-study .case-capability p,
+.lifetracker-study .case-overview-copy p,
+.lifetracker-study .case-design-copy>p,
+.lifetracker-study .case-architecture-content>p,
+.lifetracker-study .case-reflection>div>p { color: var(--lt-muted); }
+.lifetracker-study .case-design { background: #eee8f0; }
+.lifetracker-study .case-principles { border-color: #d5c8dc; }
+.lifetracker-study .case-principles small { color: #66606b; }
+.lifetracker-study .case-architecture { background: #f1efe8; }
+.lifetracker-study .case-stack span { border-color: #d2c4d9; color: #594c60; }
+.lifetracker-study .case-architecture-note {
+  background: #e9e0ee;
+  color: #8e729d;
+}
+.lifetracker-study .case-architecture-note p { color: #62586a; }
+.lifetracker-study .case-architecture-note strong { color: #302533; }
+
+/* Fix the former pale-on-pale gallery: captions and copy now have deliberate contrast. */
+.lifetracker-study .lifetracker-screen-gallery {
+  background: #f0eee7;
+  color: #292b26;
+}
+.lifetracker-study .lifetracker-screen-gallery .case-eyebrow { color: #74637c; }
+.lifetracker-study .lifeops-gallery-heading h2,
+.lifetracker-study .lifeops-gallery-mobile-copy h3 { color: #292b26; }
+.lifetracker-study .lifeops-gallery-heading h2 em,
+.lifetracker-study .lifeops-gallery-mobile-copy h3 em { color: #8f729f; }
+.lifetracker-study .lifeops-gallery-heading>p,
+.lifetracker-study .lifeops-gallery-mobile-copy p { color: #62645d; }
+.lifetracker-study .lifeops-screen-gallery figcaption strong { color: #292b26; }
+.lifetracker-study .lifeops-screen-gallery figcaption span { color: #7e6790; }
+.lifetracker-study .lifeops-gallery-image,
+.lifetracker-study .lifeops-gallery-image-button,
+.lifetracker-study .lifeops-gallery-home .lifeops-gallery-image-button,
+.lifetracker-study .lifeops-gallery-work .lifeops-gallery-image-button {
+  background: var(--lt-plum);
+  border-color: rgba(143,114,159,.35);
+}
+.lifetracker-study .lifeops-gallery-phone {
+  border-color: rgba(143,114,159,.55);
+  box-shadow: 0 20px 55px rgba(43,29,44,.16);
+}
+.lifetracker-study .case-reflection {
+  background: var(--lt-plum-deep);
+  color: #f7f5ef;
+}
+.lifetracker-study .case-reflection .case-section-index { color: #d2bfdc; }
+.lifetracker-study .case-reflection>div>svg { color: var(--lt-acid); }
+.lifetracker-study .case-footer { background: #171319; color: #f7f5ef; }
+.lifetracker-study .case-footer h2 em { color: var(--lt-lilac); }
+.lifetracker-study .case-footer-link:hover { color: var(--lt-acid); }
+
+/* Dark mode: retain the portfolio's charcoal foundation and let LifeTracker's
+   plum/lilac/acid-green identity bleed through selected panels and controls. */
+html[data-theme="dark"] .lifetracker-study {
+  background: #171a16 !important;
+  color: #f0f0e8 !important;
+}
+html[data-theme="dark"] .lifetracker-study .case-topline,
+html[data-theme="dark"] .lifetracker-study .case-hero,
+html[data-theme="dark"] .lifetracker-study .case-capabilities {
+  background: #171a16 !important;
+  color: #f0f0e8 !important;
+  border-color: #3b4337 !important;
+}
+html[data-theme="dark"] .lifetracker-study .case-title-row h1,
+html[data-theme="dark"] .lifetracker-study .case-capability h3 { color: #f0f0e8 !important; }
+html[data-theme="dark"] .lifetracker-study .case-title-row h1 span { color: var(--lt-lilac) !important; }
+html[data-theme="dark"] .lifetracker-study .case-subtitle,
+html[data-theme="dark"] .lifetracker-study .case-hero-note p { color: #c0c8b9 !important; }
+html[data-theme="dark"] .lifetracker-study .case-overview {
+  background: #22251f !important;
+  color: #f0f0e8 !important;
+}
+html[data-theme="dark"] .lifetracker-study .case-problem {
+  background: #2b1d2c !important;
+  color: #f7f5ef !important;
+}
+html[data-theme="dark"] .lifetracker-study .case-problem-grid p { color: #e0d7e3 !important; }
+html[data-theme="dark"] .lifetracker-study .case-design {
+  background: #28212c !important;
+  color: #f0f0e8 !important;
+}
+html[data-theme="dark"] .lifetracker-study .case-architecture {
+  background: #20231e !important;
+  color: #f0f0e8 !important;
+}
+html[data-theme="dark"] .lifetracker-study .case-overview-copy p,
+html[data-theme="dark"] .lifetracker-study .case-capability p,
+html[data-theme="dark"] .lifetracker-study .case-design-copy>p,
+html[data-theme="dark"] .lifetracker-study .case-architecture-content>p,
+html[data-theme="dark"] .lifetracker-study .case-reflection>div>p { color: #c0c8b9 !important; }
+html[data-theme="dark"] .lifetracker-study .case-overview-copy h2 em,
+html[data-theme="dark"] .lifetracker-study .case-problem h2 em,
+html[data-theme="dark"] .lifetracker-study .case-section-heading h2 em,
+html[data-theme="dark"] .lifetracker-study .case-design h2 em,
+html[data-theme="dark"] .lifetracker-study .case-architecture h2 em,
+html[data-theme="dark"] .lifetracker-study .case-reflection h2 em { color: var(--lt-lilac) !important; }
+html[data-theme="dark"] .lifetracker-study .case-stack span {
+  color: #e7dced !important;
+  border-color: #68566f !important;
+}
+html[data-theme="dark"] .lifetracker-study .case-architecture-note {
+  background: #302436 !important;
+  color: var(--lt-lilac) !important;
+  border-color: #68566f !important;
+}
+html[data-theme="dark"] .lifetracker-study .case-architecture-note p { color: #e0d7e3 !important; }
+html[data-theme="dark"] .lifetracker-study .case-architecture-note strong { color: #fff !important; }
+html[data-theme="dark"] .lifetracker-study .lifetracker-screen-gallery {
+  background: #211a25 !important;
+  color: #f4eff5 !important;
+}
+html[data-theme="dark"] .lifetracker-study .lifetracker-screen-gallery .case-eyebrow,
+html[data-theme="dark"] .lifetracker-study .lifeops-screen-gallery figcaption span { color: #c5a9d7 !important; }
+html[data-theme="dark"] .lifetracker-study .lifeops-gallery-heading h2,
+html[data-theme="dark"] .lifetracker-study .lifeops-gallery-mobile-copy h3 { color: #f4eff5 !important; }
+html[data-theme="dark"] .lifetracker-study .lifeops-gallery-heading h2 em,
+html[data-theme="dark"] .lifetracker-study .lifeops-gallery-mobile-copy h3 em { color: #c5a9d7 !important; }
+html[data-theme="dark"] .lifetracker-study .lifeops-gallery-heading>p,
+html[data-theme="dark"] .lifetracker-study .lifeops-gallery-mobile-copy p { color: #d1c7d4 !important; }
+html[data-theme="dark"] .lifetracker-study .lifeops-screen-gallery figcaption strong { color: #f4eff5 !important; }
+html[data-theme="dark"] .lifetracker-study .lifeops-gallery-image,
+html[data-theme="dark"] .lifetracker-study .lifeops-gallery-image-button,
+html[data-theme="dark"] .lifetracker-study .lifeops-gallery-home .lifeops-gallery-image-button,
+html[data-theme="dark"] .lifetracker-study .lifeops-gallery-work .lifeops-gallery-image-button {
+  background: #17121b !important;
+  border-color: rgba(197,169,215,.4) !important;
+}
+html[data-theme="dark"] .lifetracker-study .lifeops-gallery-phone {
+  border-color: rgba(197,169,215,.55) !important;
+  box-shadow: 0 20px 55px rgba(0,0,0,.4) !important;
+}
+html[data-theme="dark"] .lifetracker-study .case-reflection {
+  background: #211723 !important;
+  color: #f4eff5 !important;
+}
+html[data-theme="dark"] .lifetracker-study .case-reflection .case-section-index { color: #c5a9d7 !important; }
+html[data-theme="dark"] .lifetracker-study .case-reflection>div>svg { color: #c8f34a !important; }
+html[data-theme="dark"] .lifetracker-study .case-footer {
+  background: #10130f !important;
+  color: #f0f0e8 !important;
+}
+html[data-theme="dark"] .lifetracker-study .case-footer h2,
+html[data-theme="dark"] .lifetracker-study .case-footer h2 em { color: #f0f0e8 !important; }
+html[data-theme="dark"] .lifetracker-study .case-footer h2 em { color: #c5a9d7 !important; }
+html[data-theme="dark"] .lifetracker-study .case-footer-link { color: #e7dced !important; border-color: #68566f !important; }
+html[data-theme="dark"] .lifetracker-study .case-footer-link:hover { color: #c8f34a !important; }
+html[data-theme="dark"] .lifetracker-study .case-capability-grid,
+html[data-theme="dark"] .lifetracker-study .case-capability,
+html[data-theme="dark"] .lifetracker-study .case-principles { border-color: #414a3c !important; }
+html[data-theme="dark"] .lifetracker-study .case-principles small { color: #c0c8b9 !important; }

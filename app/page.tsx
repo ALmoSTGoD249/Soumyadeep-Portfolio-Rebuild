@@ -18,7 +18,7 @@ const featured = [
     id: "02", name: "LifeTracker", type: "PERSONAL FINANCE & SHARED LIVING", year: "2026",
     description: "A personal and shared-life tracker for expenses, bills, budgets and the small financial decisions that make a household work. Designed around clarity, accountability and useful everyday workflows.",
     tags: ["JavaScript", "PostgreSQL", "Docker", "Product design"],
-    image: "/images/lifetracker.png", className: "lifetracker",
+    image: "/images/lifetrackerhome.png", className: "lifetracker",
     href: "/projects/lifetracker", action: "EXPLORE CASE STUDY"
   },
   {
