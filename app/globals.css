@@ -2297,3 +2297,20 @@ html[data-theme="dark"] .lifetracker-study .case-capability-grid,
 html[data-theme="dark"] .lifetracker-study .case-capability,
 html[data-theme="dark"] .lifetracker-study .case-principles { border-color: #414a3c !important; }
 html[data-theme="dark"] .lifetracker-study .case-principles small { color: #c0c8b9 !important; }
+
+
+/* Borderless project imagery: fill editorial frames instead of letterboxing. */
+.project-visual { background: var(--paper) !important; }
+.project-visual img,
+.lifeops .project-visual img,
+.lifetracker .project-visual img,
+.rnn .project-visual img {
+  width: 100%; height: 100%; object-fit: cover !important; background: transparent !important;
+}
+
+/* Keep the RNN case-study hero edge-to-edge too. */
+.rnn-hero-visual { aspect-ratio: 16 / 9; background: #08090a; }
+.rnn-hero-visual .lifeops-gallery-image-button { width: 100%; height: 100%; background: transparent; }
+.rnn-hero-visual .lifeops-gallery-image-button img {
+  width: 100%; height: 100%; max-height: none; object-fit: cover !important;
+}
